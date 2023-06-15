@@ -88,4 +88,4 @@ callbacks.active_node_in.active_node_in(app)
 callbacks.debugger.debugger(app)
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
