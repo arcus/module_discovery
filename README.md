@@ -1,15 +1,5 @@
 # Module Discovery App
 
-## Running the app locally
-
-If all of the requirements (see `requirements.txt`) are correct on your machine, you can run the app locally with the command:
-
-```
-python app.py
-```
-
-This will open a port where you can see the app locally. To see error messages, callbacks, and for the app to live update as you develop, set `debug=True` in the last line of `app.py`.
-
 ## File structure
 
 There are three main folders, 
@@ -41,3 +31,13 @@ docker run module_discovery_app
 ```
 
 The output of this command will include `[INFO] Listening at: http://0.0.0.0:8050`. Open a web browser to http://0.0.0.0:8050 to see and interact with the app.
+
+## Running the app locally
+
+If all of the requirements (see `requirements.txt`) are correct on your machine, you can run the app locally without using dcoker at all with the command:
+
+```
+python app.py
+```
+
+This will open a port where you can see the app locally. To see error messages, callbacks, and for the app to live update as you develop, set `debug=True` in the last line of `app.py`.
