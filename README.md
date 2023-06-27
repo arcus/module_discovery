@@ -16,21 +16,21 @@ The script `process_data.sh` runs through all the modules and creates the `modul
 
 ## Dockerization not yet working
 
-~~The `Dockerfile`, `requirements.txt` are set up to allow this to run in a Docker container on a local computer. To run it, open Docker and a command line interface.~~
+The `Dockerfile`, `requirements.txt` are set up to allow this to run in a Docker container on a local computer. To run it, open Docker and a command line interface.
 
-~~From the top level directory of this repository run:~~
+From the top level directory of this repository run:
 
 ```
 docker build -t module_discovery_app .
 ```
 
-~~This may take some a few minutes the first time you run it. Once it is completed, run:~~
+This may take some a minute the first time you run it. Once it is completed, run:
 
 ```
 docker run -d -p 8050:8050 module_discovery_app
 ```
 
-~~The output of this command will include `[INFO] Listening at: http://0.0.0.0:8050`. Open a web browser to http://0.0.0.0:8050 to see and interact with the app.~~
+Open a web browser to http://0.0.0.0:8050 to see and interact with the app.
 
 ## Running the app locally
 
