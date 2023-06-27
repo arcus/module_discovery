@@ -27,7 +27,7 @@ docker build -t module_discovery_app .
 ~~This may take some a few minutes the first time you run it. Once it is completed, run:~~
 
 ```
-docker run module_discovery_app
+docker run -d -p 8050:8050 module_discovery_app
 ```
 
 ~~The output of this command will include `[INFO] Listening at: http://0.0.0.0:8050`. Open a web browser to http://0.0.0.0:8050 to see and interact with the app.~~
