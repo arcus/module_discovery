@@ -27,6 +27,8 @@ The script `process_data.sh` runs through all the modules and creates the `modul
 
 ## Testing
 
+Clone or download this repository to run the app yourself!
+
 ### Dockerization
 
 The `Dockerfile`, `requirements.txt` are set up to allow this to run in a Docker container on a local computer. To run it, open Docker and a command line interface.
