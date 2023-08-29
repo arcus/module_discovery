@@ -61,7 +61,7 @@ do
         end=$(( $(tail -n +$start $FOLDER/$FOLDER.md | grep -n -m 1 "@end" | cut -f1 -d:) - 1 ))
         #### TODO figure out line breaks!
         pre_reqs=$(tail -n +$start $FOLDER/$FOLDER.md | head -n $end | tr '\n' '&' | tr '"' '+')
-        echo "df.loc[\"$FOLDER\", \"Prerequisties\"] = \"$pre_reqs\" " >> $graph_data
+        echo "df.loc[\"$FOLDER\", \"pre_reqs\"] = \"$pre_reqs\" " >> $graph_data
       fi
 
       #### sets_you_up_for (The "IF" is because not every module has this yet...)

@@ -5,7 +5,7 @@ import module_data
 
 # expandable/collabsible pre_reqs
 def pre_reqs(active_module):       
-    text = str(module_data.df.loc[active_module, "Prerequisties"])
+    text = str(module_data.df.loc[active_module, "pre_reqs"])
     text = text.replace("&", "\n")
     text = text.replace("+", '"')
     return     dbc.Accordion(
