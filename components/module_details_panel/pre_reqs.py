@@ -14,5 +14,5 @@ def pre_reqs(active_module):
                 [
                     dcc.Markdown(text),
                 ],
-                title="Wondering if you are ready for this module? Click here to see what prerequistes it has, if any:",
+                title="Wondering if you are ready for this module? Click here to see what prerequisites it has, if any:",
             ),], start_collapsed=True,)
