@@ -72,7 +72,7 @@ do
         end=$(( $(tail -n +$start $FOLDER/$FOLDER.md | grep -n -m 1 "@end" | cut -f1 -d:) - 1 ))
         
         sets_you_up_for=$(tail -n +$start $FOLDER/$FOLDER.md | head -n $end | tr '\n' ' ' | tr '-' ' ')
-        echo "df.loc[\"$FOLDER\", \"Sets You Up For\"] = \"$sets_you_up_for\" " >> $graph_data
+        echo "df.loc[\"$FOLDER\", \"sets_you_up_for\"] = \"$sets_you_up_for\" " >> $graph_data
       fi
 
       #### depends_on_knowledge_available_in (The "IF" is because not every module has this yet...)
@@ -83,7 +83,7 @@ do
         end=$(( $(tail -n +$start $FOLDER/$FOLDER.md | grep -n -m 1 "@end" | cut -f1 -d:) - 1 ))
         
         depends_on_knowledge_available_in=$(tail -n +$start $FOLDER/$FOLDER.md | head -n $end | tr '\n' ' ' | tr '-' ' ')
-        echo "df.loc[\"$FOLDER\", \"Depends On Knowledge In\"] = \"$depends_on_knowledge_available_in\" " >> $graph_data
+        echo "df.loc[\"$FOLDER\", \"depends_on_knowledge_in\"] = \"$depends_on_knowledge_available_in\" " >> $graph_data
       fi
   fi
 done
