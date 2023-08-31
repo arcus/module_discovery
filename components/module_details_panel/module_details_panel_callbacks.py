@@ -19,7 +19,7 @@ def module_info(active_node):
                         title_link(active_node),
                         #find_tags(active_node),
                         dcc.Markdown("By " + module_data.df.loc[active_node,'author']),
-                        dcc.Markdown("Estimated length: " + module_data.df.loc[active_node,'estimated_time_in_minutes']+"."),
+                        dcc.Markdown("Estimated length: " + module_data.df.loc[active_node,'estimated_time_in_minutes']+" minutes"),
                         dcc.Markdown(module_data.df.loc[active_node,'comment']),
                         dcc.Markdown(learning_objectives(active_node)),
                         html.Hr(),
