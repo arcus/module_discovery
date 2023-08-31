@@ -19,4 +19,6 @@ def search_results(value):
                 matches.append(module)
             elif value.lower() in str(module_data.df.loc[module,'learning_objectives']).lower():
                 matches.append(module)
+            elif value.lower() in str(module_data.df.loc[module,'author']).lower():
+                matches.append(module)
     return matches
