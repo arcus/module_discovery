@@ -21,9 +21,9 @@ There are three main folders,
 
 ### Module data
 
-The script `process_data.sh` runs through all the modules and creates the `module_data.py` file which contains a pandas dataframe with some (soon to be all) of the metadata for each module. 
-- NOTE: these scripts need to be run from the [education_modules repo](https://github.com/arcus/education_modules/tree/main)
-- TODO: automate the data processing in the education_modules repo and have the `module_data` pull directly from that repo.
+The module_data.py file is created from the [education_modules repo](https://github.com/arcus/education_modules/tree/main).
+
+- TODO: Currently the [module_data.py](https://github.com/arcus/education_modules/blob/metadata_workflow/assets/metadata/module_data.py) file in the education_modules repository is [automatically updated via a github action](https://github.com/arcus/education_modules/actions/workflows/pull_metadata.yml), but the copy of it here is manually copied over. In the future this manual updating with be automated.
 
 ## Testing
 
