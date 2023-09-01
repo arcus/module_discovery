@@ -6,8 +6,8 @@ import module_data
 neutral_node_styling = {
         'color': "gray",
         "font-size": "20px",
-        'width': "20px",
-        'height': "20px",
+        'width': "5px",
+        'height': "5px",
         'opacity': .3,
         'label': " "
          }
@@ -15,7 +15,7 @@ neutral_node_styling = {
 neutral_edge_styling = {
         'color': "lightgray",
         'opacity': .2,
-        'width': '3px',
+        'width': '1px',
         
          }
 
@@ -32,8 +32,8 @@ unselected_styling = {
                    'background-color': 'lightgrey',
                     'label': ' ',
                     #'opacity': .3,
-                    'width': "20px",
-                    'height': "20px",
+                    'width': "5px",
+                    'height': "5px",
                         }
 
 active_node_styling = {
