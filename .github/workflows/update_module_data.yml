@@ -1,0 +1,36 @@
+# This workflow updates the data in module_data.py once a week.
+# It can also be run manually if significant changes to metadata have been made.
+
+name: Update metadata in module_data.py
+
+on:
+  schedule:
+    - cron: '17 3 * * * 0'
+  
+  workflow_dispach:
+
+jobs:
+  check_for_changes:
+    name: Check if the module_data has changed
+    runs-on: ubuntu-latest
+    steps:
+      name: Compare module_data files
+      run: |
+        wget https://raw.githubusercontent.com/arcus/education_modules/metadata_workflow/assets/metadata/module_data.py -O education_modules_file.py
+        wget https://raw.githubusercontent.com/arcus/module_discovery/main/module_data.py -0 module_discovery_file.py
+        diff education_modules_file.py module_discovery_file.py 
+
+
+
+  update_module_data:
+    name: Update module_data.py
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3  
+      - name: Download module_data.py from education_modules
+        run: | 
+          wget https://raw.githubusercontent.com/arcus/education_modules/metadata_workflow/assets/metadata/module_data.py -O module_data.py
+          wc module_data.py
+      - name: Commit 
+        run: |
+          git status
