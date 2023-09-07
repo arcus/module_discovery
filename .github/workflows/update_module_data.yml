@@ -13,18 +13,30 @@ jobs:
   check_for_changes:
     name: Check if the module_data has changed
     runs-on: ubuntu-latest
+        # Map a step output to a job output
+    outputs:
+      changes: ${{ steps.check_if_changed.outputs.changes }}
     steps:
       - name: Compare module_data files
+        id: check_if_changed
         run: |
           wget https://raw.githubusercontent.com/arcus/education_modules/metadata_workflow/assets/metadata/module_data.py -O education_modules_file.py
+
           wget https://raw.githubusercontent.com/arcus/module_discovery/main/module_data.py -O module_discovery_file.py
-          diff education_modules_file.py module_discovery_file.py | wc -l
+
+          changes=$(diff education_modules_file.py module_discovery_file.py | wc -l)
+
+          echo "changes=$changes" >> "$GITHUB_OUTPUT"
+
+          echo $changes
 
 
 
   update_module_data:
     name: Update module_data.py
     runs-on: ubuntu-latest
+    needs: check_for_changes
+    if: needs.check_for_changes.outputs.changes != 0 
     steps:
       - uses: actions/checkout@v3  
       - name: Download module_data.py from education_modules
@@ -34,3 +46,15 @@ jobs:
       - name: Commit 
         run: |
           git status
+
+          git config --local user.name actions-user
+
+          git config --local user.email "actions@github.com" 
+ 
+          git fetch
+          
+          git add module_data.py
+
+          git commit -am "update metadata records" 
+ 
+          git push origin main
