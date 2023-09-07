@@ -17,7 +17,7 @@ jobs:
       - name: Compare module_data files
         run: |
           wget https://raw.githubusercontent.com/arcus/education_modules/metadata_workflow/assets/metadata/module_data.py -O education_modules_file.py
-          wget https://raw.githubusercontent.com/arcus/module_discovery/main/module_data.py -0 module_discovery_file.py
+          wget https://raw.githubusercontent.com/arcus/module_discovery/main/module_data.py -O module_discovery_file.py
           diff education_modules_file.py module_discovery_file.py 
 
 
