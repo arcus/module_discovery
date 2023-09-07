@@ -23,7 +23,9 @@ There are three main folders,
 
 The module_data.py file is created from the [education_modules repo](https://github.com/arcus/education_modules/tree/main).
 
-- TODO: Currently the [module_data.py](https://github.com/arcus/education_modules/blob/metadata_workflow/assets/metadata/module_data.py) file in the education_modules repository is [automatically updated via a github action](https://github.com/arcus/education_modules/actions/workflows/pull_metadata.yml), but the copy of it here is manually copied over. In the future this manual updating with be automated.
+- The [module_data.py](https://github.com/arcus/education_modules/blob/metadata_workflow/assets/metadata/module_data.py) file in the education_modules repository is [automatically updated via a github action](https://github.com/arcus/education_modules/actions/workflows/pull_metadata.yml) every time a change is made to the metadata of any module.
+- Once a week [an action runs on this repository](https://github.com/arcus/module_discovery/actions/workflows/update_module_data.yml) to update the module_data.py file here.
+- The action in this repository can also be run manually if metadata needs to be updated more frequently.
 
 ## Testing
 
