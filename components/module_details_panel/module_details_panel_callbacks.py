@@ -15,6 +15,10 @@ from .add_to_my_modules import add_to_my_modules
 
 # This is the automatically displayed metadata about the active module:
 def module_info(active_node):
+    # These buttons need to be initialized to prevent errors in callbacks
+    initialize_buttons = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='none')) for module in list(module_data.df.index)]
+    initialize_add_to_my_modules_buttons = [html.Button(module_data.df.loc[module,"title"], id="add_to_my_modules"+module, n_clicks=0, style = dict(display='none')) for module in list(module_data.df.index)]
+    # When a module is selected, its data is shown:
     if active_node in list(module_data.df.index):
         module_info_panel = [dcc.Markdown("##### Module details"),
                         title_link(active_node),
@@ -28,11 +32,12 @@ def module_info(active_node):
                         pre_reqs(active_node),
                         html.Hr(),
                         html.Div(connected_modules(active_node)),
+                        html.Div(initialize_buttons), 
+                        html.Div(initialize_add_to_my_modules_buttons)        
                         ]
         return module_info_panel
     else:
-        initialize_buttons = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='none')) for module in list(module_data.df.index)]
-        return html.Div([dcc.Markdown("##### Module details \n Use the buttons above or click on a node in the graph to the right to learn more about and get a link to an individual module. \n --- "), html.Div(initialize_buttons)])
+        return html.Div([dcc.Markdown("##### Module details \n Use the buttons above or click on a node in the graph to the right to learn more about and get a link to an individual module. \n --- "), html.Div(initialize_buttons), html.Div(initialize_add_to_my_modules_buttons)])
 
 
 
