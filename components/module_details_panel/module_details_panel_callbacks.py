@@ -11,12 +11,14 @@ from .connected_modules import connected_modules
 from .tags import find_tags
 from .learning_objectives import learning_objectives
 from .pre_reqs import pre_reqs
+from .add_to_my_modules import add_to_my_modules
 
 # This is the automatically displayed metadata about the active module:
 def module_info(active_node):
     if active_node in list(module_data.df.index):
         module_info_panel = [dcc.Markdown("##### Module details"),
                         title_link(active_node),
+                        add_to_my_modules(active_node),
                         #find_tags(active_node),
                         dcc.Markdown("By " + module_data.df.loc[active_node,'author']),
                         dcc.Markdown("Estimated length: " + module_data.df.loc[active_node,'estimated_time_in_minutes']+" minutes"),
