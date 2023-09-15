@@ -3,8 +3,8 @@ import dash_bootstrap_components as dbc
 import module_data 
 
 def add_to_my_modules(active_node):
-    button_id = "add_to_my_modules"+str(active_node)
+    button_id = "add_to_my_modules_"+str(active_node)
     return html.Div(
     [
-        dbc.Button("Add to my list ", id=button_id, color="primary", n_clicks=0, className="me-1")])
+        dbc.Button("Add to my list ", id=button_id, color="primary", n_clicks=0)])
 

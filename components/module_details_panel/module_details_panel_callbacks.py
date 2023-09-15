@@ -17,7 +17,7 @@ from .add_to_my_modules import add_to_my_modules
 def module_info(active_node):
     # These buttons need to be initialized to prevent errors in callbacks
     initialize_buttons = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='none')) for module in list(module_data.df.index)]
-    initialize_add_to_my_modules_buttons = [html.Button(module_data.df.loc[module,"title"], id="add_to_my_modules"+module, n_clicks=0, style = dict(display='none')) for module in list(module_data.df.index)]
+    initialize_add_to_my_modules_buttons = [html.Button("Add to my modules", id="add_to_my_modules_"+module, n_clicks=0, style = dict(display='none')) for module in list(module_data.df.index)]
     # When a module is selected, its data is shown:
     if active_node in list(module_data.df.index):
         module_info_panel = [dcc.Markdown("##### Module details"),

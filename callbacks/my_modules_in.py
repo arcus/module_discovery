@@ -7,15 +7,16 @@ import module_data
 def my_modules_in(app):
     @app.callback(Output('hidden_my_modules', 'children'),
                 #Input("hidden_my_modules", 'children'),
-                [Input("add_to_my_modules"+module_id, 'n_clicks') for module_id in module_data.df.index], #these buttons are add_to_my_modules buttons shown on the module details panel
+                [Input("add_to_my_modules_"+module_id, 'n_clicks') for module_id in module_data.df.index], #these buttons are add_to_my_modules buttons shown on the module details panel
                 #[Input("remove_from_my_modules"+module_id, 'n_clicks') for module_id in module_data.df.index], #these buttons are remove from my modules buttons shown on the module details panel
                 prevent_initial_call=False)
     def activate(*args):
-        # trigger = ctx.triggered_id
+        trigger = ctx.triggered_id
+        return "no_module_in_list ", trigger, sum(args)
         # if trigger == "module_visualization":
         #     return data['id']
-        # elif sum(args) != 0:
-        #      return trigger[:-7]
+        # if sum(args) != 0:
+        #       return trigger[16:]
         # else:
-        return "no_module_in_list"
+        #     return "no_module_in_list "#, trigger, sum(args)
 
