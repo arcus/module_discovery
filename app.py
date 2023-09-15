@@ -32,9 +32,10 @@ from components.left_hand_nav_bar import search_panel
 search_panel = search_panel.search_panel
 
 # Import the hidden components that keep track of the filtered modules and the active module
-from components import hidden_filtered_modules, hidden_active_module
+from components import hidden_filtered_modules, hidden_active_module, hidden_my_modules
 hidden_filtered_modules = hidden_filtered_modules.hidden_filtered_modules
 hidden_active_module = hidden_active_module.hidden_active_module
+hidden_my_modules = hidden_my_modules.hidden_my_modules
 
 # Import inter-component callbacks
 import callbacks.stylesheet_callbacks
@@ -42,6 +43,7 @@ import callbacks.active_node_in
 import callbacks.active_node_out
 import callbacks.filter_modules_in
 import callbacks.debugger
+import callbacks.my_modules_in
 
 
 
@@ -54,6 +56,8 @@ server = app.server
 
 # Set up the layout of the app
 app.layout = html.Div([
+    html.Div(hidden_my_modules),
+    html.Hr(),
     dbc.Row(children=[
         app_title,
         ]
@@ -86,6 +90,7 @@ callbacks.filter_modules_in.update_hidden_filtered_modules(app)
 callbacks.active_node_in.active_node_in(app)
 #callbacks.active_node_out.active_node_out(app)
 callbacks.debugger.debugger(app)
+callbacks.my_modules_in.my_modules_in(app)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
