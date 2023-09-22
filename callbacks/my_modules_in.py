@@ -12,8 +12,9 @@ def my_modules_in(app):
                 prevent_initial_call=True)
     def activate(my_modules_dict,*args):
         trigger = ctx.triggered_id[18:]
-        if sum(args) > 0:
-            update_dict = ast.literal_eval(my_modules_dict)
+
+        update_dict = ast.literal_eval(my_modules_dict)
+        if args[0] > 0:#update_dict[trigger] == 0:
             update_dict[trigger] = 1
             return str(update_dict)
         else:

@@ -16,10 +16,10 @@ nodes = [
     for row in df.index 
 ]
 
-edges = []
-for row in df.index:
-    for linked_module in df.loc[row, 'Linked Courses']:
-        edges.append({'data': {'source': linked_module, 'target': row, 'relationship': 'internal_link'}})
+# edges = []
+# for row in df.index:
+#     for linked_module in df.loc[row, 'Linked Courses']:
+#         edges.append({'data': {'source': linked_module, 'target': row, 'relationship': 'internal_link'}})
 
 default_stylesheet = default_stylesheet.default_stylesheet
 
@@ -29,7 +29,8 @@ visualization_panel = dbc.Col(
                     cyto.Cytoscape(
                     id='module_visualization',
                     layout={'name': 'cose'},
-                    elements=edges+nodes,
+                    #elements=edges+nodes,
+                    elements=nodes,
                     stylesheet=default_stylesheet,
                     #style={'width': '100%', 'height': '450px'},
                     userZoomingEnabled=False
