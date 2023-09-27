@@ -24,8 +24,8 @@ def module_info(active_node):
         # These buttons need to be initialized to prevent errors in callbacks
         other_nodes = list(module_data.df.index).copy()
         other_nodes.remove(active_node)
-        initialize_buttons = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='block')) for module in other_nodes]
-        initialize_add_to_my_modules_buttons = [html.Button("Add "+module+" to my list ", id="add_to_my_modules_"+module, n_clicks=0, style = dict(display='block')) for module in other_nodes]
+        initialize_buttons = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='none')) for module in other_nodes]
+        #initialize_add_to_my_modules_buttons = [html.Button("Add "+module+" to my list ", id="add_to_my_modules_"+module, n_clicks=0, style = dict(display='block')) for module in other_nodes]
 
         module_info_panel = [dcc.Markdown("##### Module details"),
                         title_link(active_node),
@@ -47,7 +47,7 @@ def module_info(active_node):
         return module_info_panel
     else:
         # These buttons need to be initialized to prevent errors in callbacks
-        initialize_buttons = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='block')) for module in list(module_data.df.index)]
+        initialize_buttons = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='none')) for module in list(module_data.df.index)]
         #initialize_add_to_my_modules_buttons = [html.Button("Add "+module+" to my list ", id="add_to_my_modules_"+module, n_clicks=0, style = dict(display='block')) for module in list(module_data.df.index)]
 
         return html.Div([
