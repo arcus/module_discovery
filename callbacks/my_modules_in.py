@@ -11,7 +11,7 @@ def my_modules_in(app):
                 [Input("add_to_my_modules_"+module_id, 'n_clicks') for module_id in module_data.df.index], #these buttons are add_to_my_modules buttons shown on the module details panel
                 prevent_initial_call=True)
     def activate(my_modules_dict,*args):
-        if ctx.triggered[0]['value'] > 0:
+        if ctx.triggered[0]['value'] and ctx.triggered[0]['value'] > 0:
             module_to_add = ctx.triggered_id[18:]
             update_dict = ast.literal_eval(my_modules_dict)
             update_dict[module_to_add] = 1
