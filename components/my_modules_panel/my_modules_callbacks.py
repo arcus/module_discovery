@@ -12,8 +12,9 @@ def show_my_modules_list(app):
         my_modules_dictionary = ast.literal_eval(hidden_my_modules)
         for module in module_data.df.index:
             if my_modules_dictionary[module] == 1:
-                my_string += module 
-                my_string += " "
+                title = module_data.df.loc[module, 'title']
+                my_string += title
+                my_string += ", "
         if my_string == "":
             return "You haven't selected any modules yet! Explore what is available and click \"Add to my list\" select the modules you want to focus on."
         else:
