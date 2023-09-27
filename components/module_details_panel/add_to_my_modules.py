@@ -6,7 +6,7 @@ def add_to_my_modules(active_node):
     if active_node in list(module_data.df.index):
         # Make the visible button
         button_id = "add_to_my_modules_"+str(active_node)
-        visible_button = html.Button(children=["Add "+active_node+" to my list "], id=button_id, style = dict(display='block'))
+        visible_button = html.Button(children=["Add to my list"], id=button_id, style = dict(display='block'))
         # Make all the other buttons hidden
         other_nodes = list(module_data.df.index).copy()
         other_nodes.remove(active_node)

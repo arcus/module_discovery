@@ -29,8 +29,11 @@ def module_info(active_node):
 
         module_info_panel = [dcc.Markdown("##### Module details"),
                         title_link(active_node),
-                        add_to_my_modules(active_node), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
-                        remove_my_modules(active_node), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
+                        dbc.Row([
+                            dbc.Col(add_to_my_modules(active_node), width=3), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
+                            dbc.Col(remove_my_modules(active_node), width=4), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
+                        ], justify="center"),
+                        html.Br(),
                         #find_tags(active_node),
                         dcc.Markdown("By " + module_data.df.loc[active_node,'author']),
                         dcc.Markdown("Estimated length: " + module_data.df.loc[active_node,'estimated_time_in_minutes']+" minutes"),
