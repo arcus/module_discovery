@@ -31,6 +31,9 @@ module_information = module_details_panel.module_details_panel
 from components.left_hand_nav_bar import search_panel
 search_panel = search_panel.search_panel
 
+from components.my_modules_panel import my_modules, my_modules_callbacks
+my_modules_panel = my_modules.my_modules_panel
+
 # Import the hidden components that keep track of the filtered modules and the active module
 from components import hidden_filtered_modules, hidden_active_module, hidden_my_modules
 hidden_filtered_modules = hidden_filtered_modules.hidden_filtered_modules
@@ -58,6 +61,7 @@ server = app.server
 app.layout = html.Div([
     html.Div(hidden_my_modules),
     html.Hr(),
+    html.Div(my_modules_panel),
     dbc.Row(children=[
         app_title,
         ]
@@ -82,6 +86,7 @@ app.layout = html.Div([
 # Initialize all INTRAcomponent callbacks
 left_hand_nav_bar_callbacks.get_left_hand_nav_bar_callbacks(app)
 module_details_panel_callbacks.update_module_info_panel(app)
+my_modules_callbacks.show_my_modules_list(app)
 
 # Initialize all INTERcomponent callbacks next...
 callbacks.stylesheet_callbacks.turn_nodes_on_off(app)
