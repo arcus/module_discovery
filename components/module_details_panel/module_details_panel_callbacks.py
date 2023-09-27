@@ -12,6 +12,7 @@ from .tags import find_tags
 from .learning_objectives import learning_objectives
 from .pre_reqs import pre_reqs
 from .add_to_my_modules import add_to_my_modules
+from .remove_my_modules import remove_my_modules
 
 # This is the automatically displayed metadata about the active module:
 def module_info(active_node):
@@ -29,6 +30,7 @@ def module_info(active_node):
         module_info_panel = [dcc.Markdown("##### Module details"),
                         title_link(active_node),
                         add_to_my_modules(active_node), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
+                        remove_my_modules(active_node), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
                         #find_tags(active_node),
                         dcc.Markdown("By " + module_data.df.loc[active_node,'author']),
                         dcc.Markdown("Estimated length: " + module_data.df.loc[active_node,'estimated_time_in_minutes']+" minutes"),
@@ -51,7 +53,8 @@ def module_info(active_node):
         return html.Div([
             dcc.Markdown("##### Module details \n Use the buttons above or click on a node in the graph to the right to learn more about and get a link to an individual module. \n --- "), 
             html.Div(initialize_buttons), 
-            add_to_my_modules(active_node)
+            add_to_my_modules(active_node),
+            remove_my_modules(active_node)
             ])
 
 
