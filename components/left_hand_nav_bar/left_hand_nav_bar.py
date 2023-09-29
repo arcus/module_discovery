@@ -77,7 +77,7 @@ left_hand_nav_bar = dbc.Col([dcc.Markdown("Search by keyword or filter modules b
         {'label': ' Basic', 'value': 'basic'},
         {'label': ' Intermediate', 'value': 'intermediate'},
         {'label': ' Advanced', 'value': 'advanced'},
-        {'label': ' Exercises', 'value': 'practice_exercise'},
+        #{'label': ' Exercises', 'value': 'exercise'},
         {'label': html.A(' Clear selection', style={'color': 'grey'}), 'value': '', },
         ],
         id='coding_level_checklist')
