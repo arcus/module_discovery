@@ -45,7 +45,7 @@ left_hand_nav_bar = dbc.Col([dcc.Markdown("Search by keyword or filter modules b
         {'label': ' Bash', 'value': 'bash'},
         {'label': ' Python', 'value': 'python'},
         {'label': ' R', 'value': 'r'},
-        {'label': ' SQL', 'value': 'SQL'},
+        {'label': ' SQL', 'value': 'sql'},
         {'label': ' Git', 'value': 'git'},
         {'label': html.A(' Clear selection', style={'color': 'grey'}), 'value': '', }, ## This empty value helps with the callbacks
         ],
