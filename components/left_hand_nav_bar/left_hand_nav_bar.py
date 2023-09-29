@@ -133,7 +133,7 @@ left_hand_nav_bar = dbc.Col([dcc.Markdown("Search by keyword or filter modules b
         dcc.RadioItems(
         options=[
         {'label': ' Omics', 'value': 'omics'},
-        {'label': ' Electronic Health Records', 'value': 'EHR'},
+        {'label': ' Electronic Health Records', 'value': 'ehr'},
         {'label': ' Geospatial Data', 'value': 'geospatial'},
         {'label': html.A(' Clear selection', style={'color': 'grey'}), 'value': '', },
         ],
