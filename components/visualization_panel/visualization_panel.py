@@ -17,9 +17,16 @@ nodes = [
 ]
 
 edges = []
+# for row in df.index:
+#     for linked_module in df.loc[row, 'Linked Courses']:
+#         edges.append({'data': {'source': linked_module, 'target': row, 'relationship': 'internal_link'}})
 for row in df.index:
-    for linked_module in df.loc[row, 'Linked Courses']:
-        edges.append({'data': {'source': linked_module, 'target': row, 'relationship': 'internal_link'}})
+    for linked_module in df.index:
+        if str(linked_module) in str(df.loc[row,"sets_you_up_for"]):
+            edges.append({'data': {'source': row, 'target': linked_module, 'relationship': 'directed_edge'}})
+        if str(row) in str(df.loc[linked_module, "depends_on_knowledge_available_in"]):
+            edges.append({'data': {'source': linked_module, 'target': row, 'relationship': 'directed_edge'}})
+
 
 default_stylesheet = default_stylesheet.default_stylesheet
 
