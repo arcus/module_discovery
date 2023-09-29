@@ -7,5 +7,5 @@ my_module_dictionary = {id: 0 for id in module_data.df.index}
 hidden_my_modules = [#dcc.Markdown("current active node"),
     html.Div(children= str(my_module_dictionary), 
     id = 'hidden_my_modules', 
-    style= {'display': 'block'} # make this 'none' to hide it for final version, 'block' shows this data on the app
+    style= {'display': 'none'} # make this 'none' to hide it for final version, 'block' shows this data on the app
     )]

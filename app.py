@@ -59,7 +59,6 @@ server = app.server
 
 # Set up the layout of the app
 app.layout = html.Div([
-    html.Div(my_modules_panel),
     html.Hr(),
     dbc.Row(children=[
         app_title,
@@ -68,7 +67,13 @@ app.layout = html.Div([
     html.Hr(),
     dbc.Row(children=[
         left_hand_nav_bar,
-        dbc.Col([clickable_module_list_panel, html.Hr(), html.Br(),module_information], width=5),
+        dbc.Col([
+            clickable_module_list_panel, 
+            html.Hr(), html.Br(), 
+            html.Div(my_modules_panel), 
+            html.Hr(), html.Br(),
+            module_information],
+            width=5),
         dbc.Col(children=[visualization_panel
         ],width=5),
         
