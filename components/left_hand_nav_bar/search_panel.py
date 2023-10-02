@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 import module_data
 
 search_panel = dbc.Col([
-    dcc.Input(id="search_input", placeholder="Search... add submit button?")
+    dcc.Input(id="search_input", placeholder="Search")
 
 ], width=2, style={'background-color': '#ADD8E6'})
 
