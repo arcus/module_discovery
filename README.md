@@ -27,6 +27,9 @@ The module_data.py file is created from the [education_modules repo](https://git
 - Once a week [an action runs on this repository](https://github.com/arcus/module_discovery/actions/workflows/update_module_data.yml) to update the module_data.py file here.
 - The action in this repository can also be run manually if metadata needs to be updated more frequently.
 
+#### Mini dataset for debugging
+There is also a `module_data_mini.py` file that consists of only 5 modules. When developing new features it can be extremely helpful to work out bugs and callbacks on this smaller set of data.
+
 ## Testing
 
 Clone or download this repository to run the app yourself!
