@@ -17,7 +17,8 @@ left_hand_nav_bar = dbc.Col([dcc.Markdown("Search by keyword or filter modules b
     dbc.Collapse(dcc.Checklist(
            options=[
        {'label': ' Good first module', 'value': 'good_first_module'},
-       {'label': ' Doesn\'t require coding', 'value': 'no_coding_required'}
+       {'label': ' Doesn\'t require coding', 'value': 'no_coding_required'},
+       {'label': ' Hands on exercise', 'value': 'exercise'}
        ],
           value=['good_first_module'],
           id='general_options_checklist'),

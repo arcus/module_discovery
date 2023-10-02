@@ -16,6 +16,9 @@ def filter_modules_in(general_options_value, coding_language_value, coding_level
         if general_options_value and 'no_coding_required' in general_options_value:
             if "true" in str(module_data.df.loc[module, "coding_required"]).lower():
                 tracker = tracker*0
+        if general_options_value and 'exercise' in general_options_value:
+            if "exercise" not in str(module_data.df.loc[module, "module_type"]).lower():
+                tracker = tracker*0
         if coding_language_value:
           if coding_language_value.lower() not in str(module_data.df.loc[module,'coding_language']).lower(): # coding language is a radio button, so the output is a string, not a list of strings
                 tracker = tracker*0
