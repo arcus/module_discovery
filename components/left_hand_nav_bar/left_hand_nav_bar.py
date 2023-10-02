@@ -135,6 +135,7 @@ left_hand_nav_bar = dbc.Col([dcc.Markdown("Search by keyword or filter modules b
         {'label': ' Omics', 'value': 'omics'},
         {'label': ' Electronic Health Records', 'value': 'ehr'},
         {'label': ' Geospatial Data', 'value': 'geospatial'},
+        {'label': ' Text', 'value': 'text'},
         {'label': html.A(' Clear selection', style={'color': 'grey'}), 'value': '', },
         ],
         id='data_domain_checklist')
