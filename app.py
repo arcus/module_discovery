@@ -68,11 +68,16 @@ app.layout = html.Div([
     dbc.Row(children=[
         left_hand_nav_bar,
         dbc.Col([
-            clickable_module_list_panel, 
-            html.Hr(), html.Br(), 
-            html.Div(my_modules_panel), 
-            html.Hr(), html.Br(),
-            module_information],
+            dbc.Accordion([
+                dbc.AccordionItem(clickable_module_list_panel, title="Search Results", item_id="search_results"), 
+            #html.Hr(), html.Br(), 
+                dbc.AccordionItem(html.Div(my_modules_panel), title="Selected Modules", item_id="selected_modules"), 
+            #html.Hr(), html.Br(),
+                dbc.AccordionItem(module_information, title="Module Details", item_id="module_details")
+            ],
+            active_item=["search_results", "selected_modules", "module_details"],
+            always_open=True,
+            )],
             width=5),
         dbc.Col(children=[visualization_panel
         ],width=5),
