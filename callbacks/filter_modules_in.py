@@ -5,7 +5,7 @@ import module_data
 from components.left_hand_nav_bar import search_panel 
 search_results = search_panel.search_results
 
-def filter_modules_in(general_options_value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_term):
+def filter_modules_in(general_options_value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_term, collection_value):
     matching_modules = list(module_data.df.index).copy()
     non_matching_modules = []
     for module in module_data.df.index:
@@ -33,6 +33,9 @@ def filter_modules_in(general_options_value, coding_language_value, coding_level
                 tracker = tracker*0
         if search_term and module not in search_results(search_term):
             tracker = tracker*0
+        if collection_value: # coding level is a radio button, so the output is a string, not a list of strings
+            if collection_value not in str(module_data.df.loc[module,'collection']).lower():
+                tracker = tracker*0
         if tracker == 0:
             matching_modules.remove(module)
             non_matching_modules.append(module)
@@ -46,7 +49,8 @@ def update_hidden_filtered_modules(app):
                 Input('coding_level_checklist', 'value'),
                 Input('data_task_checklist', 'value'),
                 Input('data_domain_checklist', 'value'),
-                Input('search_input', 'value')
+                Input('search_input', 'value'),
+                Input('collection_checklist', 'value')
                 )
-    def filtering(value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_value):
-        return filter_modules_in(value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_value)[0]
+    def filtering(value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_value, collection_value):
+        return filter_modules_in(value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_value, collection_value)[0]

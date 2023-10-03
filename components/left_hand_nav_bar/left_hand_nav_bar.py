@@ -35,6 +35,39 @@ left_hand_nav_bar = dbc.Col([dcc.Markdown("Search by keyword or filter modules b
 
     html.Br(),
     html.Br(),
+    
+    # COLLECTION
+
+    dbc.Button(
+        "Collection",
+        id="collection_collapse_button", color="dark", outline=True, size="sm", className="me-1"),
+    dbc.Badge("?", id="collection_info_button", pill=True,  color="light", text_color="dark"),
+    dbc.Popover(
+            dbc.PopoverBody(dcc.Markdown("**Demystifying** modules focus on giving an overview of a topic and are often have a special focus on reducing anxiety about a potentially daunting topic or tool, and cutting through the hype to helping novices to determine whether or not this is something they should learn to do. \n \n **Infrastructure and Technology** modules focus on software or tools, especially setup and systems. Things like how to install software, or understanding what software and/or languages to use for what tasks. \n \n **Introduction to Data Science** modules teach skills for learners new to data science, including how to troubleshoot and best practices for reproducible methods. \n \n **Learn to Code** modules are primarily focused on teaching coding skills \n \n **Machine Learning** includes all modules about machine learning and AI. \n \n **Statistics** includes both applied data analysis (e.g. here's how to do this test in R) and a more theoretical understanding of statistics and the underlying math ")),
+            target="collection_info_button",
+            trigger="click",
+        ),
+    dbc.Collapse([
+    dbc.Col( 
+    dcc.RadioItems(
+        options=[
+        {'label': ' Demystifying', 'value': 'demystifying'},
+        {'label': ' Infrastructure and Technology', 'value': 'infrastructure_and_technology'},
+        {'label': ' Introduction to Data Science', 'value': 'intro_to_data_science'},
+        {'label': ' Learn to Code', 'value': 'learn_to_code'},
+        {'label': ' Machine Learning', 'value': 'machine_learning'},
+        {'label': ' Statistics', 'value': 'statistics'},
+        {'label': html.A(' Clear selection', style={'color': 'grey'}), 'value': '', }, ## This empty value helps with the callbacks
+        ],
+        id='collection_checklist'
+        )
+        ),],
+    id='collection_collapse_checklist',
+    is_open=False,
+    ),
+    html.Br(),
+    html.Br(),
+
 
     # CODING LANGUAGE
 
