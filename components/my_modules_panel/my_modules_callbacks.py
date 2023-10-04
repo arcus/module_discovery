@@ -11,7 +11,7 @@ def show_my_modules_list(app):
         if hidden_pathway == []:
             return "You haven't selected any modules yet! Explore what is available and click \"Add to my list\" select the modules you want to focus on."
         else:
-            pathway_list = []
+            pathway_list = [dcc.Markdown("Here are the modules you have selected. \n \n In the future you will be able to use the up and down buttons to reorder them. \n")]
             ## Create buttons for each of the modules in the pathway, in the order they are currently in the list.
             total_pathway_time = 0
             for module in hidden_pathway:
@@ -41,7 +41,7 @@ def show_my_modules_list(app):
                 button_group = dbc.ButtonGroup(
                     [
                         dbc.Button("Up", color="light gray", id=module+"_move_up"),
-                        dbc.Button("Down", color="light gray", , id=module+"_go_down"),
+                        dbc.Button("Down", color="light gray", id=module+"_go_down"),
                         dbc.Button(module_data.df.loc[module,"title"], color="light gray", n_clicks=0, id=module+"_nutbot"),
                     ]
                 , style= {'display': 'none'})

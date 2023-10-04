@@ -12,7 +12,7 @@ clickable_module_list = html.Div(
                   [dbc.Col(
                     children=[
                      html.Div([
-                        dbc.Col(dcc.Markdown("Modules that match your filters are listed here and visible in the graph to the right.", style={'background-color': '#ADD8E6'}), width=12),
+                        dbc.Col(dcc.Markdown("Modules that match your filters and search terms are listed here.", style={'background-color': ''}), width=12),
                         dbc.Row([
                           dbc.Col(add_all_to_my_modules, width=3), 
                           dbc.Col(remove_all_from_my_modules, width=4)
