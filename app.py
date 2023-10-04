@@ -35,10 +35,11 @@ from components.my_modules_panel import my_modules, my_modules_callbacks
 my_modules_panel = my_modules.my_modules_panel
 
 # Import the hidden components that keep track of the filtered modules and the active module
-from components import hidden_filtered_modules, hidden_active_module, hidden_my_modules
+from components import hidden_filtered_modules, hidden_active_module, hidden_my_modules, hidden_pathway
 hidden_filtered_modules = hidden_filtered_modules.hidden_filtered_modules
 hidden_active_module = hidden_active_module.hidden_active_module
 hidden_my_modules = hidden_my_modules.hidden_my_modules
+hidden_pathway = hidden_pathway.hidden_pathway
 
 # Import inter-component callbacks
 import callbacks.stylesheet_callbacks
@@ -47,6 +48,7 @@ import callbacks.active_node_out
 import callbacks.filter_modules_in
 import callbacks.debugger
 import callbacks.my_modules_in
+import callbacks.pathway_in
 
 
 
@@ -59,6 +61,7 @@ server = app.server
 
 # Set up the layout of the app
 app.layout = html.Div([
+    html.Div(hidden_pathway),
     html.Hr(),
     dbc.Row(children=[
         app_title,
@@ -106,6 +109,7 @@ callbacks.active_node_in.active_node_in(app)
 #callbacks.active_node_out.active_node_out(app)
 callbacks.debugger.debugger(app)
 callbacks.my_modules_in.my_modules_in(app)
+callbacks.pathway_in.pathway_in(app)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
