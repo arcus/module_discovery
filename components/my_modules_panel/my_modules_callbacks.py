@@ -8,17 +8,33 @@ def show_my_modules_list(app):
                 Input('hidden_pathway','children'),
                 prevent_initial_call=True)
     def update_list(hidden_pathway):
+
+        ## Create hidden buttons for the modules not in the list to prevent callback problems
+        initialize_nutbots = []
+        for module in [x for x in module_data.df.index if x not in hidden_pathway]:
+            button_group = dbc.ButtonGroup(
+                [
+                    dbc.Button("Up", color="light gray", n_clicks=0, id=module+"_move_up"),
+                    dbc.Button("Down", color="light gray", n_clicks=0, id=module+"_go_down"),
+                    dbc.Button(module_data.df.loc[module,"title"], color="light gray", n_clicks=0, id=module+"_nutbot"),
+                ]
+            , style= {'display': 'none'})
+            initialize_nutbots.append(button_group)
+        
         if hidden_pathway == []:
-            return "You haven't selected any modules yet! Explore what is available and click \"Add to my list\" select the modules you want to focus on."
+            empty_pathway_message = dcc.Markdown("You haven't selected any modules yet! Explore what is available and click \"Add to my list\" select the modules you want to focus on.")
+
+            return html.Div(children=initialize_nutbots+[empty_pathway_message])
         else:
-            pathway_list = [dcc.Markdown("Here are the modules you have selected. \n \n In the future you will be able to use the up and down buttons to reorder them. \n")]
+            pathway_list = initialize_nutbots
+            pathway_list.append(dcc.Markdown("Here are the modules you have selected. \n \n In the future you will be able to use the up and down buttons to reorder them. \n"))
             ## Create buttons for each of the modules in the pathway, in the order they are currently in the list.
             total_pathway_time = 0
             for module in hidden_pathway:
                 button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
                         [
-                            dbc.Button("Up", color="light gray", id=module+"_move_up"),
-                            dbc.Button("Down", color="light gray", id=module+"_go_down"),
+                            dbc.Button("Up", color="light gray", n_clicks=0,id=module+"_move_up"),
+                            dbc.Button("Down", color="light gray", n_clicks=0, id=module+"_go_down"),
                             dbc.Button(module_data.df.loc[module,"title"], color="light gray", n_clicks=0, id=module+"_nutbot"),
                         ]
                     ), width=9), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
@@ -36,15 +52,15 @@ def show_my_modules_list(app):
             ])
             pathway_list.append(summation_line)
 
-            ## Create hidden buttons for the modules not in the list to prevent callback problems
-            for module in [x for x in module_data.df.index if x not in hidden_pathway]:
-                button_group = dbc.ButtonGroup(
-                    [
-                        dbc.Button("Up", color="light gray", id=module+"_move_up"),
-                        dbc.Button("Down", color="light gray", id=module+"_go_down"),
-                        dbc.Button(module_data.df.loc[module,"title"], color="light gray", n_clicks=0, id=module+"_nutbot"),
-                    ]
-                , style= {'display': 'none'})
-                pathway_list.append(button_group)
+            # ## Create hidden buttons for the modules not in the list to prevent callback problems
+            # for module in [x for x in module_data.df.index if x not in hidden_pathway]:
+            #     button_group = dbc.ButtonGroup(
+            #         [
+            #             dbc.Button("Up", color="light gray", id=module+"_move_up"),
+            #             dbc.Button("Down", color="light gray", id=module+"_go_down"),
+            #             dbc.Button(module_data.df.loc[module,"title"], color="light gray", n_clicks=0, id=module+"_nutbot"),
+            #         ]
+            #     , style= {'display': 'none'})
+            #     pathway_list.append(button_group)
 
             return pathway_list
