@@ -17,8 +17,8 @@ def show_my_modules_list(app):
             for module in hidden_pathway:
                 button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
                         [
-                            dbc.Button("Up", color="light gray"),
-                            dbc.Button("Down", color="light gray"),
+                            dbc.Button("Up", color="light gray", id=module+"_move_up"),
+                            dbc.Button("Down", color="light gray", id=module+"_go_down"),
                             dbc.Button(module_data.df.loc[module,"title"], color="light gray", n_clicks=0, id=module+"_nutbot"),
                         ]
                     ), width=9), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
@@ -40,8 +40,8 @@ def show_my_modules_list(app):
             for module in [x for x in module_data.df.index if x not in hidden_pathway]:
                 button_group = dbc.ButtonGroup(
                     [
-                        dbc.Button("Up", color="light gray"),
-                        dbc.Button("Down", color="light gray"),
+                        dbc.Button("Up", color="light gray", id=module+"_move_up"),
+                        dbc.Button("Down", color="light gray", , id=module+"_go_down"),
                         dbc.Button(module_data.df.loc[module,"title"], color="light gray", n_clicks=0, id=module+"_nutbot"),
                     ]
                 , style= {'display': 'none'})
