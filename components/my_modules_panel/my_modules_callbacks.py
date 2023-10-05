@@ -39,7 +39,7 @@ def show_my_modules_list(app):
                         ]
                     ), width=9), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
                 pathway_list.append(button_group)
-                pathway_list.append(html.Br())
+                ## if the estimated_time_in_minutes exists and makes sense, add it to total pathway time
                 if len(module_data.df.loc[module,"estimated_time_in_minutes"]) == 2:
                     total_pathway_time += int(module_data.df.loc[module,"estimated_time_in_minutes"])
             
@@ -51,16 +51,5 @@ def show_my_modules_list(app):
                 dbc.Row([dbc.Col("Total estimated time of this pathway:",width=7), dbc.Col(str(total_hours)+" hours, "+str(minutes)+" minutes", width=3)],justify="between")
             ])
             pathway_list.append(summation_line)
-
-            # ## Create hidden buttons for the modules not in the list to prevent callback problems
-            # for module in [x for x in module_data.df.index if x not in hidden_pathway]:
-            #     button_group = dbc.ButtonGroup(
-            #         [
-            #             dbc.Button("Up", color="light gray", id=module+"_move_up"),
-            #             dbc.Button("Down", color="light gray", id=module+"_go_down"),
-            #             dbc.Button(module_data.df.loc[module,"title"], color="light gray", n_clicks=0, id=module+"_nutbot"),
-            #         ]
-            #     , style= {'display': 'none'})
-            #     pathway_list.append(button_group)
 
             return pathway_list
