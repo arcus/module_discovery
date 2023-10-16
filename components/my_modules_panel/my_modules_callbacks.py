@@ -30,6 +30,7 @@ def show_my_modules_list(app):
             pathway_list.append(dcc.Markdown("Here are the modules you have selected. \n \n In the future you will be able to use the up and down buttons to reorder them. \n"))
             ## Create buttons for each of the modules in the pathway, in the order they are currently in the list.
             total_pathway_time = 0
+            copyable_markdown = ""
             for module in hidden_pathway:
                 button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
                         [
@@ -39,6 +40,9 @@ def show_my_modules_list(app):
                         ]
                     ), width=9), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
                 pathway_list.append(button_group)
+
+                copyable_markdown += "["+module_data.df.loc[module,"title"]+"](https://liascript.github.io/course/?https://raw.githubusercontent.com/arcus/education_modules/main/"+module+"/"+module+".md#1) "+ module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes \n \n"
+                
                 ## if the estimated_time_in_minutes exists and makes sense, add it to total pathway time
                 if len(module_data.df.loc[module,"estimated_time_in_minutes"]) == 2:
                     total_pathway_time += int(module_data.df.loc[module,"estimated_time_in_minutes"])
@@ -51,5 +55,13 @@ def show_my_modules_list(app):
                 dbc.Row([dbc.Col("Total estimated time of this pathway:",width=7), dbc.Col(str(total_hours)+" hours, "+str(minutes)+" minutes", width=3)],justify="between")
             ])
             pathway_list.append(summation_line)
+
+            
+            pathway_list.append(dbc.Badge("Copyable list", id="copy_my_modules", pill=True,  color="light", text_color="dark"))
+            pathway_list.append(dbc.Popover(
+                                dbc.PopoverBody(dcc.Markdown(children=[copyable_markdown])),
+                                target="copy_my_modules",
+                                trigger="click",
+                            ) )
 
             return pathway_list
