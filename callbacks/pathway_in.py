@@ -3,6 +3,13 @@ from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data 
 
+### Module sorting algorithm:
+def correctly_ordered(a,b):
+    if len(str(a)) < len(str(b)): ### THIS SORT CONDITION IS NOT THE ORDERING WE WANT, THIS JUST SORTS BY THE LENGTH OF THE MODULE'S ID AND IS A PROOF OF CONCEPT FOR THE SORTING BUTTON
+        return True
+    else:
+        return False
+
 ### If any add_to_my_modules buttons are pressed, that module should be added to the list of my_modules
 def pathway_in(app):
     @app.callback(Output('hidden_pathway', 'children'),
@@ -26,7 +33,7 @@ def pathway_in(app):
                 stopper = False
                 index = 0
                 while stopper == False and index < len(sorted_pathway):
-                    if len(str(module)) < len(str(sorted_pathway[index])): ### THIS SORT CONDITION IS NOT THE ORDERING WE WANT, THIS JUST SORTS BY THE LENGTH OF THE MODULE'S ID AND IS A PROOF OF CONCEPT FOR THE SORTING BUTTON
+                    if correctly_ordered(module,sorted_pathway[index]): ### The sort condition is defined above
                         sorted_pathway = sorted_pathway[:index] + [module] + sorted_pathway[index:]
                         stopper = True
                     else:
