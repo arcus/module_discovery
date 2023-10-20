@@ -8,7 +8,7 @@ This app will allow users to learn more about each module, investigate how the m
 
 ![The module discovery app.](media/example_screenshot.png)
 
-**NOTE:** This is a prototype. Not all modules are currently included in the app, and only half of those included have complete metadata. 
+**NOTE:** This is a prototype that is in a phase of rapid development. All effort will be made to keep this README up to date, but some changes might slip by. If something isn't working as expected, please let us know by creating an issue.
 
 
 ## Development
