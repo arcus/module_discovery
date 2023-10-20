@@ -7,6 +7,7 @@ import module_data
 def pathway_in(app):
     @app.callback(Output('hidden_pathway', 'children'),
                 State("hidden_pathway", 'children'),
+                Input("sort_my_modules","n_clicks"),
                 Input("add_filtered_to_my_modules", 'n_clicks'),
                 Input("remove_filtered_from_my_modules", 'n_clicks'),
                 State("hidden_filtered_modules_list", 'children'),
@@ -15,9 +16,27 @@ def pathway_in(app):
                 [Input(module_id+"_move_up", 'n_clicks') for module_id in module_data.df.index], #these buttons are for moving a module up in the pathway
                 [Input(module_id+"_go_down", 'n_clicks') for module_id in module_data.df.index], #these buttons are for moving a module down in the pathway
                 prevent_initial_call=True)
-    def activate(current_pathway,add_filtered_to_my_modules,remove_filtered_from_my_modules,hidden_filtered_modules_list,*args):
+    def activate(current_pathway,sort,add_filtered_to_my_modules,remove_filtered_from_my_modules,hidden_filtered_modules_list,*args):
         new_pathway = current_pathway.copy()
         
+        ## Sort the current pathway list
+        if ctx.triggered_id == "sort_my_modules":
+            sorted_pathway = current_pathway.copy()[0:1]
+            for module in current_pathway[1:]:
+                stopper = False
+                index = 0
+                while stopper == False and index < len(sorted_pathway):
+                    if len(str(module)) < len(str(sorted_pathway[index])): ### THIS SORT CONDITION IS NOT THE ORDERING WE WANT, THIS JUST SORTS BY THE LENGTH OF THE MODULE'S ID AND IS A PROOF OF CONCEPT FOR THE SORTING BUTTON
+                        sorted_pathway = sorted_pathway[:index] + [module] + sorted_pathway[index:]
+                        stopper = True
+                    else:
+                        index += 1
+                if index == len(sorted_pathway):
+                    sorted_pathway.append(module)
+
+            new_pathway = sorted_pathway
+
+            
         ## Add a batch of modules all at once
         if ctx.triggered_id == "add_filtered_to_my_modules":
             for module in list(hidden_filtered_modules_list):
@@ -34,6 +53,7 @@ def pathway_in(app):
         ## Change the location of a single module in the pathway
 
         elif ctx.triggered[0]['value'] and ctx.triggered[0]['value'] > 0:
+
             # Adds the module to the end of the list
             if ctx.triggered_id[:6] == "add_to":
                 module_to_add = ctx.triggered_id[18:]
