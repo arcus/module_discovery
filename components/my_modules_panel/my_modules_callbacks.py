@@ -27,7 +27,7 @@ def show_my_modules_list(app):
             return html.Div(children=initialize_nutbots+[empty_pathway_message])
         else:
             pathway_list = initialize_nutbots
-            pathway_list.append(dcc.Markdown("Here are the modules you have selected. \n \n In the future you will be able to use the up and down buttons to reorder them. \n"))
+            pathway_list.append(dcc.Markdown("Here are the modules you have selected. \n \n Use the up and down buttons to reorder them. \n"))
             ## Create buttons for each of the modules in the pathway, in the order they are currently in the list.
             total_pathway_time = 0
             copyable_markdown = ""
