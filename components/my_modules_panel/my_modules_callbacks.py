@@ -6,7 +6,7 @@ import ast #This allows the easy conversion from string back to dictionary
 def show_my_modules_list(app):
     @app.callback(Output('display_my_modules', 'children'),
                 Input('hidden_pathway','children'),
-                prevent_initial_call=True)
+                prevent_initial_call=False) # An initial call needs to be made here to initialize all the buttons
     def update_list(hidden_pathway):
 
         ## Create hidden buttons for the modules not in the list to prevent callback problems
