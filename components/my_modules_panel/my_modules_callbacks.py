@@ -31,7 +31,7 @@ def show_my_modules_list(app):
             ## Opening text
             pathway_list.append(dcc.Markdown("Here are the modules you have selected. \n \n Use the up and down buttons to reorder them. \n"))
             ## Sort modules button
-            sort_button = dbc.Button("Sort these modules", color="light gray", n_clicks=0, id="sort_my_modules")
+            sort_button = dbc.Button("Sort alphabetically", color="light gray", n_clicks=0, id="sort_my_modules")
             pathway_list.append(sort_button)
 
             ## Create buttons for each of the modules in the pathway, in the order they are currently in the list.

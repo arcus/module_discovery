@@ -5,7 +5,7 @@ import module_data
 
 ### Module sorting algorithm:
 def correctly_ordered(a,b):
-    if len(str(a)) < len(str(b)): ### THIS SORT CONDITION IS NOT THE ORDERING WE WANT, THIS JUST SORTS BY THE LENGTH OF THE MODULE'S ID AND IS A PROOF OF CONCEPT FOR THE SORTING BUTTON
+    if str(module_data.df.loc[a,"title"]) < str(module_data.df.loc[b, "title"]): ### THIS SORT CONDITION IS NOT THE ORDERING WE WANT, THIS JUST SORTS BY THE LENGTH OF THE MODULE'S ID AND IS A PROOF OF CONCEPT FOR THE SORTING BUTTON
         return True
     else:
         return False
