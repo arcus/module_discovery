@@ -1,3 +1,5 @@
+# THIS CALLBACK ISN'T ACTIVELY BEING CALLED, CAN LIKELY BE DELETED
+
 ### Take input from the "Add to my list" buttons and update the my_modules list
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc

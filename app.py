@@ -47,7 +47,7 @@ import callbacks.active_node_in
 import callbacks.active_node_out
 import callbacks.filter_modules_in
 import callbacks.debugger
-import callbacks.my_modules_in
+#import callbacks.my_modules_in
 import callbacks.pathway_in
 
 
@@ -61,8 +61,6 @@ server = app.server
 
 # Set up the layout of the app
 app.layout = html.Div([
-    html.Div(hidden_pathway),
-    html.Hr(),
     dbc.Row(children=[
         app_title,
         ]
@@ -90,7 +88,7 @@ app.layout = html.Div([
     html.Hr(), html.Hr(),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
     html.Div(hidden_active_module), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
-    html.Div(hidden_my_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
+    html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
     #html.Div(children=["blue"], id="debugger"),     html.Div(children=["blue"], id="debugger2")
     ],
     style={'padding' : '25px'}
@@ -108,7 +106,7 @@ callbacks.filter_modules_in.update_hidden_filtered_modules(app)
 callbacks.active_node_in.active_node_in(app)
 #callbacks.active_node_out.active_node_out(app)
 callbacks.debugger.debugger(app)
-callbacks.my_modules_in.my_modules_in(app)
+#callbacks.my_modules_in.my_modules_in(app)
 callbacks.pathway_in.pathway_in(app)
 
 if __name__ == '__main__':
