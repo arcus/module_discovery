@@ -64,13 +64,13 @@ This will open a port where you can see the app locally. To see error messages, 
 
 **NOTE:** There will be one error on loading. You can ignore it completely.
 
-### Accessibility 
+## Accessibility 
 
-#### Features
+### Features
 All information and relationships represented in the network graphs are also communicated via buttons in the Module Details panel.
 
-#### Unknowns
+### Unknowns
 This is a Dash/Plotly app which has not been tested with any accessibilty technologies. 
 
-#### Suggest improvements
+### Suggest improvements
 If you have needs that are not being met, or ideas for how to test or improve the accessibility of this app, please [create an accessibility issue](https://github.com/arcus/module_discovery/issues/new) so we can work to address it!
