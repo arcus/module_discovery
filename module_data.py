@@ -1,3 +1,22 @@
+# What are you doing here?  Why write python code
+# that manually generates each cell?  
+# In Python it's very easy to turn a .csv into a data frame directly...
+# Am I missing something?  This feels kludgy.
+# Instead of using bash to write python code,
+# can you simply update the .csv directly in bash,
+# or avoid using bash altogether and write an action
+# in Python to create the data frame directly instead
+# of creating code to create the data frame?
+# It strikes me as odd to use one language to write 
+# code in another language that then gets executed. 
+# Suggestions:
+# https://shipyard.build/blog/your-first-python-github-action/
+# https://github.com/marketplace/actions/write-to-csv-file
+# https://www.analyticsvidhya.com/blog/2021/08/python-tutorial-working-with-csv-file-for-data-science/
+
+
+ 
+
 import pandas as pd
 df=pd.DataFrame()
 

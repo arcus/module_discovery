@@ -1,4 +1,6 @@
-### Eventually this will be folded into a single callback that incorporates filtered_modules, active_node, and then spits out the approriate stylesheet for the visualization panel.
+### Eventually this will be folded into a single callback that 
+### incorporates filtered_modules, active_node, and then spits out the appropriate 
+### stylesheet for the visualization panel.
 
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
