@@ -27,6 +27,7 @@ selected_styling = {
                 'background-color': 'blue',
                 'label': 'data(title)',
                 'color': 'black',
+                "font-size": "12px",
                 'opacity': 1,
                 'width': "20px",
                 'height': "20px",
