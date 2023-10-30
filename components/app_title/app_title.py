@@ -23,13 +23,16 @@ branding_logo = html.A(
 )
 
 feedback_button = dbc.Button(
-    "Give feedback on this prototype", 
+    "Help improve this prototype by giving feedback", 
     color="light gray", 
     n_clicks=0, 
     id="feedback_survey",
     href="https://redcap.link/module_discovery_app_feedback",
     external_link=True,
-    target="_blank"
+    target="_blank",
+    style={"background-color":"#005587",
+        "color":"white",
+        "font-weight":"bold"}
     )
 
 app_title = dbc.Row([dbc.Col(branding_logo, width =2), dbc.Col(html.B(["Module Discovery Tool Prototype"]), style={'textAlign': 'center','font-size':'40px'}, align='end'), dbc.Col(feedback_button, width =2)])
