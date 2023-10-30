@@ -30,8 +30,8 @@ def show_my_modules_list(app):
             pathway_list = initialize_nutbots
             ## Opening text
             pathway_list.append(dcc.Markdown("Here are the modules you have selected. \n \n Use the up and down buttons to reorder them. \n"))
-            ## Sort modules button
-            sort_button = dbc.Button("Sort alphabetically", color="light gray", n_clicks=0, id="sort_my_modules")
+            ## Sort modules button THIS IS INVISIBLE BECAUSE IT DOESN'T SORT BY ANY USEFUL METRIC YET
+            sort_button = dbc.Button("Sort alphabetically", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"none"})
             pathway_list.append(sort_button)
 
             ## Create buttons for each of the modules in the pathway, in the order they are currently in the list.
@@ -63,11 +63,15 @@ def show_my_modules_list(app):
             pathway_list.append(summation_line)
 
             
-            pathway_list.append(dbc.Badge("Copyable list", id="copy_my_modules", pill=True,  color="light", text_color="dark"))
+            pathway_list.append(dbc.Button("Save this pathway", id="copy_my_modules"))
             pathway_list.append(dbc.Popover(
-                                dbc.PopoverBody(dcc.Markdown(children=[copyable_markdown])),
+                                dbc.PopoverBody(children=[
+                                    dcc.Markdown("**Copy these links and paste them into a document or email for future reference:**"),
+                                    dcc.Markdown(children=[copyable_markdown])], style={'width':'475px'}),
                                 target="copy_my_modules",
                                 trigger="click",
+                                style={"max-width":"500px"},
+                                
                             ) )
 
             return pathway_list
