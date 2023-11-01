@@ -1,4 +1,8 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
+# Consider adding details, e.g.
+# ctx offers context information that is helpful in callbacks, such as the ID of the element
+# that was the trigger of the callback (note: is this true?  I'm just flailing here).  
+
 import dash_bootstrap_components as dbc
 import dash_cytoscape as cyto
 
@@ -55,7 +59,9 @@ import callbacks.pathway_in
 
 
 # Initialize the app
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],suppress_callback_exceptions=True) ## suppress_callback_exceptions prevents all of the errors from callbacks calling things not yet set up by other callbacks.
+app = Dash(__name__, 
+           external_stylesheets=[dbc.themes.BOOTSTRAP],
+           suppress_callback_exceptions=True) ## suppress_callback_exceptions prevents all of the errors from callbacks calling things not yet set up by other callbacks.
 server = app.server
 
 
@@ -79,9 +85,9 @@ app.layout = html.Div([
             active_item=["search_results", "selected_modules", "module_details"],
             always_open=True,
             )],
-            width=5),
+            xs=12, lg = 8, xl = 5),
         dbc.Col(children=[visualization_panel
-        ],width=5),
+        ],xs=12, lg = 8, xl = 5),
         
         
         ]),

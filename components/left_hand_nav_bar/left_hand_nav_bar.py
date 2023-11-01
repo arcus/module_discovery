@@ -184,5 +184,5 @@ left_hand_nav_bar = dbc.Col([dcc.Markdown("Search by keyword or filter modules b
     id='data_domain_collapse_checklist',
     is_open=False,
     ),
-], width=2, style={'background-color': '#ADD8E6'})
+], xs = 12, lg = 4, xl = 2, style={'background-color': '#ADD8E6'})
 
