@@ -30,8 +30,8 @@ def module_info(active_node):
         module_info_panel = [#dcc.Markdown("##### Module details"),
                         title_link(active_node),
                         dbc.Row([
-                            dbc.Col(add_to_my_modules(active_node), width=3), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
-                            dbc.Col(remove_my_modules(active_node), width=4), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
+                            dbc.Col(add_to_my_modules(active_node), xs=6, md=3), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
+                            dbc.Col(remove_my_modules(active_node), xs=6, md=4), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
                         ], justify="center"),
                         html.Br(),
                         #find_tags(active_node),
@@ -54,7 +54,7 @@ def module_info(active_node):
         #initialize_add_to_my_modules_buttons = [html.Button("Add "+module+" to my list ", id="add_to_my_modules_"+module, n_clicks=0, style = dict(display='block')) for module in list(module_data.df.index)]
 
         return html.Div([
-            dcc.Markdown("Use the buttons above or click on a node in the graph to the right to learn more about and get a link to an individual module. \n"), 
+            dcc.Markdown("Use the buttons or click on a node in the graph to the ht to learn more about and get a link to an individual module. \n"), 
             html.Div(initialize_buttons), 
             add_to_my_modules(active_node),
             remove_my_modules(active_node)
