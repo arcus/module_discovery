@@ -60,7 +60,7 @@ server = app.server
 
 
 # Set up the layout of the app
-app.layout = html.Div([
+app.layout = dbc.Container([
     dbc.Row(children=[
         app_title,
         ]
@@ -91,8 +91,8 @@ app.layout = html.Div([
     html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
     #html.Div(children=["blue"], id="debugger"),     html.Div(children=["blue"], id="debugger2")
     ],
-    style={'padding' : '25px'}
-    )
+    style={'padding' : '25px'},
+    fluid=True)
 
 # Initialize all INTRAcomponent callbacks
 left_hand_nav_bar_callbacks.get_left_hand_nav_bar_callbacks(app)
