@@ -2,7 +2,9 @@ from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 from .search_panel import search_panel as search_panel
 
-left_hand_nav_bar = dbc.Col([dcc.Markdown("Search by keyword or filter modules by what you want to learn about:"),
+left_hand_nav_bar = dbc.Col([
+    html.Br(),
+    dcc.Markdown("Search by keyword or filter modules by what you want to learn about:"),
     
     # SEARCH DOESN'T YET HAVE A SUBMIT BUTTON
 
@@ -184,5 +186,7 @@ left_hand_nav_bar = dbc.Col([dcc.Markdown("Search by keyword or filter modules b
     id='data_domain_collapse_checklist',
     is_open=False,
     ),
-], xs=12, sm=6, md=4, xxl=2, style={'background-color': '#ADD8E6'})
+    html.Br(),
+    html.Br(),
+], style={'background-color': '#ADD8E6'})
 
