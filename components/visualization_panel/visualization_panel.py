@@ -32,17 +32,18 @@ default_stylesheet = default_stylesheet.default_stylesheet
 
 visualization_panel = dbc.Col(
                     children=[
-                    dcc.Markdown("##### Interact with this graph \n * Click on a node to learn more about that module. \n * Drag the nodes around to see how they are interconnected.", style={'background-color': '#ADD8E6'}),
-                    cyto.Cytoscape(
-                    id='module_visualization',
-                    layout={'name': 'cose', 
-                            #'nodeDimensionsIncludeLabels': 'true',
-                            #'avoidOverlap':'true'
-                            },
-                    elements=edges+nodes,
-                    stylesheet=default_stylesheet,
-                    #style={'width': '100%', 'height': '450px'},
-                    userZoomingEnabled=False
-                     ),
-                     ]
+                    html.Br(),
+                    dcc.Markdown("##### Interact with this graph \n * Click on a node to learn more about that module. \n * Drag the nodes around to see how they are interconnected.", style={'background-color': '#FFFFFF'}),
+                    dbc.Row(cyto.Cytoscape(
+                        id='module_visualization',
+                        layout={'name': 'cose', 
+                                #'nodeDimensionsIncludeLabels': 'true',
+                                #'avoidOverlap':'true'
+                                },
+                        elements=edges+nodes,
+                        stylesheet=default_stylesheet,
+                        #style={'width': '100%', 'height':'450px%'},
+                        userZoomingEnabled=False
+                        ), justify="center"),
+                     ],
                 )

@@ -65,7 +65,7 @@ app.layout = dbc.Container([
         app_title,
         ]
         ),
-    html.Hr(),
+    html.Br(),
     dbc.Row(children=[
         dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': '#ADD8E6'}),
         dbc.Col([
@@ -81,11 +81,11 @@ app.layout = dbc.Container([
             )],
             xs=12, sm=6, md=8, xxl=5),
         dbc.Col(children=[visualization_panel
-        ],xs=12, sm=12, md=12, xxl=5),
+        ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6'}),
         
         
         ]),
-    html.Hr(), html.Hr(),
+   #html.Hr(), html.Hr(),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
     html.Div(hidden_active_module), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
     html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
