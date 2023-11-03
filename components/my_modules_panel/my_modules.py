@@ -5,7 +5,7 @@ import ast #This allows the easy conversion from string back to dictionary
 
 
 my_modules_panel = html.Div(children=[
-                dcc.Markdown(children=["You haven't selected any modules yet! Explore what is available and click \"Add to my list\" select the modules you want to focus on."])
+                dcc.Markdown(children=["You haven't selected any modules yet! Explore what is available and click \"Add to my list\" to create your own pathway of modules you want to focus on."])
                 ], id='display_my_modules')
 
 
