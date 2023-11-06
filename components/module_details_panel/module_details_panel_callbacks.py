@@ -54,7 +54,7 @@ def module_info(active_node):
         #initialize_add_to_my_modules_buttons = [html.Button("Add "+module+" to my list ", id="add_to_my_modules_"+module, n_clicks=0, style = dict(display='block')) for module in list(module_data.df.index)]
 
         return html.Div([
-            dcc.Markdown("Use the buttons or click on a node in the graph to the ht to learn more about and get a link to an individual module. \n"), 
+            dcc.Markdown("Use the buttons or click on a node in the graph to learn more about and get a link to an individual module. \n"), 
             html.Div(initialize_buttons), 
             add_to_my_modules(active_node),
             remove_my_modules(active_node)
