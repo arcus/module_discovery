@@ -60,14 +60,14 @@ server = app.server
 
 
 # Set up the layout of the app
-app.layout = html.Div([
+app.layout = dbc.Container([
     dbc.Row(children=[
         app_title,
         ]
         ),
-    html.Hr(),
+    html.Br(),
     dbc.Row(children=[
-        left_hand_nav_bar,
+        dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': '#ADD8E6'}),
         dbc.Col([
             dbc.Accordion([
                 dbc.AccordionItem(clickable_module_list_panel, title="Search Results", item_id="search_results"), 
@@ -79,20 +79,20 @@ app.layout = html.Div([
             active_item=["search_results", "selected_modules", "module_details"],
             always_open=True,
             )],
-            width=5),
+            xs=12, sm=6, md=8, xxl=5),
         dbc.Col(children=[visualization_panel
-        ],width=5),
+        ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6'}),
         
         
         ]),
-    html.Hr(), html.Hr(),
+   #html.Hr(), html.Hr(),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
     html.Div(hidden_active_module), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
     html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
     #html.Div(children=["blue"], id="debugger"),     html.Div(children=["blue"], id="debugger2")
     ],
-    style={'padding' : '25px'}
-    )
+    style={'padding' : '25px'},
+    fluid=True)
 
 # Initialize all INTRAcomponent callbacks
 left_hand_nav_bar_callbacks.get_left_hand_nav_bar_callbacks(app)

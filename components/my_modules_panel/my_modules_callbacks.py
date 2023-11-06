@@ -22,7 +22,7 @@ def show_my_modules_list(app):
             initialize_nutbots.append(button_group)
         
         if hidden_pathway == []:
-            empty_pathway_message = dcc.Markdown("You haven't selected any modules yet! Explore what is available and click \"Add to my list\" select the modules you want to focus on.")
+            empty_pathway_message = dcc.Markdown("You haven't selected any modules yet! Explore what is available and click \"Add to my list\" to create your own pathway of modules you want to focus on.")
             sort_button = dbc.Button("Sort these modules", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"none"})
             return html.Div(children=initialize_nutbots+[empty_pathway_message]+[sort_button])
             

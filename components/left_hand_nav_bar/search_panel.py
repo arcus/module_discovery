@@ -5,7 +5,7 @@ import module_data
 search_panel = dbc.Col([
     dcc.Input(id="search_input", placeholder="Search")
 
-], width=2, style={'background-color': '#ADD8E6'})
+], width=12, style={'background-color': '#ADD8E6'})
 
 def search_results(value):
     matches = []

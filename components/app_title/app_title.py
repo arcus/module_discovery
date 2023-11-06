@@ -1,22 +1,15 @@
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-import base64
 
 image_path = 'assets/RI_logo.png'
-
-# Using base64 encoding and decoding
-def b64_image(image_filename):
-    with open(image_filename, 'rb') as f:
-      image = f.read()
-    return 'data:image/png;base64,' + base64.b64encode(image).decode('utf-8')
 
 branding_logo = html.A(
     href="https://www.research.chop.edu/department-of-biomedical-and-health-informatics",
     children=[
         html.Img(
             alt="Link to Children's Hospital of Philadelphia Department of Biomedical and Health Informatics",
-            src=b64_image(image_path),
-            style={'width':'90%'}
+            src=image_path,
+            style={'max-width':'100%'}
         )
     ],
     target="_blank"
@@ -32,7 +25,7 @@ feedback_button = dbc.Button(
     target="_blank",
     style={"background-color":"#005587",
         "color":"white",
-        "font-weight":"bold"}
+        "font-weight":"bold"},
     )
 
-app_title = dbc.Row([dbc.Col(branding_logo, width =2), dbc.Col(html.B(["Module Discovery Tool Prototype"]), style={'textAlign': 'center','font-size':'40px'}, align='end'), dbc.Col(feedback_button, width =2)])
+app_title = dbc.Row([dbc.Col(branding_logo, xs=12, md =6,xl=2), dbc.Col(html.B(["Module Discovery Tool Prototype"]), style={'textAlign': 'center','font-size':'40px'}, align='center',xs=12,  md=6, xl=8), dbc.Col(dbc.Row(feedback_button, justify='center'), xs=12,xl=2)], justify='center')
