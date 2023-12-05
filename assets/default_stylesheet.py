@@ -26,9 +26,18 @@ neutral_edge_styling = {
 selected_styling = {
                 'background-color': 'blue',
                 'label': 'data(title)',
+                'color': 'black',
+                "font-size": "12px",
                 'opacity': 1,
                 'width': "20px",
                 'height': "20px",
+                "text-wrap": "wrap",
+                "text-max-width": 80,
+                # 'text-halign':'center',
+                # 'text-valign':'center',
+                # 'width':'label',
+                # 'height':'label',
+                # 'shape':'square'
 
                     }
 
@@ -47,6 +56,8 @@ active_node_styling = {
                     'opacity': 1,
                     'width': "30px",
                     'height': "30px",
+                    "text-wrap": "wrap",
+                    "text-max-width": 80
                         }
 
 

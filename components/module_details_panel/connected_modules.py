@@ -27,7 +27,7 @@ def connected_modules(active_node):
                 button = html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='none'))
                 hidden_button_list.append(button)
         left_subpanel = dbc.Col([html.Div("Not quite ready for this module? Check out these first:"),html.Div(depends_on_button_list)], width=6) if len(depends_on_button_list)>0 else dbc.Col([html.Div("This module doesn't require any specialized knowledge to get started, so check it out now!")], width=6)
-        right_subpanel = dbc.Col([html.Div("Already familiar with this material? Try these next:"),html.Div(sets_you_up_button_list)], width=6) if len(sets_you_up_button_list)>0 else dbc.Col([html.Div("Not sure what we want to put here... encourage people to explore related modules using other metadata connections?")], width=6)
+        right_subpanel = dbc.Col([html.Div("Already familiar with this material? Try these next:"),html.Div(sets_you_up_button_list)], width=6) if len(sets_you_up_button_list)>0 else dbc.Col([html.Div("Use the search bar and other filters to explore other modules you might be interested in.")], width=6)
         return [dbc.Row([left_subpanel, right_subpanel]), html.Div(hidden_button_list)]
     else:
         return "no current active node"
