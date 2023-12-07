@@ -23,7 +23,7 @@ jobs:
 
           wget https://raw.githubusercontent.com/arcus/module_discovery/main/assets/education_modules.json -O module_discovery_file.json
 
-          changes=$(diff education_modules_file.csv module_discovery_file.csv | wc -l)
+          changes=$(diff education_modules_file.json module_discovery_file.json | wc -l)
 
           echo "changes=$changes" >> "$GITHUB_OUTPUT"
 
