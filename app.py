@@ -19,9 +19,6 @@ visualization_panel = visualization_panel.visualization_panel
 from components.app_title import app_title
 app_title = app_title.app_title
 
-from components.heading_tabs import heading_tabs
-heading_tabs = heading_tabs.heading_tabs
-
 from components.clickable_module_list import clickable_module_list, clickable_module_list_callbacks
 clickable_module_list_panel = clickable_module_list.clickable_module_list
 
