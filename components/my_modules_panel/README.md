@@ -1,0 +1,1 @@
+This component contains the list of a user's modules. The internal callbacks allowing a user to re-order the modules in that list are also here.
