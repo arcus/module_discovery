@@ -14,4 +14,5 @@ education_modules_df = education_modules_df.set_index('module_id')
 # make estimated_time_in_minutes an integer instead of a float
 education_modules_df['estimated_time_in_minutes'] = education_modules_df['estimated_time_in_minutes'].astype(int)
 
+#CREATE THE DATAFRAME FOR APP USE
 df=education_modules_df.astype('str').copy()
