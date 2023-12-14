@@ -40,6 +40,9 @@ hasse = nx.transitive_reduction(G)
 P = poset
 H = hasse
 
+for edge in hasse.edges():
+    print(edge[0])
+
 print(len(G.edges()))
 print(len(P.edges()))
 print(len(H.edges()))

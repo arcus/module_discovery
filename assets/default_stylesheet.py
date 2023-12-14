@@ -16,8 +16,8 @@ neutral_edge_styling = {
         'color': "lightgray",
         'opacity': .2,
         'width': '1px',
-        #'mid-source-arrow-shape': 'triangle',
-        #'source-arrow-color': 'red',
+        'mid-source-arrow-shape': 'vee',
+        'mid-source-arrow-color': 'black',
         #'source-arrow-shape': 'triangle',
         #'line-color': 'red'
 
