@@ -1,0 +1,1 @@
+The linking metadata from the modules is processed here using the `networkx` package.
