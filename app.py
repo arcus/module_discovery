@@ -13,8 +13,9 @@ from assets import default_stylesheet
 from components.left_hand_nav_bar import left_hand_nav_bar, left_hand_nav_bar_callbacks 
 left_hand_nav_bar = left_hand_nav_bar.left_hand_nav_bar
 
-from components.visualization_panel import visualization_panel
+from components.visualization_panel import visualization_panel, pathway_visualization
 visualization_panel = visualization_panel.visualization_panel
+pathway_visualization = visualization_panel.pathway_visualization
 
 from components.app_title import app_title
 app_title = app_title.app_title
@@ -58,6 +59,8 @@ server = app.server
 
 # Set up the layout of the app
 app.layout = dbc.Container([
+    dbc.Row(children=[pathway_visualization]),
+    html.Hr(),
     dbc.Row(children=[
         app_title,
         ]
