@@ -26,12 +26,12 @@ for edge in poset.hasse.edges():
 
 default_stylesheet = default_stylesheet.default_stylesheet
 
-visualization_panel = dbc.Col(
+pathway_visualization = dbc.Col(
                     children=[
                     html.Br(),
-                    dcc.Markdown("##### Interact with this graph \n * Click on a node to learn more about it in the Module Details section. \n * Drag the nodes around to see how they are interconnected.", style={'background-color': '#FFFFFF'}),
-                    dbc.Row(cyto.Cytoscape(
-                        id='module_visualization',
+                    dcc.Markdown("##### Your current pathway of modules \n * Click on a node to learn more about it in the Module Details section. \n * Drag the nodes around to see how they are interconnected.", style={'background-color': '#FFFFFF'}),
+                    dbc.Row(children =[cyto.Cytoscape(
+                        id='pathway_visualization',
                         layout={'name': 'cose', 
                                 #'nodeDimensionsIncludeLabels': 'true',
                                 #'avoidOverlap':'true'
@@ -40,6 +40,9 @@ visualization_panel = dbc.Col(
                         stylesheet=default_stylesheet,
                         #style={'width': '100%', 'height':'450px%'},
                         userZoomingEnabled=False
-                        ), justify="center"),
+                        )], 
+                        justify="center",
+                        id='pathway_graph'),
                      ],
+                     id="testing"
                 )

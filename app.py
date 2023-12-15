@@ -15,7 +15,7 @@ left_hand_nav_bar = left_hand_nav_bar.left_hand_nav_bar
 
 from components.visualization_panel import visualization_panel, pathway_visualization
 visualization_panel = visualization_panel.visualization_panel
-pathway_visualization = visualization_panel.pathway_visualization
+pathway_visualization = pathway_visualization.pathway_visualization
 
 from components.app_title import app_title
 app_title = app_title.app_title
@@ -47,6 +47,7 @@ import callbacks.filter_modules_in
 import callbacks.debugger
 #import callbacks.my_modules_in
 import callbacks.pathway_in
+import callbacks.pathway_out
 
 
 
@@ -108,6 +109,7 @@ callbacks.active_node_in.active_node_in(app)
 callbacks.debugger.debugger(app)
 #callbacks.my_modules_in.my_modules_in(app)
 callbacks.pathway_in.pathway_in(app)
+callbacks.pathway_out.show_pathway_visually(app)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
