@@ -42,7 +42,6 @@ pathway_visualization = dbc.Col(
                         userZoomingEnabled=False
                         )], 
                         justify="center",
-                        id='pathway_graph'),
+                        ),
                      ],
-                     id="testing"
                 )
