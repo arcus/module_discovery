@@ -2,10 +2,11 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data 
+import network_analysis.poset_processing 
 
 ### Module sorting algorithm:
 def correctly_ordered(a,b):
-    if str(module_data.df.loc[a,"title"]) < str(module_data.df.loc[b, "title"]): ### THIS SORT CONDITION IS NOT THE ORDERING WE WANT, THIS JUST SORTS BY THE LENGTH OF THE MODULE'S ID AND IS A PROOF OF CONCEPT FOR THE SORTING BUTTON
+    if (a,b) in network_analysis.poset_processing.poset.edges(): ### This ONLY checks if module a precedes module b in the poset of all modules. It does not mean that related modules will be grouped together ?YET?
         return True
     else:
         return False

@@ -30,8 +30,15 @@ def show_my_modules_list(app):
             pathway_list = initialize_nutbots
             ## Opening text
             pathway_list.append(dcc.Markdown("Here are the modules you have selected. \n \n Use the up and down buttons to reorder them. \n"))
-            ## Sort modules button THIS IS INVISIBLE BECAUSE IT DOESN'T SORT BY ANY USEFUL METRIC YET
-            sort_button = dbc.Button("Sort alphabetically", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"none"})
+            ## Sort modules button
+            sort_button = dbc.Stack(children=[
+                dbc.Button("Sort these modules", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"block"}),
+                dbc.Badge("?", id="sort_my_modules_button", pill=True,  color="light", text_color="dark"),
+                dbc.Popover(
+                    dbc.PopoverBody(dcc.Markdown("This ensures that if you have two modules in your pathway and one depends on knowledge available in the other based on our metadata, they will be listed in the correct order below. \n \n It does NOT ensure that sequential or related modules are next to each other, so make sure to use the up and down buttons to fine tune the order of pathway.")),
+                    target="sort_my_modules_button",
+                    trigger="click",
+                    )], direction="horizontal")
             pathway_list.append(sort_button)
 
             ## Create buttons for each of the modules in the pathway, in the order they are currently in the list.
