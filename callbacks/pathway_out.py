@@ -16,17 +16,21 @@ def show_pathway_visually(app):
                 prevent_initial_call=True) 
     def update_pathway_graph(hidden_pathway, active_node):
         ### Set up the subgraph created by the pathway
-        pathway_subgraph = poset.G.subgraph(hidden_pathway)
+        pathway_subgraph = poset.hasse.subgraph(hidden_pathway)
         # Define the graph nodes
         nodes = [{'data': {'id': vertex, 'title': df.loc[vertex,'title'] }} for vertex in pathway_subgraph.nodes()]
         # Define the graph edges
-        edges = [{'data': {'source': edge[1], 'target': edge[0]}} for edge in pathway_subgraph.edges()]
+        edges = [{'data': {'source': edge[1], 'target': edge[0]},  'classes': 'poset_relationship'} for edge in pathway_subgraph.edges()]
+        # Add in any additional edges created by the pathway, even if those aren't graph edges
+        pathway_edges = [{'data':{'source': hidden_pathway[i], 'target': hidden_pathway[i-1]}, 'classes': 'pathway_relationship'} for i in range(1, len(hidden_pathway))]
         # The elements of the graph display are the nodes and the edges:
-        elements=nodes+edges
+        elements=nodes+edges+pathway_edges
         
         ### Create a new stylesheet for this induced pathway subgraph
-        # Edges are still neutral
-        new_stylesheet = [ {'selector': 'edge', 'style': default_stylesheet.neutral_edge_styling}]
+        # Regular poset edges are still "neutral"
+        new_stylesheet = [ {'selector': '.poset_relationship', 'style': default_stylesheet.neutral_edge_styling}]
+        # Edges created by the pathway itself also appear
+        new_stylesheet += [ {'selector': '.pathway_relationship', 'style': default_stylesheet.pathway_edge_styling}]
         
         # Node styling is that all of them are selected GET UX HELP TO FIGURE OUT IF THIS MAKES SENSE
         for module in nodes:

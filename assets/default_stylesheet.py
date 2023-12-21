@@ -17,9 +17,20 @@ neutral_edge_styling = {
         'opacity': .2,
         'width': '1px',
         'mid-source-arrow-shape': 'vee',
-        'mid-source-arrow-color': 'black',
+        #'mid-source-arrow-color': 'black',
         #'source-arrow-shape': 'triangle',
         #'line-color': 'red'
+
+         }
+
+pathway_edge_styling = {
+        'color': "blue",
+        'opacity': .75,
+        'width': '3px',
+        'mid-source-arrow-shape': 'vee',
+        #'mid-source-arrow-color': 'black',
+        #'source-arrow-shape': 'triangle',
+        'line-color': 'black'
 
          }
 
