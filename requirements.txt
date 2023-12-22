@@ -7,3 +7,4 @@ dash-table==5.0.0
 dash-cytoscape==0.3.0
 dash-bootstrap-components==1.4.1
 gunicorn
+networkx==2.6.3
