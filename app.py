@@ -13,9 +13,10 @@ from assets import default_stylesheet
 from components.left_hand_nav_bar import left_hand_nav_bar, left_hand_nav_bar_callbacks 
 left_hand_nav_bar = left_hand_nav_bar.left_hand_nav_bar
 
-from components.visualization_panel import visualization_panel, pathway_visualization
+from components.visualization_panel import visualization_panel, pathway_visualization, active_module_visualization
 visualization_panel = visualization_panel.visualization_panel
 pathway_visualization = pathway_visualization.pathway_visualization
+active_module_visualization = active_module_visualization.active_module_visualization
 
 from components.app_title import app_title
 app_title = app_title.app_title
@@ -60,7 +61,7 @@ server = app.server
 
 # Set up the layout of the app
 app.layout = dbc.Container([
-    dbc.Row(children=[pathway_visualization]),
+    dbc.Row(children=[dbc.Col([pathway_visualization], width=6), dbc.Col([active_module_visualization], width=6)]),
     html.Hr(),
     dbc.Row(children=[
         app_title,
@@ -105,7 +106,7 @@ callbacks.stylesheet_callbacks.turn_nodes_on_off(app)
 clickable_module_list_callbacks.create_clickable_module_list(app)
 callbacks.filter_modules_in.update_hidden_filtered_modules(app)
 callbacks.active_node_in.active_node_in(app)
-#callbacks.active_node_out.active_node_out(app)
+callbacks.active_node_out.active_node_out(app)
 callbacks.debugger.debugger(app)
 #callbacks.my_modules_in.my_modules_in(app)
 callbacks.pathway_in.pathway_in(app)
