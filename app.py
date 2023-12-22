@@ -34,10 +34,9 @@ from components.my_modules_panel import my_modules, my_modules_callbacks
 my_modules_panel = my_modules.my_modules_panel
 
 # Import the hidden components that keep track of the filtered modules and the active module
-from components import hidden_filtered_modules, hidden_active_module, hidden_my_modules, hidden_pathway
+from components import hidden_filtered_modules, hidden_active_module, hidden_pathway
 hidden_filtered_modules = hidden_filtered_modules.hidden_filtered_modules
 hidden_active_module = hidden_active_module.hidden_active_module
-hidden_my_modules = hidden_my_modules.hidden_my_modules
 hidden_pathway = hidden_pathway.hidden_pathway
 
 # Import inter-component callbacks

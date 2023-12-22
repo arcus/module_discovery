@@ -22,6 +22,8 @@ def active_node_in(app):
             return pathway_visualization_data['id']
         elif trigger == "active_module_visualization":
             return active_node_visualization_data['id']
+        
+        ### Something about this argument is likely what is creating the bug where when you add or remove a module from the pathway the active node goes back to bash_103_combining_commands, the first module in the list of all modules
         elif sum(args) != 0:
              return trigger[:-7]
         else:
