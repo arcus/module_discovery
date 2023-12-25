@@ -7,8 +7,8 @@ from stylesheets import default_stylesheet
 import module_data
 
 
-def turn_nodes_on_off(app):
-    @app.callback(Output('module_visualization', 'stylesheet'),
+def show_search_results_visually(app):
+    @app.callback(Output('search_results_visualization', 'stylesheet'),
                 Input('hidden_filtered_modules_list','children'),
                 Input('hidden_active_module', 'children'))
     def update_stylesheet(filtered_module_list,active_node):

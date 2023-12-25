@@ -10,10 +10,11 @@ df = module_data.df
 from components.left_hand_nav_bar import left_hand_nav_bar, left_hand_nav_bar_callbacks 
 left_hand_nav_bar = left_hand_nav_bar.left_hand_nav_bar
 
-from components.visualization_panel import visualization_panel, pathway_visualization, active_module_visualization
+from components.visualization_panel import visualization_panel, pathway_visualization, active_module_visualization, search_results_visualization
 visualization_panel = visualization_panel.visualization_panel
 pathway_visualization = pathway_visualization.pathway_visualization
 active_module_visualization = active_module_visualization.active_module_visualization
+search_results_visualization = search_results_visualization.search_results_visualization
 
 from components.app_title import app_title
 app_title = app_title.app_title
@@ -41,6 +42,7 @@ import callbacks.stylesheet_callbacks
 import callbacks.active_node_in
 import callbacks.active_node_out
 import callbacks.search_results_in
+import callbacks.search_results_out
 import callbacks.debugger
 import callbacks.pathway_in
 import callbacks.pathway_out
@@ -53,7 +55,7 @@ server = app.server
 
 # Set up the layout of the app
 app.layout = dbc.Container([
-    dbc.Row(children=[dbc.Col([pathway_visualization], width=6), dbc.Col([active_module_visualization], width=6)]),
+    dbc.Row(children=[dbc.Col([pathway_visualization], width=4), dbc.Col([active_module_visualization], width=4), dbc.Col([search_results_visualization], width=4)]),
     html.Hr(),
     dbc.Row(children=[
         app_title,
@@ -97,6 +99,7 @@ my_modules_callbacks.show_my_modules_list(app)
 callbacks.stylesheet_callbacks.turn_nodes_on_off(app)
 clickable_module_list_callbacks.create_clickable_module_list(app)
 callbacks.search_results_in.update_hidden_filtered_modules(app)
+callbacks.search_results_out.show_search_results_visually(app)
 callbacks.active_node_in.active_node_in(app)
 callbacks.active_node_out.active_node_out(app)
 callbacks.debugger.debugger(app)
