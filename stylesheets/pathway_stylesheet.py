@@ -16,10 +16,13 @@ pathway_edge_styling = {
          }
 
 pathway_node_styling = {
-                'background-color': 'red',
+                #'background-color': 'red',
                 'label': 'data(title)',
+                'shape': 'star',
+                # 'outline-width' : '3px', 
+                # 'outline-color' : "black",
                 'color': 'black',
-                "font-size": "9px",
+                "font-size": "12px",
                 'opacity': 1,
                 'width': "20px",
                 'height': "20px",
