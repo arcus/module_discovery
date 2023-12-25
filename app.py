@@ -10,8 +10,8 @@ df = module_data.df
 from components.left_hand_nav_bar import left_hand_nav_bar, left_hand_nav_bar_callbacks 
 left_hand_nav_bar = left_hand_nav_bar.left_hand_nav_bar
 
-from components.visualization_panel import visualization_panel, pathway_visualization, active_module_visualization, search_results_visualization
-visualization_panel = visualization_panel.visualization_panel
+from components.visualization_panels import combined_visualization_panel, pathway_visualization, active_module_visualization, search_results_visualization
+combined_visualization_panel = combined_visualization_panel.combined_visualization_panel
 pathway_visualization = pathway_visualization.pathway_visualization
 active_module_visualization = active_module_visualization.active_module_visualization
 search_results_visualization = search_results_visualization.search_results_visualization
@@ -76,7 +76,7 @@ app.layout = dbc.Container([
             always_open=True,
             )],
             xs=12, sm=6, md=8, xxl=5),
-        dbc.Col(children=[visualization_panel
+        dbc.Col(children=[combined_visualization_panel
         ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6'}),
         
         

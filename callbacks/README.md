@@ -6,13 +6,13 @@ This is where inter-component callbacks live, particularly the callbacks that up
 The component `hidden_active_node` contains the module id for the currently active node.
 
 - `active_node_in.py` takes input from different components and updates the `hidden_active_node`
-- `active_node_out.py` updates the main visualization of the active node, `components/visualization_panel/active_module_visualization.py`
+- `active_node_out.py` updates the main visualization of the active node, `components/visualization_panels/active_module_visualization.py`
 
 ## Pathway
 The component `hidden_pathway` consists of the current ordered list of modules that make up a user's pathway.
 
 - `pathway_in.py` takes input from the "add to my list" and "remove from my list" buttons and updates the pathway. It also controls the re-ordering of the pathway via the up and down buttons and sort button.
-- `pathway_out.py` updates the main pathway visualization, `components/visualization_panel/pathway_visualization.py`
+- `pathway_out.py` updates the main pathway visualization, `components/visualization_panels/pathway_visualization.py`
 
 ## Filtered Modules (i.e. search results)
 TODO: This collection of components and callbacks needs to be renamed to match the conventions set up by the other component/callback pairs.
@@ -24,4 +24,4 @@ The component `hidden_filtered_modules` consists of all of the modules that matc
 
 ## Combining all hidden components into one visualization
 TODO:
-- `stylesheet_callbacks.py` take the list of modules and updates the main search results visualization, `components/visualization_panel/visualization_panel.py`
+- `stylesheet_callbacks.py` take the list of modules and updates the main search results visualization, `components/visualization_panels/combined_visualization_panel.py`

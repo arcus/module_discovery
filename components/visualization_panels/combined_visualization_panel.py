@@ -26,7 +26,7 @@ for edge in poset.hasse.edges():
 
 default_stylesheet = default_stylesheet.default_stylesheet
 
-visualization_panel = dbc.Col(
+combined_visualization_panel = dbc.Col(
                     children=[
                     html.Br(),
                     dcc.Markdown("##### Interact with this graph \n * Click on a node to learn more about it in the Module Details section. \n * Drag the nodes around to see how they are interconnected.", style={'background-color': '#FFFFFF'}),
