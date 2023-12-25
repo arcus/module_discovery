@@ -6,9 +6,6 @@ import dash_cytoscape as cyto
 import module_data
 df = module_data.df
 
-# Import styling from assets directory
-from assets import default_stylesheet 
-
 # Import app components and their internal callbacks
 from components.left_hand_nav_bar import left_hand_nav_bar, left_hand_nav_bar_callbacks 
 left_hand_nav_bar = left_hand_nav_bar.left_hand_nav_bar
@@ -45,12 +42,8 @@ import callbacks.active_node_in
 import callbacks.active_node_out
 import callbacks.filter_modules_in
 import callbacks.debugger
-#import callbacks.my_modules_in
 import callbacks.pathway_in
 import callbacks.pathway_out
-
-
-
 
 
 # Initialize the app
@@ -107,7 +100,6 @@ callbacks.filter_modules_in.update_hidden_filtered_modules(app)
 callbacks.active_node_in.active_node_in(app)
 callbacks.active_node_out.active_node_out(app)
 callbacks.debugger.debugger(app)
-#callbacks.my_modules_in.my_modules_in(app)
 callbacks.pathway_in.pathway_in(app)
 callbacks.pathway_out.show_pathway_visually(app)
 
