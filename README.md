@@ -10,25 +10,28 @@ This app will allow users to learn more about each module, investigate how the m
 
 **NOTE:** This is a prototype that is in a phase of rapid development. All effort will be made to keep this README up to date, but some changes might slip by. If something isn't working as expected, please let us know by creating an issue.
 
+## Public prototype
+
+A public prototype of this app is hosted at [learn.arcus.chop.edu](learn.arcus.chop.edu).
 
 ## Development
+
 ### File structure
 
-There are three main folders, 
-- `assets` for stylesheets and other visual settings, 
-- `components` which contains each of the panels/components of the app. Any callbacks that are internal to a component, e.g. expanding and hiding the component or something within the component, is in the component's directory. For example `components/module_details_panel/` contains `module_details_panel.py` as well as `module_details_panelcallbacks.py`, but also smaller sub-components of that panel like the `title_link`, `tags`, and `pre_reqs`.
-- `callbacks` for any callbacks that transmit information between different components. Note that these callbacks will filter through the hidden components of `hidden_active_module` and `hidden_filtered_modules`. In the future there may be a third hidden component (possibly visible) for `my_modules`.
+There are several top-level folders:
+- `assets` contains the metadata for the educational modules that this app presents.
+- `components` contains each of the panels/components of the app, both the visible and the hidden components. Any callbacks that are internal to a component, e.g. expanding and hiding the component or something within the component, is in the component's directory. 
+- `callbacks` contains any callbacks that transmit information between different components, namely callbacks that update one of the app's hidden components, and callbacks that update visualizations based on the information in the hidden components.
+- `media` contains all graphics and images
+- `network_analysis` is where the interconnections between modules are processed using the `networkx` package.
+- `stylesheets` is for stylesheets and other visual settings.
 
-### Module data
-
-The module_data.py file is created from the [education_modules repo](https://github.com/arcus/education_modules/tree/main).
-
-- The [module_data.py](https://github.com/arcus/education_modules/blob/metadata_workflow/assets/metadata/module_data.py) file in the education_modules repository is [automatically updated via a github action](https://github.com/arcus/education_modules/actions/workflows/pull_metadata.yml) every time a change is made to the metadata of any module.
-- Once a week [an action runs on this repository](https://github.com/arcus/module_discovery/actions/workflows/update_module_data.yml) to update the module_data.py file here.
-- The action in this repository can also be run manually if metadata needs to be updated more frequently.
+Two important python files are also at the top level:
+- `app.py` is the python file which runs the app. It contains the visual layout of the components and calls all of the callbacks.
+- `module_data.py` is where metadata from the assets folder is processed into a single pandas dataframe for the app to use.
 
 #### Mini dataset for debugging
-There is also a `module_data_mini.py` file that consists of only 5 modules. When developing new features it can be extremely helpful to work out bugs and callbacks on this smaller set of data.
+When developing new features it can be extremely helpful to work out bugs and callbacks on this smaller set of data. Uncomment the last line in `module_data.py` to get a mini dataset for this purpose.
 
 ## Testing
 

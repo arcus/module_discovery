@@ -16,3 +16,6 @@ education_modules_df['estimated_time_in_minutes'] = education_modules_df['estima
 
 #CREATE THE DATAFRAME FOR APP USE
 df=education_modules_df.astype('str').copy()
+
+#TRUNCATE THE DATAFRAME FOR DEBUGGING WITH BELOW CODE: 
+#df = df.head(5)
