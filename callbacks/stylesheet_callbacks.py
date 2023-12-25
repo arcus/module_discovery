@@ -3,7 +3,7 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import dash_cytoscape as cyto
-from assets import default_stylesheet
+from stylesheets import default_stylesheet
 import module_data
 
 

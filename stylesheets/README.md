@@ -1,0 +1,2 @@
+Stylesheets for the cytoscape visualizations live here.
+See the [Dash Cytoscape style documentation](https://dash.plotly.com/cytoscape/styling) or the more extensive (but possibly not fully implemented in Dash) [Cytoscape.js style documentation](https://js.cytoscape.org/#style).

@@ -2,7 +2,7 @@ from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import dash_cytoscape as cyto
 import module_data 
-from assets import default_stylesheet 
+from stylesheets import default_stylesheet 
 from network_analysis import poset_processing as poset
 
 df = module_data.df
