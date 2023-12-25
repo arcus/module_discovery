@@ -19,7 +19,7 @@ The component `hidden_pathway` consists of the current ordered list of modules t
 The component `hidden_filtered_modules` consists of all of the modules that match the user's search and filtering criteria as entered in the `left_hand_nav_bar`.
 
 - `search_results_in.py` takes the information the user has entered, and returns the matching modules as a list of module ids.
-- `search_results_out.py` updates the search results visualization
+- `search_results_out.py` updates the search results visualization `components/visualization_panels/search_results_visualization.py`
 
 ## Combined Visualization
 
