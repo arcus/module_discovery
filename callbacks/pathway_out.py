@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 import dash_cytoscape as cyto
 import networkx as nx
 import module_data 
-from stylesheets import default_stylesheet 
+from stylesheets import default_stylesheet, pathway_stylesheet
 from network_analysis import poset_processing as poset
 
 df = module_data.df
@@ -30,7 +30,7 @@ def show_pathway_visually(app):
         # Regular poset edges are still "neutral"
         new_stylesheet = [ {'selector': '.poset_relationship', 'style': default_stylesheet.neutral_edge_styling}]
         # Edges created by the pathway itself also appear
-        new_stylesheet += [ {'selector': '.pathway_relationship', 'style': default_stylesheet.pathway_edge_styling}]
+        new_stylesheet += [ {'selector': '.pathway_relationship', 'style': pathway_stylesheet.pathway_edge_styling}]
         
         # Node styling is that all of them are selected GET UX HELP TO FIGURE OUT IF THIS MAKES SENSE
         for module in nodes:
@@ -41,6 +41,6 @@ def show_pathway_visually(app):
                 new_stylesheet +=[{'selector': selector, 'style': default_stylesheet.active_node_styling}]
             # all nodes in the pathway should be labeled
             else:            
-                new_stylesheet += [{'selector': selector, 'style': default_stylesheet.selected_styling}]
+                new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling}]
 
         return elements, new_stylesheet
