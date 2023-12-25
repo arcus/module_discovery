@@ -19,5 +19,9 @@ TODO: This collection of components and callbacks needs to be renamed to match t
 
 The component `hidden_filtered_modules` consists of all of the modules that match the user's search and filtering criteria as entered in the `left_hand_nav_bar`.
 
-- `filter_modules_in.py` takes the information the user has entered, and returns the matching modules as a list of module ids.
+- `search_results_in.py` takes the information the user has entered, and returns the matching modules as a list of module ids.
+- `search_results_out.py` updates the search results visualization
+
+## Combining all hidden components into one visualization
+TODO:
 - `stylesheet_callbacks.py` take the list of modules and updates the main search results visualization, `components/visualization_panel/visualization_panel.py`
