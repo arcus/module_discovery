@@ -38,7 +38,7 @@ hidden_active_module = hidden_active_module.hidden_active_module
 hidden_pathway = hidden_pathway.hidden_pathway
 
 # Import inter-component callbacks
-import callbacks.stylesheet_callbacks
+import callbacks.combined_visualization_out
 import callbacks.active_node_in
 import callbacks.active_node_out
 import callbacks.search_results_in
@@ -96,7 +96,7 @@ module_details_panel_callbacks.update_module_info_panel(app)
 my_modules_callbacks.show_my_modules_list(app)
 
 # Initialize all INTERcomponent callbacks next...
-callbacks.stylesheet_callbacks.turn_nodes_on_off(app)
+callbacks.combined_visualization_out.turn_nodes_on_off(app)
 clickable_module_list_callbacks.create_clickable_module_list(app)
 callbacks.search_results_in.update_hidden_filtered_modules(app)
 callbacks.search_results_out.show_search_results_visually(app)
