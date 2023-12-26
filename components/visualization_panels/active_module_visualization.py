@@ -32,7 +32,7 @@ active_module_visualization = dbc.Col(
                     dcc.Markdown("##### See how your selected module is connected to others \n * Click on a connected node to change the focus to that module. \n * Drag the nodes around to see how they are interconnected.", style={'background-color': '#FFFFFF'}),
                     dbc.Row(children =[cyto.Cytoscape(
                         id='active_module_visualization',
-                        layout={'name': 'cose', 
+                        layout={'name': 'preset', 
                                 #'nodeDimensionsIncludeLabels': 'true',
                                 #'avoidOverlap':'true'
                                 },
