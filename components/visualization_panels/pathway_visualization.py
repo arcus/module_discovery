@@ -32,11 +32,11 @@ pathway_visualization = dbc.Col(
                     dcc.Markdown("##### Your current pathway of modules \n * Click on a node to learn more about it in the Module Details section. \n * Drag the nodes around to see how they are interconnected.", style={'background-color': '#FFFFFF'}),
                     dbc.Row(children =[cyto.Cytoscape(
                         id='pathway_visualization',
-                        layout={'name': 'cose', 
+                        layout={'name': 'preset', 
                                 #'nodeDimensionsIncludeLabels': 'true',
                                 #'avoidOverlap':'true'
                                 },
-                        elements=edges+nodes,
+                        elements=[],
                         stylesheet=default_stylesheet,
                         #style={'width': '100%', 'height':'450px%'},
                         userZoomingEnabled=False

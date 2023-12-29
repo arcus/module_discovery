@@ -14,6 +14,7 @@ nodes = [
             'id': row, 
             'title': df.loc[row,'title'], 
             },
+        'position': {}
     }
     for row in df.index 
 ]
