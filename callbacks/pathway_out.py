@@ -27,10 +27,13 @@ def show_pathway_visually(app):
         # Add in any additional edges created by the pathway, even if those aren't graph edges
         pathway_edges = []
         for i in range(1, len(hidden_pathway)):
-            if (hidden_pathway[i],hidden_pathway[i-1]) in poset.poset.edges():
-                pathway_edges.append({'data':{'source': hidden_pathway[i], 'target': hidden_pathway[i-1]}, 'classes': 'pathway_relationship_1'})
+            if (hidden_pathway[i-1],hidden_pathway[i]) in poset.hasse.edges():
+                pathway_edges.append({'data':{'source': hidden_pathway[i], 'target': hidden_pathway[i-1]}, 'classes': 'pathway_relationship_adjacent'})
+            elif (hidden_pathway[i-1],hidden_pathway[i]) in poset.poset.reverse().edges():
+                pathway_edges.append({'data':{'source': hidden_pathway[i], 'target': hidden_pathway[i-1]}, 'classes': 'pathway_relationship_bad_order'})
             else:
-                pathway_edges.append({'data':{'source': hidden_pathway[i], 'target': hidden_pathway[i-1]}, 'classes': 'pathway_relationship_2'})
+                pathway_edges.append({'data':{'source': hidden_pathway[i], 'target': hidden_pathway[i-1]}, 'classes': 'pathway_relationship_jump'})
+
         # The elements of the graph display are the nodes and the edges:
         elements=element_data+pathway_edges
         
@@ -39,9 +42,10 @@ def show_pathway_visually(app):
         new_stylesheet = [ {'selector': 'edge', 'style': pathway_stylesheet.non_pathway_edge_styling}]
         new_stylesheet += [ {'selector': 'node', 'style': pathway_stylesheet.non_pathway_node_styling}]
         # Edges created by the pathway itself also appear
-        new_stylesheet += [ {'selector': '.pathway_relationship_2', 'style': pathway_stylesheet.pathway_edge_styling_good_order}]
-        new_stylesheet += [ {'selector': '.pathway_relationship_1', 'style': pathway_stylesheet.pathway_edge_styling_bad_order}]
-        
+        new_stylesheet += [ {'selector': '.pathway_relationship_adjacent', 'style': pathway_stylesheet.pathway_edge_styling_good_order}]
+        new_stylesheet += [ {'selector': '.pathway_relationship_bad_order', 'style': pathway_stylesheet.pathway_edge_styling_bad_order}]
+        new_stylesheet += [ {'selector': '.pathway_relationship_jump', 'style': pathway_stylesheet.pathway_edge_styling_jump_order}]
+
         # Node styling is that all of them are selected GET UX HELP TO FIGURE OUT IF THIS MAKES SENSE
         for module_id in pathway_subgraph.nodes():
             selector = str('[id *= "')+str(module_id)+str('" ]')

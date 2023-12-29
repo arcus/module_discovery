@@ -9,7 +9,7 @@ pathway_edge_styling_good_order= {
         'opacity': .5,
         'width': '5px',
         'mid-source-arrow-shape': 'vee',
-        'mid-source-arrow-color': 'black',
+        'mid-source-arrow-color': 'blue',
         #'source-arrow-shape': 'triangle',
         'line-color': 'blue'
 
@@ -19,9 +19,22 @@ pathway_edge_styling_bad_order= {
         'opacity': .5,
         'width': '5px',
         'mid-source-arrow-shape': 'vee',
-        'mid-source-arrow-color': 'black',
+        'mid-source-arrow-color': 'red',
         #'source-arrow-shape': 'triangle',
-        'line-color': 'red'
+        'line-color': 'red',
+        'line-style': 'dotted' #'dashed'
+
+         }
+
+pathway_edge_styling_jump_order= {
+        #'color': "blue",
+        'opacity': .5,
+        'width': '5px',
+        'mid-source-arrow-shape': 'vee',
+        'mid-source-arrow-color': 'blue',
+        #'source-arrow-shape': 'triangle',
+        'line-color': 'blue',
+        'line-style': 'dotted' #'dashed'
 
          }
 
