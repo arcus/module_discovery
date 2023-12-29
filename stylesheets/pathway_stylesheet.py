@@ -4,14 +4,24 @@ import dash_cytoscape as cyto
 import module_data 
 
 
-pathway_edge_styling = {
+pathway_edge_styling_good_order= {
         #'color': "blue",
-        'opacity': .75,
+        'opacity': .5,
         'width': '5px',
         'mid-source-arrow-shape': 'vee',
         'mid-source-arrow-color': 'black',
         #'source-arrow-shape': 'triangle',
         'line-color': 'blue'
+
+         }
+pathway_edge_styling_bad_order= {
+        #'color': "blue",
+        'opacity': .5,
+        'width': '5px',
+        'mid-source-arrow-shape': 'vee',
+        'mid-source-arrow-color': 'black',
+        #'source-arrow-shape': 'triangle',
+        'line-color': 'red'
 
          }
 
@@ -22,7 +32,7 @@ pathway_node_styling = {
                 # 'outline-width' : '3px', 
                 # 'outline-color' : "black",
                 'color': 'black',
-                "font-size": "12px",
+                "font-size": "9px",
                 'opacity': 1,
                 'width': "20px",
                 'height': "20px",

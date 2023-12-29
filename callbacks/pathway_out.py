@@ -12,7 +12,7 @@ df = module_data.df
 def show_pathway_visually(app):
     @app.callback(Output('pathway_visualization', 'elements'),
                 Output('pathway_visualization', 'stylesheet'),
-                Output('debugger', 'children'),
+                #Output('debugger', 'children'),
                 Input('hidden_pathway','children'),
                 State('hidden_active_module', 'children'),
                 State('module_visualization','elements'),
@@ -24,15 +24,13 @@ def show_pathway_visually(app):
         ### Set up the subgraph created by the pathway
         pathway_subgraph = poset.hasse.subgraph(hidden_pathway)
 
-
-        # # Define the graph nodes
-        # nodes = [{'data': {'id': vertex, 'title': df.loc[vertex,'title'] }} for vertex in pathway_subgraph.nodes()]
-        # # Define the graph edges
-        # edges = [{'data': {'source': edge[1], 'target': edge[0]},  'classes': 'poset_relationship'} for edge in pathway_subgraph.edges()]
-
-
         # Add in any additional edges created by the pathway, even if those aren't graph edges
-        pathway_edges = [{'data':{'source': hidden_pathway[i], 'target': hidden_pathway[i-1]}, 'classes': 'pathway_relationship'} for i in range(1, len(hidden_pathway))]
+        pathway_edges = []
+        for i in range(1, len(hidden_pathway)):
+            if (hidden_pathway[i],hidden_pathway[i-1]) in poset.poset.edges():
+                pathway_edges.append({'data':{'source': hidden_pathway[i], 'target': hidden_pathway[i-1]}, 'classes': 'pathway_relationship_1'})
+            else:
+                pathway_edges.append({'data':{'source': hidden_pathway[i], 'target': hidden_pathway[i-1]}, 'classes': 'pathway_relationship_2'})
         # The elements of the graph display are the nodes and the edges:
         elements=element_data+pathway_edges
         
@@ -41,7 +39,8 @@ def show_pathway_visually(app):
         new_stylesheet = [ {'selector': 'edge', 'style': pathway_stylesheet.non_pathway_edge_styling}]
         new_stylesheet += [ {'selector': 'node', 'style': pathway_stylesheet.non_pathway_node_styling}]
         # Edges created by the pathway itself also appear
-        new_stylesheet += [ {'selector': '.pathway_relationship', 'style': pathway_stylesheet.pathway_edge_styling}]
+        new_stylesheet += [ {'selector': '.pathway_relationship_2', 'style': pathway_stylesheet.pathway_edge_styling_good_order}]
+        new_stylesheet += [ {'selector': '.pathway_relationship_1', 'style': pathway_stylesheet.pathway_edge_styling_bad_order}]
         
         # Node styling is that all of them are selected GET UX HELP TO FIGURE OUT IF THIS MAKES SENSE
         for module_id in pathway_subgraph.nodes():
@@ -53,6 +52,4 @@ def show_pathway_visually(app):
             else:            
                 new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling}]
 
-        #
-        element_data = ast.literal_eval(str(raw_element_data))[0]
-        return elements, new_stylesheet, str(element_data)
+        return elements, new_stylesheet
