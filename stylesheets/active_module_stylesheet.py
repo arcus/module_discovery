@@ -7,6 +7,7 @@ import module_data
 active_module_styling = {
                    'background-color': 'black',
                     'label': 'data(title)',
+                    'shape': 'star',
                     "font-size": "15px",
                     'opacity': 1,
                     'width': "20px",

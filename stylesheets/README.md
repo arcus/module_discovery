@@ -6,16 +6,22 @@ See the [Dash Cytoscape style documentation](https://dash.plotly.com/cytoscape/s
 
 Possible scheme for how different nodes are differentiated:
 
-## Active node - Size
+## Active node - Shape and size
 
-The active node is distinguished visually by being bigger than the other nodes around it. 
+The active node is distinguished visually by being star-shaped and bigger than the other nodes around it.
 
-## Pathway - Shape
+## Pathway nodes - Border
 
-Modules on a user's pathway are distinguished visually by being star-shaped, instead of circular nodes.
+Modules on a user's pathway are distinguished visually by having a brightly colored border in addition to whatever other styling they take on.
+
+## Pathway edges - Color and line-style
 
 Edges denoting the pathway's route through the modules are thicker than other edges.
 
-## Search Results
+- Solid blue edge from A to B: module B immediately depends on knowledge delivered in module A
+- Dashed blue edge from A to B: module B does not immediately depend on knowledge delivered in module A, but neither does module A depend on knowledged delivered in module B. In these cases modules A and B may be unrelated, or there may be a missing module that should be between them (TODO check for this, suggest adding addition modules to a pathway, etc.)
+- Dashed red edge from A to B: modules A and B are in the wrong order relative to each other! Module A depends on knowledge available in module B.
 
-Modules that match the user's search results are distinguished by color.
+## Search Results - Color
+
+Modules that match the user's search results are distinguished by color - they are blue rather than gray or black.

@@ -49,11 +49,10 @@ def show_pathway_visually(app):
         # Node styling is that all of them are selected GET UX HELP TO FIGURE OUT IF THIS MAKES SENSE
         for module_id in pathway_subgraph.nodes():
             selector = str('[id *= "')+str(module_id)+str('" ]')
+            # all nodes in the pathway should be labeled
+            new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling}]
             # the active node should be distinguishable
             if module_id == active_node:
                 new_stylesheet +=[{'selector': selector, 'style': default_stylesheet.active_node_styling}]
-            # all nodes in the pathway should be labeled
-            else:            
-                new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling}]
 
         return elements, new_stylesheet

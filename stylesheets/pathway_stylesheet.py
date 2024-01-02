@@ -41,7 +41,7 @@ pathway_edge_styling_jump_order= {
 pathway_node_styling = {
                 #'background-color': 'red',
                 'label': 'data(title)',
-                'shape': 'star',
+                #'shape': 'star',
                 # 'outline-width' : '3px', 
                 # 'outline-color' : "black",
                 'color': 'black',
@@ -51,6 +51,9 @@ pathway_node_styling = {
                 'height': "20px",
                 "text-wrap": "wrap",
                 "text-max-width": 80,
+                "border-width": 3,
+                "border-style": 'double', # solid, dotted, dashed, or double.
+                "border-color": "orange",
                 # 'text-halign':'center',
                 # 'text-valign':'center',
                 # 'width':'label',
