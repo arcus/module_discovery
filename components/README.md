@@ -1,4 +1,6 @@
-# Visible Components
+# Components
+
+## Visible Components
 
 Each visible app Component has its own short README with information about its functional role.
 
