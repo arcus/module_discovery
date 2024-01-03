@@ -9,12 +9,12 @@ from network_analysis import poset_processing as poset
 df = module_data.df
 
 ### Whatever the ACTIVE NODE is, it will be visually displayed with modules connected to it.
-def active_node_out(app):
+def render_active_node(app):
     @app.callback(Output('active_module_visualization', 'elements'),
                 Output('active_module_visualization', 'stylesheet'),
                 Input('hidden_active_module', 'children')
                 )
-    def active_node_output(active_module):
+    def render_active_nodeput(active_module):
         if str(active_module) in df.index:
             # Build the graph as both a cytoscape and networkx object
             neighborhood_cytoscape = [{'data': {'id': active_module, 'title': df.loc[active_module,'title'] }, 'position': {'x': 0, 'y': 0} }]

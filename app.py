@@ -38,14 +38,14 @@ hidden_active_module = hidden_active_module.hidden_active_module
 hidden_pathway = hidden_pathway.hidden_pathway
 
 # Import inter-component callbacks
-import callbacks.combined_visualization_out
-import callbacks.active_node_in
-import callbacks.active_node_out
-import callbacks.search_results_in
-import callbacks.search_results_out
+import callbacks.render_combined_visualization
+import callbacks.update_active_node
+import callbacks.render_active_node
+import callbacks.update_search_results
+import callbacks.render_search_results
 import callbacks.debugger
-import callbacks.pathway_in
-import callbacks.pathway_out
+import callbacks.update_pathway
+import callbacks.render_pathway
 
 
 # Initialize the app
@@ -96,15 +96,15 @@ module_details_panel_callbacks.update_module_info_panel(app)
 my_modules_callbacks.show_my_modules_list(app)
 
 # Initialize all INTERcomponent callbacks next...
-callbacks.combined_visualization_out.turn_nodes_on_off(app)
+callbacks.render_combined_visualization.turn_nodes_on_off(app)
 clickable_module_list_callbacks.create_clickable_module_list(app)
-callbacks.search_results_in.update_hidden_filtered_modules(app)
-callbacks.search_results_out.show_search_results_visually(app)
-callbacks.active_node_in.active_node_in(app)
-callbacks.active_node_out.active_node_out(app)
+callbacks.update_search_results.update_hidden_filtered_modules(app)
+callbacks.render_search_results.show_search_results_visually(app)
+callbacks.update_active_node.update_active_node(app)
+callbacks.render_active_node.render_active_node(app)
 callbacks.debugger.debugger(app)
-callbacks.pathway_in.pathway_in(app)
-callbacks.pathway_out.show_pathway_visually(app)
+callbacks.update_pathway.update_pathway(app)
+callbacks.render_pathway.show_pathway_visually(app)
 
 if __name__ == '__main__':
     app.run_server(debug=True)

@@ -12,7 +12,7 @@ def correctly_ordered(a,b):
         return False
 
 ### If any add_to_my_modules buttons are pressed, that module should be added to the list of my_modules
-def pathway_in(app):
+def update_pathway(app):
     @app.callback(Output('hidden_pathway', 'children'),
                 State("hidden_pathway", 'children'),
                 Input("sort_my_modules","n_clicks"),

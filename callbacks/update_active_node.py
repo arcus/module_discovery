@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 import module_data 
 
 ### Use ctx to determine whether the last thing clicked was a button or a node on the graph, then make that thing the ACTIVE NODE
-def active_node_in(app):
+def update_active_node(app):
     @app.callback(Output('hidden_active_module', 'children'),
                 State('hidden_active_module', 'children'),
                 Input('module_visualization', 'tapNodeData'),

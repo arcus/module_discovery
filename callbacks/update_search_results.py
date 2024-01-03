@@ -1,11 +1,11 @@
-### The search_results_in function takes the checklist and radio buttons from the left_hand_nav_bar and returns a list of all modules that match the given filters.
+### The update_search_results function takes the checklist and radio buttons from the left_hand_nav_bar and returns a list of all modules that match the given filters.
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data 
 from components.left_hand_nav_bar import search_panel 
 search_results = search_panel.search_results
 
-def search_results_in(general_options_value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_term, collection_value):
+def update_search_results(general_options_value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_term, collection_value):
     matching_modules = list(module_data.df.index).copy()
     non_matching_modules = []
     for module in module_data.df.index:
@@ -53,4 +53,4 @@ def update_hidden_filtered_modules(app):
                 Input('collection_checklist', 'value')
                 )
     def filtering(value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_value, collection_value):
-        return search_results_in(value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_value, collection_value)[0]
+        return update_search_results(value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_value, collection_value)[0]
