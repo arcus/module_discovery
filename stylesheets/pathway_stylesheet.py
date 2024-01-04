@@ -61,7 +61,49 @@ pathway_node_styling = {
                 # 'shape':'square'
 
                     }
+pathway_node_styling_red = {
+                #'background-color': 'red',
+                'label': 'data(title)',
+                'color': 'black',
+                "font-size": "9px",
+                'opacity': 1,
+                'width': "20px",
+                'height': "20px",
+                "text-wrap": "wrap",
+                "text-max-width": 80,
+                "border-width": 3,
+                "border-style": 'double', # solid, dotted, dashed, or double.
+                "border-color": "red",
+                    }
+pathway_node_styling_yellow = {
+                #'background-color': 'red',
+                'label': 'data(title)',
+                'color': 'black',
+                "font-size": "9px",
+                'opacity': 1,
+                'width': "20px",
+                'height': "20px",
+                "text-wrap": "wrap",
+                "text-max-width": 80,
+                "border-width": 3,
+                "border-style": 'double', # solid, dotted, dashed, or double.
+                "border-color": "yellow",
+                    }
 
+pathway_node_styling_green = {
+                #'background-color': 'red',
+                'label': 'data(title)',
+                'color': 'black',
+                "font-size": "9px",
+                'opacity': 1,
+                'width': "20px",
+                'height': "20px",
+                "text-wrap": "wrap",
+                "text-max-width": 80,
+                "border-width": 3,
+                "border-style": 'double', # solid, dotted, dashed, or double.
+                "border-color": "green",
+                    }
 
 non_pathway_edge_styling = { # These are edges of hasse that are not being used in the pathway itself.
         #'color': "blue",

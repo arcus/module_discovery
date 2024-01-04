@@ -51,6 +51,17 @@ def show_pathway_visually(app):
             selector = str('[id *= "')+str(module_id)+str('" ]')
             # all nodes in the pathway should be labeled
             new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling}]
+            
+            # if a node's predecessors are in the pathway before it, color it green
+            if set(poset.hasse.predecessors(module_id)).issubset(set(hidden_pathway[0:hidden_pathway.index(module_id)])):
+                new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling_green}]
+            # if a node's predecessors are in the pathway, but not before it, color it red
+            elif set(poset.hasse.predecessors(module_id)).issubset(set(hidden_pathway)):
+                new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling_red}]
+            # if a node's predecessors are not in the pathway, but not before it, color it yellow (learner is starting here and bringing some knowledge to their pathway)
+            else:
+                new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling_yellow}]
+
             # the active node should be distinguishable
             if module_id == active_node:
                 new_stylesheet +=[{'selector': selector, 'style': default_stylesheet.active_node_styling}]
