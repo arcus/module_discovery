@@ -4,6 +4,17 @@ import dash_cytoscape as cyto
 import module_data 
 
 
+pathway_edge_styling_neutral= {
+        #'color': "blue",
+        'opacity': .5,
+        'width': '7px',
+        'mid-source-arrow-shape': 'vee',
+        'mid-source-arrow-color': 'black',
+        #'source-arrow-shape': 'triangle',
+        'line-color': 'black'
+
+         }
+
 pathway_edge_styling_good_order= {
         #'color': "blue",
         'opacity': .5,
