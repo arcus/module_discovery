@@ -5,6 +5,7 @@ import networkx as nx
 import module_data 
 from stylesheets import default_stylesheet, pathway_stylesheet
 from network_analysis import poset_processing as poset
+from network_analysis import pathway_order_relations as p_order
 import ast
 
 df = module_data.df
@@ -53,10 +54,10 @@ def show_pathway_visually(app):
             new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling}]
             
             # if a node's predecessors are in the pathway before it, color it green
-            if set(poset.hasse.predecessors(module_id)).issubset(set(hidden_pathway[0:hidden_pathway.index(module_id)])):
+            if p_order.prereqs_precede(hidden_pathway, module_id):
                 new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling_green}]
-            # if a node's predecessors are in the pathway, but not before it, color it red
-            elif set(poset.hasse.predecessors(module_id)).issubset(set(hidden_pathway)):
+            # if a node's predecessors follow it in the pathway, color that node red
+            elif p_order.prereqs_follow(hidden_pathway, module_id):
                 new_stylesheet += [{'selector': selector, 'style': pathway_stylesheet.pathway_node_styling_red}]
             # if a node's predecessors are not in the pathway, but not before it, color it yellow (learner is starting here and bringing some knowledge to their pathway)
             else:

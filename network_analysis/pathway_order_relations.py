@@ -2,10 +2,10 @@ import networkx as nx
 import pandas as pd
 import module_data
 
-import .poset_processing
+from .poset_processing import poset, hasse
 
-poset = poset_processing.poset
-hasse = poset_processing.hasse
+# poset = poset_processing.poset
+# hasse = poset_processing.hasse
 
 def prereqs_precede(pathway, module_id):
     if set(hasse.predecessors(module_id)).issubset(set(pathway[0:pathway.index(module_id)])):
@@ -15,7 +15,7 @@ def prereqs_precede(pathway, module_id):
 
 def prereqs_follow(pathway, module_id):
     all_prereqs = set(poset.predecessors(module_id))
-    if all_prereqs.intersetction(set(pathway[pathway.index(module_id)])) == set():
+    if all_prereqs.intersection(set(pathway[pathway.index(module_id)])) != set():
         return True
     else:
         return False
