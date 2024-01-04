@@ -1,6 +1,7 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data 
+from network_analysis import pathway_order_relations as p_order
 import ast #This allows the easy conversion from string back to dictionary
 
 def show_my_modules_list(app):
@@ -45,13 +46,33 @@ def show_my_modules_list(app):
             total_pathway_time = 0
             copyable_markdown = ""
             for module in hidden_pathway:
-                button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
-                        [
-                            dbc.Button('\U00002191', color="light", n_clicks=0,id=module+"_move_up"),
-                            dbc.Button('\U00002193', color="light", n_clicks=0, id=module+"_go_down"),
-                            dbc.Button(module_data.df.loc[module,"title"], color="light", n_clicks=0, id=module+"_nutbot"),
-                        ]
-                    ), width=9), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
+                if p_order.prereqs_precede(hidden_pathway, module):
+                    button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
+                            [
+                                dbc.Button('\U00002191', color="light", n_clicks=0,id=module+"_move_up"),
+                                dbc.Button('\U00002193', color="light", n_clicks=0, id=module+"_go_down"),
+                                dbc.Button(module_data.df.loc[module,"title"], color="light", n_clicks=0, id=module+"_nutbot"),
+                            ]
+                        ), width=9, style={'background-color': 'green'}), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
+                elif p_order.prereqs_follow(hidden_pathway, module):
+                    button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
+                            [
+                                dbc.Button('\U00002191', color="light", n_clicks=0,id=module+"_move_up"),
+                                dbc.Button('\U00002193', color="light", n_clicks=0, id=module+"_go_down"),
+                                dbc.Button(module_data.df.loc[module,"title"], color="light", n_clicks=0, id=module+"_nutbot"),
+                            ]
+                        ), width=9, style={'background-color': 'red'}), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
+                else:
+                    button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
+                            [
+                                dbc.Button('\U00002191', color="light", n_clicks=0,id=module+"_move_up"),
+                                dbc.Button('\U00002193', color="light", n_clicks=0, id=module+"_go_down"),
+                                dbc.Button(module_data.df.loc[module,"title"], color="light", n_clicks=0, id=module+"_nutbot"),
+                            ]
+                        ), width=9, style={'background-color': 'yellow'}), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
+               
+               
+
                 pathway_list.append(button_group)
 
                 copyable_markdown += "["+module_data.df.loc[module,"title"]+"](https://liascript.github.io/course/?https://raw.githubusercontent.com/arcus/education_modules/main/"+module+"/"+module+".md#1) "+ module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes \n \n"

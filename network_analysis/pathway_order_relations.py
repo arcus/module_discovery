@@ -15,7 +15,7 @@ def prereqs_precede(pathway, module_id):
 
 def prereqs_follow(pathway, module_id):
     all_prereqs = set(poset.predecessors(module_id))
-    if all_prereqs.intersection(set(pathway[pathway.index(module_id)])) != set():
+    if all_prereqs.intersection(set(pathway[pathway.index(module_id):])) != set():
         return True
     else:
         return False
