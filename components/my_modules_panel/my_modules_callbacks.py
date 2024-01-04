@@ -47,9 +47,9 @@ def show_my_modules_list(app):
             for module in hidden_pathway:
                 button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
                         [
-                            dbc.Button('\U00002191', color="light gray", n_clicks=0,id=module+"_move_up"),
-                            dbc.Button('\U00002193', color="light gray", n_clicks=0, id=module+"_go_down"),
-                            dbc.Button(module_data.df.loc[module,"title"], color="light gray", n_clicks=0, id=module+"_nutbot"),
+                            dbc.Button('\U00002191', color="light", n_clicks=0,id=module+"_move_up"),
+                            dbc.Button('\U00002193', color="light", n_clicks=0, id=module+"_go_down"),
+                            dbc.Button(module_data.df.loc[module,"title"], color="light", n_clicks=0, id=module+"_nutbot"),
                         ]
                     ), width=9), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
                 pathway_list.append(button_group)
