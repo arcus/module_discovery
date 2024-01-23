@@ -55,32 +55,40 @@ server = app.server
 
 # Set up the layout of the app
 app.layout = dbc.Container([
-    dbc.Row(children=[dbc.Col([pathway_visualization], width=4), dbc.Col([active_module_visualization], width=4), dbc.Col([search_results_visualization], width=4)]),
-    html.Hr(),
-    dbc.Row(children=[
-        app_title,
-        ]
-        ),
+    # Banner heading
+    dbc.Row(children=[app_title]),
+    
     html.Br(),
+    
+    # Main body
     dbc.Row(children=[
+        # Left hand search bar
         dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': '#ADD8E6'}),
+        
+        # Center accordion 
         dbc.Col([
             dbc.Accordion([
+                # Search Results
                 dbc.AccordionItem(clickable_module_list_panel, title="Search Results", item_id="search_results"), 
-            #html.Hr(), html.Br(), 
+                # User Pathway
                 dbc.AccordionItem(html.Div(my_modules_panel), title="Selected Modules", item_id="selected_modules"), 
-            #html.Hr(), html.Br(),
+                # Module Details
                 dbc.AccordionItem(module_information, title="Module Details", item_id="module_details")
             ],
             active_item=["search_results", "selected_modules", "module_details"],
             always_open=True,
             )],
             xs=12, sm=6, md=8, xxl=5),
+        
+        # Right hand visualization panel
         dbc.Col(children=[combined_visualization_panel
         ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6'}),
         
         
         ]),
+    # Visualizations being tested out:
+    dbc.Row(children=[dbc.Col([pathway_visualization], width=4), dbc.Col([active_module_visualization], width=4), dbc.Col([search_results_visualization], width=4)]),
+    html.Hr(),
    #html.Hr(), html.Hr(),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
     html.Div(hidden_active_module), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
