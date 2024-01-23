@@ -55,6 +55,11 @@ server = app.server
 
 # Set up the layout of the app
 app.layout = dbc.Container([
+
+    # Visualizations being tested out:
+    dbc.Row(children=[dbc.Col([pathway_visualization], width=4), dbc.Col([active_module_visualization], width=4), dbc.Col([search_results_visualization], width=4)]),
+    html.Hr(),
+
     # Banner heading
     dbc.Row(children=[app_title]),
     
@@ -62,6 +67,7 @@ app.layout = dbc.Container([
     
     # Main body
     dbc.Row(children=[
+        
         # Left hand search bar
         dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': '#ADD8E6'}),
         
@@ -84,11 +90,8 @@ app.layout = dbc.Container([
         dbc.Col(children=[combined_visualization_panel
         ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6'}),
         
-        
         ]),
-    # Visualizations being tested out:
-    dbc.Row(children=[dbc.Col([pathway_visualization], width=4), dbc.Col([active_module_visualization], width=4), dbc.Col([search_results_visualization], width=4)]),
-    html.Hr(),
+    
    #html.Hr(), html.Hr(),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
     html.Div(hidden_active_module), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
