@@ -3,6 +3,7 @@ import dash_bootstrap_components as dbc
 import module_data 
 from network_analysis import pathway_order_relations as p_order
 import ast #This allows the easy conversion from string back to dictionary
+from .pathway_buttons import prereqs_precede_row, prereqs_follow_row, prior_knowledge_required_row
 
 def show_my_modules_list(app):
     @app.callback(Output('display_my_modules', 'children'),
@@ -22,18 +23,20 @@ def show_my_modules_list(app):
             , style= {'display': 'none'})
             initialize_nutbots.append(button_group)
         
+        ## If nothing is in the pathway, display a message 
         if hidden_pathway == []:
             empty_pathway_message = dcc.Markdown("You haven't selected any modules yet! Explore what is available and click \"Add to my list\" to create your own pathway of modules you want to focus on.")
             sort_button = dbc.Button("Sort these modules", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"none"})
             return html.Div(children=initialize_nutbots+[empty_pathway_message]+[sort_button])
-            
+        
+        ## If the pathway contains modules, display them
         else:
             pathway_list = initialize_nutbots
             ## Opening text
             pathway_list.append(dcc.Markdown("Here are the modules you have selected. \n \n Use the up and down buttons to reorder them. \n"))
             ## Sort modules button
             sort_button = dbc.Stack(children=[
-                dbc.Button("Sort these modules", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"block"}),
+                dbc.Button("Order pathway by module dependencies", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"block"}),
                 dbc.Badge("?", id="sort_my_modules_button", pill=True,  color="light", text_color="dark"),
                 dbc.Popover(
                     dbc.PopoverBody(dcc.Markdown("This ensures that if you have two modules in your pathway and one depends on knowledge available in the other based on our metadata, they will be listed in the correct order below. \n \n It does NOT ensure that sequential or related modules are next to each other, so make sure to use the up and down buttons to fine tune the order of pathway.")),
@@ -42,39 +45,22 @@ def show_my_modules_list(app):
                     )], direction="horizontal")
             pathway_list.append(sort_button)
 
+            pathway_list.append(html.Br())
+
             ## Create buttons for each of the modules in the pathway, in the order they are currently in the list.
             total_pathway_time = 0
             copyable_markdown = ""
             for module in hidden_pathway:
                 if p_order.prereqs_precede(hidden_pathway, module):
-                    button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
-                            [
-                                dbc.Button('\U00002191', color="light", n_clicks=0,id=module+"_move_up"),
-                                dbc.Button('\U00002193', color="light", n_clicks=0, id=module+"_go_down"),
-                                dbc.Button(module_data.df.loc[module,"title"], color="light", n_clicks=0, id=module+"_nutbot"),
-                            ]
-                        ), width=9, style={'background-color': 'green'}), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
+                    pathway_list.append(prereqs_precede_row(hidden_pathway,module))
+
                 elif p_order.prereqs_follow(hidden_pathway, module):
-                    button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
-                            [
-                                dbc.Button('\U00002191', color="light", n_clicks=0,id=module+"_move_up"),
-                                dbc.Button('\U00002193', color="light", n_clicks=0, id=module+"_go_down"),
-                                dbc.Button(module_data.df.loc[module,"title"], color="light", n_clicks=0, id=module+"_nutbot"),
-                            ]
-                        ), width=9, style={'background-color': 'red'}), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
+                    pathway_list.append(prereqs_follow_row(hidden_pathway, module))
+
                 else:
-                    button_group = dbc.Row([dbc.Col(dbc.ButtonGroup(
-                            [
-                                dbc.Button('\U00002191', color="light", n_clicks=0,id=module+"_move_up"),
-                                dbc.Button('\U00002193', color="light", n_clicks=0, id=module+"_go_down"),
-                                dbc.Button(module_data.df.loc[module,"title"], color="light", n_clicks=0, id=module+"_nutbot"),
-                            ]
-                        ), width=9, style={'background-color': 'yellow'}), dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)], justify="between")
-               
-               
+                    pathway_list.append(prior_knowledge_required_row(hidden_pathway,module))
 
-                pathway_list.append(button_group)
-
+                # Add the module to the copyable text version of the pathway
                 copyable_markdown += "["+module_data.df.loc[module,"title"]+"](https://liascript.github.io/course/?https://raw.githubusercontent.com/arcus/education_modules/main/"+module+"/"+module+".md#1) "+ module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes \n \n"
                 
                 ## if the estimated_time_in_minutes exists and makes sense, add it to total pathway time
@@ -90,7 +76,7 @@ def show_my_modules_list(app):
             ])
             pathway_list.append(summation_line)
 
-            
+            ## Button to allow user to copy their pathway and save it somewhere else
             pathway_list.append(dbc.Button("Save this pathway", id="copy_my_modules"))
             pathway_list.append(dbc.Popover(
                                 dbc.PopoverBody(children=[
