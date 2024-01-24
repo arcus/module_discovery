@@ -94,7 +94,7 @@ app.layout = dbc.Container([
                 dcc.Tab(active_module_visualization, label="Focus on one Module"),
                 dcc.Tab(search_results_visualization, label="Search Results")
             ])
-        ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6'}),
+        ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6', 'padding' : '25px'}),
         
         ]),
     
