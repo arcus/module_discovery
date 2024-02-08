@@ -77,7 +77,7 @@ app.layout = dbc.Container([
                 # Search Results
                 dbc.AccordionItem(clickable_module_list_panel, title="Search Results", item_id="search_results"), 
                 # User Pathway
-                dbc.AccordionItem(html.Div(my_modules_panel), title="Selected Modules", item_id="selected_modules"), 
+                dbc.AccordionItem(html.Div(my_modules_panel), title="Build Your Own Pathway", item_id="selected_modules"), 
                 # Module Details
                 dbc.AccordionItem(module_information, title="Module Details", item_id="module_details")
             ],
