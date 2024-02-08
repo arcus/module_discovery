@@ -6,14 +6,8 @@ from network_analysis.poset_processing import poset, hasse
 
 ### If all of the immediate prerequisites to a module precede it in the pathway, its appears like this:
 def prereqs_precede_row(hidden_pathway, module):
-    button_group = dbc.Row([dbc.Col([
-            dbc.Badge("\U000023F5", color="success", pill=True,  id="order_message_"+module),
-            dbc.Popover(
-                dbc.PopoverBody(dcc.Markdown("This pathway will teach you what you need to know for **"+module_data.df.loc[module, "title"]+"** before you get to it.")),
-                target="order_message_"+module,
-                placement="left",
-                trigger="hover",
-                )],width=1),
+    button_group = dbc.Row([
+            dbc.Col([],width=1), #space holder so everything lines up with other rows
             dbc.Col([
             dbc.ButtonGroup([
             dbc.Button('\U00002191', color="light", n_clicks=0,id=module+"_move_up"),
