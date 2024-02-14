@@ -20,8 +20,7 @@ clickable_module_list = html.Div(
                           justify="center")
                           ]),
                     html.Br(),
-                     html.Div([], id='clickable_module_links')
-                     ]
-                     
+                     html.Div([], id='clickable_module_links', style={"maxHeight": "100px", "overflow": "scroll"})
+                     ]       
                 ),
                 ])
