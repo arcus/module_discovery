@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 import module_data 
 from network_analysis import pathway_order_relations as p_order
 import ast #This allows the easy conversion from string back to dictionary
-from .pathway_buttons import prereqs_precede_row, prereqs_follow_row, prior_knowledge_required_row
+from .pathway_buttons import prereqs_precede_row, prereqs_follow_row, prior_knowledge_required_row, general_pathway_buttons
 
 def show_my_modules_list(app):
     @app.callback(Output('display_my_modules', 'children'),
@@ -14,13 +14,7 @@ def show_my_modules_list(app):
         ## Create hidden buttons for the modules not in the list to prevent callback problems
         initialize_nutbots = []
         for module in [x for x in module_data.df.index if x not in hidden_pathway]:
-            button_group = dbc.ButtonGroup(
-                [
-                    dbc.Button("Up", color="light gray", n_clicks=0, id=module+"_move_up"),
-                    dbc.Button("Down", color="light gray", n_clicks=0, id=module+"_go_down"),
-                    dbc.Button(module_data.df.loc[module,"title"], color="light gray", n_clicks=0, id=module+"_nutbot"),
-                ]
-            , style= {'display': 'none'})
+            button_group = html.Div(general_pathway_buttons(module), style= {'display': 'none'})
             initialize_nutbots.append(button_group)
         
         ## If nothing is in the pathway, display a message 

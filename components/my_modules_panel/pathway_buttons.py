@@ -5,7 +5,7 @@ import ast #This allows the easy conversion from string back to dictionary
 from network_analysis.poset_processing import poset, hasse 
 
 ### General button structure for all rows:
-def general_pathway_buttons(hidden_pathway, module):
+def general_pathway_buttons(module):
     module_name_and_buttons = [dbc.Col([
             dbc.ButtonGroup([
             dbc.Button('\U00002191', color="light", n_clicks=0,id=module+"_move_up"),
@@ -20,7 +20,7 @@ def general_pathway_buttons(hidden_pathway, module):
 
 ### If all of the immediate prerequisites to a module precede it in the pathway, its appears like this:
 def prereqs_precede_row(hidden_pathway, module):
-    build_buttons = [dbc.Col([],width=1)]+general_pathway_buttons(hidden_pathway,module)
+    build_buttons = [dbc.Col([],width=1)]+general_pathway_buttons(module)
     button_group = dbc.Row(build_buttons, justify="between")
     return button_group
 
@@ -42,7 +42,7 @@ def prereqs_follow_row(hidden_pathway, module):
                     placement="left",
                     trigger="hover",
                     )],width=1)]
-    build_buttons = badge+general_pathway_buttons(hidden_pathway,module)
+    build_buttons = badge+general_pathway_buttons(module)
     button_group = dbc.Row(build_buttons, justify="betweeen")
     return button_group
 
@@ -63,6 +63,6 @@ def prior_knowledge_required_row(hidden_pathway,module):
                 trigger="hover",
                 )],width=1)]
 
-    build_buttons = badge+general_pathway_buttons(hidden_pathway,module)
+    build_buttons = badge+general_pathway_buttons(module)
     button_group = dbc.Row(build_buttons, justify="betweeen")
     return button_group
