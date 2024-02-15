@@ -2,7 +2,8 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data 
-import network_analysis.poset_processing 
+import network_analysis.poset_processing
+from assets.pre_made_pathways import pathway_1, pathway_2, pathway_3, pathway_4, pathway_5
 
 ### Module sorting algorithm:
 def correctly_ordered(a,b):
@@ -24,6 +25,7 @@ def update_pathway(app):
                 [Input(module_id+"_move_up", 'n_clicks') for module_id in module_data.df.index], #these buttons are for moving a module up in the pathway
                 [Input(module_id+"_go_down", 'n_clicks') for module_id in module_data.df.index], #these buttons are for moving a module down in the pathway
                 [Input(module_id+"_trash",'n_clicks') for module_id in module_data.df.index], #these buttons are for users to remove individual modules from their pathway
+                [Input("pathway_"+n,'n_clicks') for n in ["1","2","3","4","5"]], #these buttons are for users to remove individual modules from their pathway
                 prevent_initial_call=True)
     def activate(current_pathway,sort,add_filtered_to_my_modules,remove_filtered_from_my_modules,hidden_filtered_modules_list,*args):
         new_pathway = current_pathway.copy()
@@ -47,7 +49,7 @@ def update_pathway(app):
 
             
         ## Add a batch of modules all at once
-        if ctx.triggered_id == "add_filtered_to_my_modules":
+        elif ctx.triggered_id == "add_filtered_to_my_modules":
             for module in list(hidden_filtered_modules_list):
                 if module not in new_pathway:
                     new_pathway.append(module)
@@ -58,7 +60,20 @@ def update_pathway(app):
                 if module in new_pathway:
                     new_pathway.remove(module)
         
-        
+        ## add a whole pathway
+        ## Improve this logic to handle the pathways more directly.
+        elif ctx.triggered_id[:8] == "pathway_":
+            if ctx.triggered_id == "pathway_1":
+                new_pathway = pathway_1.pathway_1
+            elif ctx.triggered_id == "pathway_2":
+                new_pathway = pathway_2.pathway_2
+            elif ctx.triggered_id == "pathway_3":
+                new_pathway = pathway_3.pathway_3
+            elif ctx.triggered_id == "pathway_4":
+                new_pathway = pathway_4.pathway_4
+            elif ctx.triggered_id == "pathway_5":
+                new_pathway = pathway_5.pathway_5
+
         ## Change the location of a single module in the pathway
 
         elif ctx.triggered[0]['value'] and ctx.triggered[0]['value'] > 0:
@@ -100,6 +115,8 @@ def update_pathway(app):
                     start.append(module_to_go_down)
                     end = current_pathway[module_index + 2:].copy()
                     new_pathway = start + end
+        
+
         
         return new_pathway
 

@@ -27,7 +27,7 @@ def show_my_modules_list(app):
         else:
             pathway_list = initialize_nutbots
             ## Opening text
-            pathway_list.append(dcc.Markdown("Here are the modules you have selected. \n \n Use the up and down buttons to reorder them. \n"))
+            pathway_list.append(dcc.Markdown("**Your Pathway** \n \n Use the up and down buttons to reorder them. \n"))
             ## Sort modules button
             sort_button = dbc.Stack(children=[
                 dbc.Button("Order pathway by module dependencies", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"block"}),
