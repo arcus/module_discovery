@@ -27,7 +27,7 @@ def show_my_modules_list(app):
         else:
             pathway_list = initialize_nutbots
             ## Opening text
-            pathway_list.append(dcc.Markdown("**Your Pathway** \n \n Use the up and down buttons to reorder them. \n"))
+            pathway_list.append(dcc.Markdown("## **Your Pathway**"))
             ## Sort modules button
             sort_button = dbc.Stack(children=[
                 dbc.Button("Order pathway by module dependencies", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"block"}),
@@ -35,11 +35,21 @@ def show_my_modules_list(app):
                 dbc.Popover(
                     dbc.PopoverBody(dcc.Markdown("This ensures that if you have two modules in your pathway and one depends on knowledge available in the other based on our metadata, they will be listed in the correct order below. \n \n It does NOT ensure that sequential or related modules are next to each other, so make sure to use the up and down buttons to fine tune the order of pathway.")),
                     target="sort_my_modules_button",
-                    trigger="click",
+                    trigger="hover",
                     )], direction="horizontal")
             pathway_list.append(sort_button)
 
+            headings = dbc.Row([
+                dbc.Col([], width=2),
+                dbc.Col([dcc.Markdown("**Modules in your pathway**")], width=7),
+                dbc.Col([],width=1), 
+                dbc.Col([dcc.Markdown("**Length**")], width=2)],
+                justify="between")
+
             pathway_list.append(html.Br())
+            
+            pathway_list.append(headings)
+            #pathway_list.append(html.Hr())
 
             ## Create buttons for each of the modules in the pathway, in the order they are currently in the list.
             total_pathway_time = 0
@@ -69,6 +79,7 @@ def show_my_modules_list(app):
                 dbc.Row([dbc.Col("Total estimated time of this pathway:",width=7), dbc.Col(str(total_hours)+" hours, "+str(minutes)+" minutes", width=3)],justify="between")
             ])
             pathway_list.append(summation_line)
+            pathway_list.append(html.Br())
 
             ## Button to allow user to copy their pathway and save it somewhere else
             pathway_list.append(dbc.Button("Save this pathway", id="copy_my_modules"))

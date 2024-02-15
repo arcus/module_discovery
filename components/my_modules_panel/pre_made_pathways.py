@@ -1,17 +1,6 @@
 from dash import html,  dcc
 import dash_bootstrap_components as dbc
 
-# define the premade pathways:
-getting_started = []
-
-focus_on_omics = []
-
-big_data = []
-
-analysis_r = []
-
-analysis_python = []
-
 big_button_style = {"height":"auto",
                     "width":'18%'}
 
