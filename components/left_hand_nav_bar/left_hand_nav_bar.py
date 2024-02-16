@@ -30,7 +30,7 @@ left_hand_nav_bar = dbc.Col([
        {'label': ' Doesn\'t require coding', 'value': 'no_coding_required'},
        {'label': ' Hands on exercise', 'value': 'exercise'}
        ],
-          value=['good_first_module'],
+          value=[],
           id='general_options_checklist'),
           id='general_options_collapse_checklist',
     is_open=True),

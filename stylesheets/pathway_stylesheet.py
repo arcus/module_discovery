@@ -6,7 +6,7 @@ import module_data
 
 pathway_edge_styling_neutral= {
         #'color': "blue",
-        'opacity': .5,
+        'opacity': 0,
         'width': '7px',
         'mid-source-arrow-shape': 'vee',
         'mid-source-arrow-color': 'black',
@@ -15,39 +15,15 @@ pathway_edge_styling_neutral= {
 
          }
 
-pathway_edge_styling_good_order= {
-        #'color': "blue",
-        'opacity': .5,
-        'width': '5px',
-        'mid-source-arrow-shape': 'vee',
-        'mid-source-arrow-color': 'blue',
-        #'source-arrow-shape': 'triangle',
-        'line-color': 'blue'
-
-         }
-pathway_edge_styling_bad_order= {
-        #'color': "blue",
-        'opacity': .5,
-        'width': '5px',
-        'mid-source-arrow-shape': 'vee',
-        'mid-source-arrow-color': 'red',
-        #'source-arrow-shape': 'triangle',
-        'line-color': 'red',
-        'line-style': 'dotted' #'dashed'
-
-         }
-
-pathway_edge_styling_jump_order= {
-        #'color': "blue",
-        'opacity': .5,
-        'width': '5px',
-        'mid-source-arrow-shape': 'vee',
-        'mid-source-arrow-color': 'blue',
-        #'source-arrow-shape': 'triangle',
-        'line-color': 'blue',
-        'line-style': 'dotted' #'dashed'
-
-         }
+def pathway_node_styling_by_number(n):
+    styling = {
+                'content': n,
+                'text-halign':'center',
+                'text-valign':'center',
+                'width':'label',
+                'height':'label',
+                'shape':'round-pentagon'
+            }
 
 pathway_node_styling = {
                 #'background-color': 'red',
@@ -103,7 +79,7 @@ pathway_node_styling_yellow = {
 
 pathway_node_styling_green = {
                 #'background-color': 'red',
-                'label': 'data(title)',
+                #'label': 'data(title)',
                 'color': 'black',
                 "font-size": "9px",
                 'opacity': 1,
