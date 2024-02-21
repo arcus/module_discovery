@@ -29,5 +29,6 @@ There are hidden Components which must be loaded into the page in order for call
 - `hidden_filtered_modules.py` contains a list of modules that meet the current selection criteria as defined in the left_hand_nav_bar.
 - `hidden_pathway.py` contains the ordered list of modules that the user has selected and ordered as their pathway.
 
+- `mini_graph.py` stores the "source of truth" for graph node position. It is not hidden, but is currently only 10 pixels tall. If I can figure out how to center it within its bounding box, it may become part of the app title, but that will take more work.
 
 
