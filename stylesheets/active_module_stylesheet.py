@@ -13,7 +13,7 @@ active_module_styling = {
                     'width': "20px",
                     'height': "20px",
                     "text-wrap": "wrap",
-                    "text-max-width": 80
+                    "text-max-width": 70
                         }
 
 next_module_styling = {
@@ -25,19 +25,19 @@ next_module_styling = {
                     'width': "20px",
                     'height': "20px",
                     "text-wrap": "wrap",
-                    "text-max-width": 80,
+                    "text-max-width": 65,
                         }
 
 preceding_module_styling = {
                     'background-color': 'green',
                     'label': 'data(title)',
                     'color': 'black',
-                    "font-size": "10px",
+                    "font-size": "8px",
                     'opacity': 1,
                     'width': "20px",
                     'height': "20px",
                     "text-wrap": "wrap",
-                    "text-max-width": 80,
+                    "text-max-width": 55,
                         }
 
 active_module_visualization_edge_styling = {

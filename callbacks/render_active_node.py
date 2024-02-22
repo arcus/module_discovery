@@ -34,7 +34,7 @@ def render_active_node(app):
                     n_at_level_index = - n_at_level/2 +.5 # index to make sure the covering modules are evenly spaced out
                     for neighbor in poset.poset.reverse().neighbors(active_module):
                         if level_dict[neighbor] == i:
-                            neighborhood_cytoscape.append({'data': {'id': neighbor, 'title': df.loc[neighbor,'title'] }, 'classes':'precedes', 'position': {'x': 90*n_at_level_index, 'y': -50*i} })
+                            neighborhood_cytoscape.append({'data': {'id': neighbor, 'title': df.loc[neighbor,'title'] }, 'classes':'precedes', 'position': {'y': 90*n_at_level_index, 'x': -50*i} })
                             neighborhood_networkx.append(neighbor)
                             n_at_level_index +=1
             
@@ -42,7 +42,7 @@ def render_active_node(app):
             n_covers = len(list(poset.hasse.neighbors(active_module)))
             cover_index = - n_covers / 2 +.5 # index to make sure the covering modules are evenly spaced out
             for neighbor in poset.hasse.neighbors(active_module):
-                neighborhood_cytoscape.append({'data': {'id': neighbor, 'title': df.loc[neighbor,'title'] }, 'classes':'covers' , 'position': {'x': 90*cover_index, 'y': 75}})
+                neighborhood_cytoscape.append({'data': {'id': neighbor, 'title': df.loc[neighbor,'title'] }, 'classes':'covers' , 'position': {'y': 90*cover_index, 'x': 75}})
                 neighborhood_networkx.append(neighbor)
                 cover_index = cover_index + 1
             
