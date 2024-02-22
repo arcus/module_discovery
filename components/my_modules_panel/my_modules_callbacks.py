@@ -26,8 +26,7 @@ def show_my_modules_list(app):
         ## If the pathway contains modules, display them
         else:
             pathway_list = initialize_nutbots
-            ## Opening text
-            pathway_list.append(dcc.Markdown("## **Your Pathway**"))
+
             ## Sort modules button
             sort_button = dbc.Stack(children=[
                 dbc.Button("Order pathway by module dependencies", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"block"}),
@@ -82,8 +81,8 @@ def show_my_modules_list(app):
             pathway_list.append(html.Br())
 
             ## Button to allow user to copy their pathway and save it somewhere else
-            pathway_list.append(dbc.Button("Save this pathway", id="copy_my_modules"))
-            pathway_list.append(dbc.Popover(
+            save_button = [dbc.Button("Save this pathway", id="copy_my_modules"),
+                            dbc.Popover(
                                 dbc.PopoverBody(children=[
                                     dcc.Markdown("**Copy these links and paste them into a document or email for future reference:**"),
                                     dcc.Markdown(children=[copyable_markdown])], style={'width':'475px'}),
@@ -91,6 +90,7 @@ def show_my_modules_list(app):
                                 trigger="click",
                                 style={"max-width":"500px"},
                                 
-                            ) )
-
-            return pathway_list
+                            )]
+            ## Opening text
+            pathway_title = dbc.Row([dbc.Col(dcc.Markdown("## **Your Pathway**"), width = 9), dbc.Col(save_button, width = 3)], align="justify")
+            return [pathway_title] + pathway_list
