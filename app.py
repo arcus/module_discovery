@@ -83,7 +83,9 @@ app.layout = dbc.Container([
             ],
             active_item=["search_results", "selected_modules", "module_details"],
             always_open=True,
-            )],
+            ),
+            # Active module visualization goes here.
+            html.Div([active_module_visualization], style={"maxHeight": "400px"}),],
             xs=12, sm=6, md=8, xxl=5),
         
         # Right hand visualization panel
@@ -91,7 +93,7 @@ app.layout = dbc.Container([
             dcc.Tabs([ ## Dash Core Components of tabs must be used, cytoscape graphs don't play nice with dbc tabs.
                 dcc.Tab(combined_visualization_panel, label="Combined Visualization"),
                 dcc.Tab(pathway_visualization, label="Your Pathway"),
-                dcc.Tab(active_module_visualization, label="Focus on one Module"),
+                #dcc.Tab(active_module_visualization, label="Focus on one Module"),
                 dcc.Tab(search_results_visualization, label="Search Results")
             ])
         ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6', 'padding' : '25px'}),

@@ -13,6 +13,7 @@ from .learning_objectives import learning_objectives
 from .pre_reqs import pre_reqs
 from .add_to_my_modules import add_to_my_modules
 from .remove_my_modules import remove_my_modules
+from components.visualization_panels.active_module_visualization import active_module_visualization
 
 # This is the automatically displayed metadata about the active module:
 def module_info(active_node):
@@ -22,9 +23,9 @@ def module_info(active_node):
     # When a module is selected, its data is shown:
     if active_node in list(module_data.df.index):
         # These buttons need to be initialized to prevent errors in callbacks
-        other_nodes = list(module_data.df.index).copy()
-        other_nodes.remove(active_node)
-        initialize_buttons = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='none')) for module in other_nodes]
+        # other_nodes = list(module_data.df.index).copy()
+        # other_nodes.remove(active_node)
+        # initialize_buttons = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='none')) for module in other_nodes]
         #initialize_add_to_my_modules_buttons = [html.Button("Add "+module+" to my list ", id="add_to_my_modules_"+module, n_clicks=0, style = dict(display='block')) for module in other_nodes]
 
         module_info_panel = [#dcc.Markdown("##### Module details"),
@@ -42,9 +43,10 @@ def module_info(active_node):
                         html.Hr(),
                         pre_reqs(active_node),
                         html.Hr(),
+                        # add buttons to link to preceding and following modules (or at least names for the moment).
                         html.Div(connected_modules(active_node)),
                         #html.Hr(),
-                        html.Div(initialize_buttons), 
+                        #html.Div(initialize_buttons), 
                         #html.Div(initialize_add_to_my_modules_buttons)        
                         ]
         return module_info_panel

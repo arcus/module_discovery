@@ -11,6 +11,7 @@ module_buttons = [module_id+'_button' for module_id in module_data.df.index]
 
 def debugger(app):
     @app.callback(Output('debugger', 'children'),
-                Input('hidden_active_module', 'children'))
-    def show(children):
-        return str(hasse.edges())
+                [Input(module_id+"_nottub", 'n_clicks') for module_id in module_data.df.index], #these "nottub"s are modules connected to `sets_you_up_for`s and `depends_on_knowledge_available_in`s connected to the current active node
+)
+    def show(*args):
+        return ctx.triggered_id

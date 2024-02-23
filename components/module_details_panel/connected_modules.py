@@ -5,29 +5,34 @@
 
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
-import module_data 
+import module_data
+import networkx as nx
+from network_analysis.poset_processing import hasse
 
-# Create buttons for all of the connected modules using module_data.df info
-def connected_modules(active_node):
-    if active_node in list(module_data.df.index):
-        sets_you_up_button_list = []
-        sets_you_up_for = str(module_data.df.loc[active_node, "sets_you_up_for"])
-        depends_on_button_list = []
-        depends_on_knowledge_available_in = str(module_data.df.loc[active_node, "depends_on_knowledge_available_in"])
-        hidden_button_list = []
-        ## add an is_parallel_to optional set of buttons when that metadata is in module_data
-        for module in list(module_data.df.index):
-            if module in sets_you_up_for or active_node in str(module_data.df.loc[module,"depends_on_knowledge_available_in"]): #ensure that if the link is only in one of the modules, it still shows up here (symmetry in metadata not required)
-                button = html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0) #this is to ensure the buttons created here don't clash with buttons created by filtering, but are still essentially called the same thing for my human brain: module_id_button/module_id_nottub
-                sets_you_up_button_list.append(button)
-            elif module in depends_on_knowledge_available_in or active_node in str(module_data.df.loc[module,"sets_you_up_for"]):
-                button = html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0) #same button/nottub idea here
-                depends_on_button_list.append(button)
-            else:
-                button = html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style = dict(display='none'))
-                hidden_button_list.append(button)
-        left_subpanel = dbc.Col([html.Div("Not quite ready for this module? Check out these first:"),html.Div(depends_on_button_list)], width=6) if len(depends_on_button_list)>0 else dbc.Col([html.Div("This module doesn't require any specialized knowledge to get started, so check it out now!")], width=6)
-        right_subpanel = dbc.Col([html.Div("Already familiar with this material? Try these next:"),html.Div(sets_you_up_button_list)], width=6) if len(sets_you_up_button_list)>0 else dbc.Col([html.Div("Use the search bar and other filters to explore other modules you might be interested in.")], width=6)
-        return [dbc.Row([left_subpanel, right_subpanel]), html.Div(hidden_button_list)]
-    else:
-        return "no current active node"
+# Create a list (previously tried buttons but had circlular callback issues) for all of the connected modules using module_data.df info
+def connected_modules(active_module):
+    
+    sets_you_up_markdown_list="\n "
+    for mod in hasse.neighbors(active_module):
+        sets_you_up_markdown_list = sets_you_up_markdown_list + "\n - "+module_data.df.loc[mod,"title"]
+
+    #sets_you_up_button_list = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0) for module in hasse.neighbors(active_module)]
+    
+    depends_on_markdown_list="\n "
+    for mod in hasse.reverse().neighbors(active_module):
+        depends_on_markdown_list = depends_on_markdown_list + "\n - "+module_data.df.loc[mod,"title"]
+
+    #depends_on_button_list = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0) for module in hasse.reverse().neighbors(active_module)]
+
+    #neighborhood_of_active_node = list(hasse.reverse().neighbors(active_module))+list(hasse.neighbors(active_module))+[active_module]
+    
+    #other_nodes = [node for node in hasse.nodes() if node not in neighborhood_of_active_node]
+
+    #hidden_button_list = [html.Button(module_data.df.loc[module,"title"], id=module+"_nottub", n_clicks=0, style={"display":"none"}) for module in other_nodes]
+
+        
+    left_subpanel = dbc.Col([dcc.Markdown("Not quite ready for this module? Check out these first:"+depends_on_markdown_list)], width=6) if len(list(hasse.reverse().neighbors(active_module)))>0 else dbc.Col([dcc.Markdown("This module doesn't require any specialized knowledge to get started, so check it out now!")], width=6)
+    
+    right_subpanel = dbc.Col([dcc.Markdown("Already familiar with this material? Try these next:"+sets_you_up_markdown_list)], width=6) if len(list(hasse.neighbors(active_module)))>0 else dbc.Col([dcc.Markdown("Use the search bar and other filters to explore other modules you might be interested in.")], width=6)
+    
+    return [dbc.Row([left_subpanel, right_subpanel])]#, html.Div(hidden_button_list)]

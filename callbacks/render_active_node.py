@@ -42,7 +42,7 @@ def render_active_node(app):
             n_covers = len(list(poset.hasse.neighbors(active_module)))
             cover_index = - n_covers / 2 +.5 # index to make sure the covering modules are evenly spaced out
             for neighbor in poset.hasse.neighbors(active_module):
-                neighborhood_cytoscape.append({'data': {'id': neighbor, 'title': df.loc[neighbor,'title'] }, 'classes':'covers' , 'position': {'y': 90*cover_index, 'x': 75}})
+                neighborhood_cytoscape.append({'data': {'id': neighbor, 'title': df.loc[neighbor,'title'] }, 'classes':'covers' , 'position': {'y': 70*cover_index, 'x': 75}})
                 neighborhood_networkx.append(neighbor)
                 cover_index = cover_index + 1
             

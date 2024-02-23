@@ -29,7 +29,7 @@ default_stylesheet = default_stylesheet.default_stylesheet
 active_module_visualization = dbc.Col(
                     children=[
                     html.Br(),
-                    dcc.Markdown("##### See how your selected module is connected to others \n * Click on a connected node to change the focus to that module. \n * Drag the nodes around to see how they are interconnected.", style={'background-color': '#FFFFFF'}),
+                    #dcc.Markdown("##### See how your selected module is connected to others \n * Click on a connected node to change the focus to that module. \n * Drag the nodes around to see how they are interconnected.", style={'background-color': '#FFFFFF'}),
                     dbc.Row(children =[cyto.Cytoscape(
                         id='active_module_visualization',
                         layout={'name': 'preset', 
@@ -38,8 +38,12 @@ active_module_visualization = dbc.Col(
                                 },
                         elements=edges+nodes,
                         stylesheet=default_stylesheet,
-                        #style={'width': '100%', 'height':'450px%'},
-                        userZoomingEnabled=False
+                        style={'height':'250px'},
+                        userZoomingEnabled=True,
+                        autounselectify=True,
+                        responsive=True,
+                        minZoom=1,
+                        maxZoom=10
                         )], 
                         justify="center",
                         ),
