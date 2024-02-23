@@ -89,13 +89,13 @@ app.layout = dbc.Container([
             xs=12, sm=6, md=8, xxl=5),
         
         # Right hand visualization panel
-        dbc.Col(children=[
-            dcc.Tabs([ ## Dash Core Components of tabs must be used, cytoscape graphs don't play nice with dbc tabs.
-                dcc.Tab(combined_visualization_panel, label="Combined Visualization"),
-                dcc.Tab(pathway_visualization, label="Your Pathway"),
-                #dcc.Tab(active_module_visualization, label="Focus on one Module"),
-                dcc.Tab(search_results_visualization, label="Search Results")
-            ])
+        dbc.Col(children=[combined_visualization_panel
+            # dcc.Tabs([ ## Dash Core Components of tabs must be used, cytoscape graphs don't play nice with dbc tabs.
+            #     dcc.Tab(combined_visualization_panel, label="Combined Visualization"),
+            #     dcc.Tab(pathway_visualization, label="Your Pathway"),
+            #     #dcc.Tab(active_module_visualization, label="Focus on one Module"),
+            #     dcc.Tab(search_results_visualization, label="Search Results")
+            # ])
         ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6', 'padding' : '25px'}),
         
         ]),
