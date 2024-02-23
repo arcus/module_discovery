@@ -15,7 +15,7 @@ def update_active_node(app):
                 #[Input(module_id+"_nottub", 'n_clicks') for module_id in module_data.df.index], #these "nottub"s are modules connected to `sets_you_up_for`s and `depends_on_knowledge_available_in`s connected to the current active node
                 [Input(module_id+"_nutbot", 'n_clicks') for module_id in module_data.df.index], #these "nutbot"s are the buttons in the pathway/my_modules list.
                 prevent_initial_call=True)
-    def activate(current_active_node,module_visualization_data,pathway_visualization_data, search_results_visualization_data, active_node_visualization_data, *args):
+    def activate(current_active_node,module_visualization_data, active_node_visualization_data, *args):
         trigger = ctx.triggered_id
         if trigger == "module_visualization":
             return module_visualization_data['id']

@@ -4,17 +4,6 @@ import dash_cytoscape as cyto
 import module_data 
 
 
-pathway_edge_styling_neutral= {
-        #'color': "blue",
-        'opacity': 0,
-        'width': '7px',
-        'mid-source-arrow-shape': 'vee',
-        'mid-source-arrow-color': 'black',
-        #'source-arrow-shape': 'triangle',
-        'line-color': 'black'
-
-         }
-
 def pathway_node_styling_by_number(n):
     styling = {
                 'content': n,
@@ -27,20 +16,17 @@ def pathway_node_styling_by_number(n):
 
 pathway_node_styling = {
                 #'background-color': 'red',
-                'label': 'data(title)',
-                #'shape': 'star',
-                # 'outline-width' : '3px', 
-                # 'outline-color' : "black",
+                #'label': 'data(title)',
                 'color': 'black',
                 "font-size": "9px",
                 'opacity': 1,
-                'width': "20px",
-                'height': "20px",
-                "text-wrap": "wrap",
-                "text-max-width": 80,
+                'width': "10px",
+                'height': "10px",
+                #"text-wrap": "wrap",
+                #"text-max-width": 80,
                 "border-width": 3,
-                "border-style": 'double', # solid, dotted, dashed, or double.
-                "border-color": "orange",
+                "border-style": 'solid', # solid, dotted, dashed, or double.
+                "border-color": "purple",
                 # 'text-halign':'center',
                 # 'text-valign':'center',
                 # 'width':'label',

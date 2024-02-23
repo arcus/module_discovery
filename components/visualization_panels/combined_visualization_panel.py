@@ -4,6 +4,7 @@ import dash_cytoscape as cyto
 import module_data 
 from stylesheets import default_stylesheet 
 from network_analysis import poset_processing as poset
+from .user_visualization_options import user_visualization_options
 
 df = module_data.df
 
@@ -31,6 +32,7 @@ combined_visualization_panel = dbc.Col(
                     children=[
                     html.Br(),
                     dcc.Markdown("##### Interact with this graph \n * Click on a node to learn more about it in the Module Details section. \n * Drag the nodes around to see how they are interconnected.", style={'background-color': '#FFFFFF'}),
+                    user_visualization_options,
                     dbc.Row(cyto.Cytoscape(
                         id='module_visualization',
                         layout={'name': 'cose', 

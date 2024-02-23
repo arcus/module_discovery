@@ -14,8 +14,8 @@ neutral_node_styling = {
 
 neutral_edge_styling = {
         'color': "lightgray",
-        'opacity': .2,
-        'width': '1px',
+        'opacity': .4,
+        'width': '2px',
         'mid-source-arrow-shape': 'vee',
         #'mid-source-arrow-color': 'black',
         #'source-arrow-shape': 'triangle',
@@ -36,14 +36,14 @@ pathway_edge_styling = {
 
 selected_styling = {
                 'background-color': 'blue',
-                'label': 'data(title)',
-                'color': 'black',
-                "font-size": "12px",
-                'opacity': 1,
-                'width': "20px",
-                'height': "20px",
-                "text-wrap": "wrap",
-                "text-max-width": 80,
+                #'label': 'data(title)',
+                #'color': 'black',
+                #"font-size": "12px",
+                #'opacity': 1,
+                #'width': "10px",
+                #'height': "10px",
+                #"text-wrap": "wrap",
+                #"text-max-width": 80,
                 # 'text-halign':'center',
                 # 'text-valign':'center',
                 # 'width':'label',
@@ -54,10 +54,10 @@ selected_styling = {
 
 unselected_styling = {
                    'background-color': 'lightgrey',
-                    'label': ' ',
+                    #'label': ' ',
                     #'opacity': .3,
-                    'width': "5px",
-                    'height': "5px",
+                    'width': "7px",
+                    'height': "7px",
                         }
 
 active_node_styling = {
