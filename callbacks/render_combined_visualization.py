@@ -12,9 +12,10 @@ def turn_nodes_on_off(app):
                 Input('hidden_filtered_modules_list','children'),
                 Input('hidden_active_module', 'children'),
                 Input('hidden_pathway', 'children'),
-                Input('visualization_checklist', 'value')
+                Input('visualization_checklist', 'value'),
+                Input('visualization_titles_checklist', 'value'), 
                 )
-    def update_stylesheet(filtered_module_list,active_node,pathway,visualization_checklist):
+    def update_stylesheet(filtered_module_list,active_node,pathway,visualization_checklist, visualization_titles_checklist):
         ## Edges need to be restyled each time
         new_stylesheet = [ {'selector': 'edge', 'style': default_stylesheet.neutral_edge_styling}]
         ## Modules need to be restyled each time. These styles stack on top of the default style for nodes:
@@ -28,23 +29,23 @@ def turn_nodes_on_off(app):
                 new_stylesheet +=[{'selector': selector,
                                 'style': pathway_stylesheet.pathway_node_styling
                                     }]
-                if "show_titles" in visualization_checklist:
-                    new_stylesheet +=[{'selector':selector,
-                                    'style':{'label': 'data(title)',
-                                    "font-size": "9px",
-                                    "text-wrap": "wrap",
-                                    "text-max-width": 50,}}]
+            if module_id in pathway and "show_pathway_titles" in visualization_titles_checklist:
+                new_stylesheet +=[{'selector':selector,
+                                'style':{'label': 'data(title)',
+                                "font-size": "9px",
+                                "text-wrap": "wrap",
+                                "text-max-width": 50,}}]
             
             if module_id in filtered_module_list and "show_search_results" in visualization_checklist:
                 new_stylesheet += [{'selector': selector,
                                 'style': default_stylesheet.selected_styling
                                     }]
-                if "show_titles" in visualization_checklist:
-                    new_stylesheet +=[{'selector':selector,
-                                    'style':{'label': 'data(title)',
-                                    "font-size": "9px",
-                                    "text-wrap": "wrap",
-                                    "text-max-width": 50,}}]
+            if module_id in filtered_module_list and "show_search_results_titles" in visualization_titles_checklist:
+                new_stylesheet +=[{'selector':selector,
+                                'style':{'label': 'data(title)',
+                                "font-size": "9px",
+                                "text-wrap": "wrap",
+                                "text-max-width": 50,}}]
 
             if module_id == active_node:
                 new_stylesheet +=[{'selector': selector, 'style': default_stylesheet.active_node_styling}]        

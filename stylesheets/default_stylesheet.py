@@ -61,7 +61,7 @@ unselected_styling = {
                         }
 
 active_node_styling = {
-                   'background-color': 'black',
+                   #'background-color': 'black',
                     'label': 'data(title)',
                     'shape': 'star',
                     "font-size": "20px",
