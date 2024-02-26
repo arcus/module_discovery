@@ -42,7 +42,10 @@ combined_visualization_panel = dbc.Col(
                         elements=edges+nodes,
                         stylesheet=default_stylesheet,
                         #style={'width': '100%', 'height':'450px%'},
-                        userZoomingEnabled=False
-                        ), justify="center"),
+                        userZoomingEnabled=False,
+                        ), 
+                        justify="center", 
+                        #style={'border-style': 'solid', 'border-color': '#ADD8E6', 'padding' : '25px'}
+                        ),
                      ],
                 )

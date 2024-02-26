@@ -85,11 +85,17 @@ app.layout = dbc.Container([
             always_open=True,
             ),
             # Active module visualization goes here.
-            html.Div([active_module_visualization], style={"maxHeight": "400px"}),],
+            #html.Div([active_module_visualization], style={"maxHeight": "400px"}),
+            ],
             xs=12, sm=6, md=8, xxl=5),
         
         # Right hand visualization panel
-        dbc.Col(children=[combined_visualization_panel
+        dbc.Col(children=[combined_visualization_panel,
+        html.Br(),
+        html.Hr(),
+        html.Br(),
+        active_module_visualization
+
             # dcc.Tabs([ ## Dash Core Components of tabs must be used, cytoscape graphs don't play nice with dbc tabs.
             #     dcc.Tab(combined_visualization_panel, label="Combined Visualization"),
             #     dcc.Tab(pathway_visualization, label="Your Pathway"),
