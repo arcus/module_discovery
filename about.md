@@ -14,7 +14,7 @@ Ultimately, the goal of this tool is to be a pathway recommender, in addition to
 
 We created over 60 short, asynchronous learning modules as part of the [Data and Analytics Research Training Program (DART)](https://arcus.github.io/education_modules/). The idea of this program was to give people tailored, modular education that meets their need to upskill quickly in data science without the extra bload of longer courses that teach things they might already know or not need for their jobs.
 
-But creating tailored pathways through the complex network of these educational modules is a lot of work, and displaying our [catologue as a list](https://arcus.github.io/education_modules/list_of_modules) is not a particularly efficient way for people seeking knowledge to find it. This tool was created to help connect people who want to learn to modules and pathways that are a good fit for them.
+But creating tailored pathways through the complex network of these educational modules is a lot of work, and displaying our [catalogue as a list](https://arcus.github.io/education_modules/list_of_modules) is not a particularly efficient way for people seeking knowledge to find it. This tool was created to help connect people who want to learn to modules and pathways that are a good fit for them.
 
 ## Who is behind the Module Discovery Tool?
 
