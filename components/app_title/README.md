@@ -1,0 +1,1 @@
+The heading banner is stored here.
