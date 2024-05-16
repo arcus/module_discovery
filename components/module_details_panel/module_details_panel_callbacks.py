@@ -14,6 +14,7 @@ from .pre_reqs import pre_reqs
 from .add_to_my_modules import add_to_my_modules
 from .remove_my_modules import remove_my_modules
 from components.visualization_panels.active_module_visualization import active_module_visualization
+from network_analysis.required_expertise_times import required_expertise_times
 
 # This is the automatically displayed metadata about the active module:
 def module_info(active_node):
@@ -30,6 +31,8 @@ def module_info(active_node):
 
         module_info_panel = [#dcc.Markdown("##### Module details"),
                         title_link(active_node),
+                        dcc.Markdown("This depends on approximately this many minutes of background:"),
+                        html.Div(str(required_expertise_times(active_node))),
                         dbc.Row([
                             dbc.Col(add_to_my_modules(active_node), xs=6, md=3), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
                             dbc.Col(remove_my_modules(active_node), xs=6, md=4), ## This returns a single button, all the other buttons are initialized and hidden using the initialize_add_to_my_modules
