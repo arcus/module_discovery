@@ -31,6 +31,9 @@ search_panel = search_panel.search_panel
 from components.my_modules_panel import my_modules, my_modules_callbacks
 my_modules_panel = my_modules.my_modules_panel
 
+from components import exploratory_graph
+exploratory_graph = exploratory_graph.exploratory_graph
+
 # Import the hidden components that keep track of the filtered modules and the active module
 from components import hidden_filtered_modules, hidden_active_module, hidden_pathway 
 hidden_filtered_modules = hidden_filtered_modules.hidden_filtered_modules
@@ -57,7 +60,7 @@ server = app.server
 app.layout = dbc.Container([
 
     # Visualizations being tested out:
-    #hidden_graph.hidden_graph,
+    exploratory_graph,
     html.Hr(),
 
     # Banner heading

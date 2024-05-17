@@ -14,3 +14,7 @@ This can then be called all over the app to use the network (graph theoretic) pr
 
 Functions return whether the prerequisites to a module are in the pathway, and in the right order relative to the module in question.
 
+## Helper functions in `required_expertise_times.py`
+
+The fuction `required_expertise_times(module)` returns the sum of the expected times of all modules that precede `module` in the network graph.
+

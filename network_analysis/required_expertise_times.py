@@ -4,7 +4,7 @@ import module_data
 
 df = module_data.df
 
-from .poset_processing import poset, hasse
+from .poset_processing import poset
 
 def required_expertise_times(module_id):
     pre_req_time = 0
