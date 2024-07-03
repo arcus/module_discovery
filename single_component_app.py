@@ -22,6 +22,17 @@ app_title = app_title.app_title
 from components.clickable_module_list import clickable_module_list, clickable_module_list_callbacks
 clickable_module_list_panel = clickable_module_list.clickable_module_list
 
+#
+##
+###
+#### NEW STUFF!!!
+from components.clickable_module_list.module_cards import modal_card_details
+modal_card_pop_up = modal_card_details.create_clickable_module_list
+#####
+###
+##
+#
+
 from components.module_details_panel import module_details_panel, module_details_panel_callbacks
 module_information = module_details_panel.module_details_panel
 
@@ -126,7 +137,11 @@ left_hand_nav_bar_callbacks.get_left_hand_nav_bar_callbacks(app)
 # Initialize all INTERcomponent callbacks next...
 #callbacks.render_combined_visualization.turn_nodes_on_off(app)
 clickable_module_list_callbacks.create_clickable_module_list(app)
+
+modal_card_pop_up(app)
+
 callbacks.update_search_results.update_hidden_filtered_modules(app)
+
 #callbacks.render_search_results.show_search_results_visually(app)
 #callbacks.update_active_node.update_active_node(app)
 #callbacks.render_active_node.render_active_node(app)

@@ -1,5 +1,6 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
+from .modal_card_details import modal_module_details
 import module_data 
 
 
@@ -21,20 +22,8 @@ def module_card(module_id):
         ),
         dbc.CardFooter(
           dbc.Row([dbc.Col([
-                      dbc.Button("More details", id="module_details_modal"+module_id, n_clicks=0),
-                  dbc.Modal(
-                      [
-                          dbc.ModalHeader(dbc.ModalTitle("Header")),
-                          dbc.ModalBody("This is the content of the modal"),
-                          dbc.ModalFooter(
-                              dbc.Button(
-                                  "Close", id="close", className="ms-auto", n_clicks=0
-                              )
-                          ),
-                      ],
-                      id="modal",
-                      is_open=False,
-                    )
+                      dbc.Button("More details", id="module_details_modal_"+module_id, n_clicks=0),
+                      modal_module_details(module_id)
                     ]),
                 dbc.Col(dbc.Button("Add to my list", id="123456789", n_clicks=0))
                 ])
@@ -43,12 +32,15 @@ def module_card(module_id):
     style={"width": "25rem"},
 )
 
-# @app.callback(
-#     Output("modal", "is_open"),
-#     [Input("open", "n_clicks"), Input("close", "n_clicks")],
-#     [State("modal", "is_open")],
-# )
-# def toggle_modal(n1, n2, is_open):
-#     if n1 or n2:
-#         return not is_open
-#     return is_open
+# def create_clickable_module_list(app):
+#   @app.callback(
+#       [Output("modal_"+module_id, "is_open") for module_id in module_data.df.index],
+#       [Input("module_details_modal_bash_103_combining_commands", "n_clicks") #for module_id in module_data.df.index
+#       #Input("close", "n_clicks")
+#       ],
+#       [State("modal_bash_103_combining_commands", "is_open")],
+#   )
+#   def toggle_modal(n1, is_open):
+#       if n1:# or n2:
+#           return not is_open
+#       return is_open
