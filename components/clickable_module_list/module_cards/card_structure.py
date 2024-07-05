@@ -1,6 +1,7 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 from .modal_card_details import modal_module_details
+from assets.collections import collections_icons
 import module_data 
 
 
@@ -9,7 +10,7 @@ def module_card(module_id):
   return dbc.Card(
     [
         dbc.CardHeader(dbc.Row([
-          dbc.Col([module_data.df.loc[module_id,'collection']], width = 7), 
+          dbc.Col(collections_icons(module_id), width = 7), 
           dbc.Col("level", width = 2), 
           dbc.Col([module_data.df.loc[module_id,'estimated_time_in_minutes']+" m"], width = 3)])),
         dbc.CardBody(
