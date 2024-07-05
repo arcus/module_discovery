@@ -27,4 +27,4 @@ def create_clickable_module_list(app):
          message = dcc.Markdown("No modules match your current filters and search terms. Try modifying your search or use the **Clear all selections** button to start over.", style={'background-color': ''})
       else:
          message = dcc.Markdown("There are "+str(number_of_matches)+" modules that match your filters and search terms:", style={'background-color': ''})
-      return dbc.CardGroup(matches), message
+      return html.Div(matches, className="d-xxl-flex flex-xxl-wrap"), message

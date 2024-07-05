@@ -9,9 +9,9 @@ def module_card(module_id):
   return dbc.Card(
     [
         dbc.CardHeader(dbc.Row([
-          dbc.Col([module_data.df.loc[module_id,'collection']], width = 8), 
+          dbc.Col([module_data.df.loc[module_id,'collection']], width = 7), 
           dbc.Col("level", width = 2), 
-          dbc.Col([module_data.df.loc[module_id,'estimated_time_in_minutes']+" m"], width = 2)])),
+          dbc.Col([module_data.df.loc[module_id,'estimated_time_in_minutes']+" m"], width = 3)])),
         dbc.CardBody(
             [
                 dbc.Row([html.A(module_data.df.loc[module_id,'title'],href="https://liascript.github.io/course/?https://raw.githubusercontent.com/arcus/education_modules/main/"+ module_id +"/" + module_id + ".md" , target="_blank", className="card-title", style={'font-size':'125%', "font-weight": "bold"}),
@@ -29,18 +29,5 @@ def module_card(module_id):
                 ])
           )
     ],
-    style={"width": "25rem"},
+    style={"width":"375px"},
 )
-
-# def create_clickable_module_list(app):
-#   @app.callback(
-#       [Output("modal_"+module_id, "is_open") for module_id in module_data.df.index],
-#       [Input("module_details_modal_bash_103_combining_commands", "n_clicks") #for module_id in module_data.df.index
-#       #Input("close", "n_clicks")
-#       ],
-#       [State("modal_bash_103_combining_commands", "is_open")],
-#   )
-#   def toggle_modal(n1, is_open):
-#       if n1:# or n2:
-#           return not is_open
-#       return is_open
