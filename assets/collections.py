@@ -20,6 +20,14 @@ collection_colors_dict = {"demystifying":"#41B6E6",
                           "statistics":"#41b6e6"
 }
 
+collection_text_colors_dict = {"demystifying":"black",
+                          "infrastructure_and_technology": "black",
+                          "intro_to_data_science":"black",
+                          "learn_to_code":"black",
+                          "machine_learning":"white",
+                          "statistics":"black"
+}
+
 collection_names_dict = {"demystifying":"Demystifying",
                           "infrastructure_and_technology": "Infrastructure and Technology",
                           "intro_to_data_science":"Introduction to Data Science",
@@ -36,7 +44,7 @@ def collections_icons(module_id):
         if collection in collection_symbols_dict.keys():            
             icons.append(dbc.Badge(collection_symbols_dict[collection], 
                 color=collection_colors_dict[collection], 
-                text_color="black",
+                text_color=collection_text_colors_dict[collection],
                 id=module_id+collection+"_badge"
                 #className="ms-1"
                 ))
