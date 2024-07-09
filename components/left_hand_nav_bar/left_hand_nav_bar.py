@@ -2,6 +2,7 @@ from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 from .search_panel import search_panel as search_panel
 from assets.collections import collection_symbols_dict
+import assets.CHOP_colors as CHOP
 
 left_hand_nav_bar = dbc.Col([
     html.Br(),
@@ -189,5 +190,5 @@ left_hand_nav_bar = dbc.Col([
     ),
     html.Br(),
     html.Br(),
-], style={'background-color': '#ADD8E6'})
+], style={'background-color': CHOP.light_blue})
 

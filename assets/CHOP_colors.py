@@ -1,0 +1,7 @@
+pink = "#ed1f7f"
+green = "#91a01e"
+brown = "#786452"
+light_blue = "#41b6e6"
+dark_blue = "#005587"
+white = "#ffffff"
+black = "#000000"

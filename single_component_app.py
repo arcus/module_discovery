@@ -28,6 +28,8 @@ clickable_module_list_panel = clickable_module_list.clickable_module_list
 #### NEW STUFF!!!
 from components.clickable_module_list.module_cards import modal_card_details
 modal_card_pop_up = modal_card_details.create_clickable_module_list
+
+import assets.CHOP_colors as CHOP
 #####
 ###
 ##
@@ -82,7 +84,7 @@ app.layout = dbc.Container([
     dbc.Row(children=[
         
         # Left hand search bar
-        dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': '#ADD8E6'}),
+        dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': CHOP.light_blue}),
         
         # Center accordion 
         dbc.Col([

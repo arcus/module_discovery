@@ -1,11 +1,12 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data
+import assets.CHOP_colors as CHOP
 
 search_panel = dbc.Col([
     dcc.Input(id="search_input", placeholder="Search")
 
-], width=12, style={'background-color': '#ADD8E6'})
+], width=12, style={'background-color': CHOP.light_blue})
 
 def search_results(value):
     matches = []

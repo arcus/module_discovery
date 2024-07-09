@@ -1,7 +1,7 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
-from dash import Dash, html, Input, Output, dcc
 import dash_bootstrap_components as dbc
 import module_data 
+import assets.CHOP_colors as CHOP
 
 
 collection_symbols_dict = {"demystifying":"?",
@@ -12,20 +12,20 @@ collection_symbols_dict = {"demystifying":"?",
                           "statistics":"\u03BC"
 }
 
-collection_colors_dict = {"demystifying":"#41B6E6",
-                          "infrastructure_and_technology": "#786452",
-                          "intro_to_data_science":"#91a01e",
-                          "learn_to_code":"#ed1f7f",
-                          "machine_learning":"#005587",
-                          "statistics":"#41b6e6"
+collection_colors_dict = {"demystifying":CHOP.pink,
+                          "infrastructure_and_technology": CHOP.brown,
+                          "intro_to_data_science": CHOP.green,
+                          "learn_to_code": CHOP.light_blue,
+                          "machine_learning":CHOP.dark_blue,
+                          "statistics": CHOP.light_blue
 }
 
-collection_text_colors_dict = {"demystifying":"black",
-                          "infrastructure_and_technology": "black",
-                          "intro_to_data_science":"black",
-                          "learn_to_code":"black",
-                          "machine_learning":"white",
-                          "statistics":"black"
+collection_text_colors_dict = {"demystifying":CHOP.white,
+                          "infrastructure_and_technology": CHOP.white,
+                          "intro_to_data_science":CHOP.white,
+                          "learn_to_code": CHOP.black,
+                          "machine_learning": CHOP.white,
+                          "statistics": CHOP.black
 }
 
 collection_names_dict = {"demystifying":"Demystifying",
@@ -43,15 +43,15 @@ def collections_icons(module_id):
     for collection in collections_list:
         if collection in collection_symbols_dict.keys():            
             icons.append(dbc.Badge(collection_symbols_dict[collection], 
-                color=collection_colors_dict[collection], 
-                text_color=collection_text_colors_dict[collection],
+                style = {"color":collection_text_colors_dict[collection]}, #badge text color
+                color=collection_colors_dict[collection], #badge background color
                 id=module_id+collection+"_badge"
                 #className="ms-1"
                 ))
             icons.append(dbc.Popover(
                 dbc.PopoverBody(collection_names_dict[collection]),
                 target=module_id+collection+"_badge",
-                trigger="click",
+                trigger="hover",
                 placement="top"
                 ),)
     return icons
