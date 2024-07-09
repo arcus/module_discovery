@@ -1,9 +1,11 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 from .modal_card_details import modal_module_details
+from .module_level import module_level_icon
 from assets.collections import collections_icons
 import assets.CHOP_colors as CHOP
 import module_data 
+from network_analysis.required_expertise_times import required_expertise_times
 
 
 def module_card(module_id):
@@ -11,8 +13,8 @@ def module_card(module_id):
   return dbc.Card(
     [
         dbc.CardHeader(dbc.Row([
-          dbc.Col(collections_icons(module_id), width = 7), 
-          dbc.Col("level", width = 2), 
+          dbc.Col(collections_icons(module_id), width = 6), 
+          dbc.Col(module_level_icon(module_id), width = 3), 
           dbc.Col([module_data.df.loc[module_id,'estimated_time_in_minutes']+" m"], width = 3)]),
           ),
         dbc.CardBody(
