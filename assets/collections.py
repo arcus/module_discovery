@@ -3,6 +3,13 @@ import dash_bootstrap_components as dbc
 import module_data 
 import assets.CHOP_colors as CHOP
 
+collection_descriptions_dict = {"demystifying":"modules focus on giving an overview of a topic and are often have a special focus on reducing anxiety about a potentially daunting topic or tool, and cutting through the hype to helping novices to determine whether or not this is something they should learn to do.",
+                          "infrastructure_and_technology": "modules focus on software or tools, especially setup and systems. Things like how to install software, or understanding what software and/or languages to use for what tasks.",
+                          "intro_to_data_science":"modules teach skills for learners new to data science, including how to troubleshoot and best practices for reproducible methods.",
+                          "learn_to_code":"modules are primarily focused on teaching coding skills.",
+                          "machine_learning":"includes all modules about machine learning and AI.",
+                          "statistics":"includes both applied data analysis (e.g. here's how to do this test in R) and a more theoretical understanding of statistics and the underlying math."
+}
 
 collection_symbols_dict = {"demystifying":"?",
                           "infrastructure_and_technology": "\u2692",

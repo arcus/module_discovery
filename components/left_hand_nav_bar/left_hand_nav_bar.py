@@ -1,8 +1,23 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 from .search_panel import search_panel as search_panel
-from assets.collections import collection_symbols_dict
+from assets.collections import collection_symbols_dict, collection_descriptions_dict, collection_names_dict
 import assets.CHOP_colors as CHOP
+
+def collections_popover():
+    popover_body = ""
+    for collection in ["demystifying", "infrastructure_and_technology","intro_to_data_science", "learn_to_code", "machine_learning", "statistics"]:
+        popover_body += collection_symbols_dict[collection]
+        popover_body += " **"
+        popover_body += collection_names_dict[collection]
+        popover_body += "** "
+        popover_body += collection_descriptions_dict[collection]
+        popover_body +="\n \n"
+    return dbc.Popover(
+                dbc.PopoverBody(dcc.Markdown(popover_body)),
+            target="collection_info_button",
+            trigger="hover",
+        )
 
 left_hand_nav_bar = dbc.Col([
     html.Br(),
@@ -45,12 +60,9 @@ left_hand_nav_bar = dbc.Col([
     dbc.Button(
         "Collection",
         id="collection_collapse_button", color="dark", outline=True, size="sm", className="me-1"),
+
     dbc.Badge("?", id="collection_info_button", pill=True,  color="light", text_color="dark"),
-    dbc.Popover(
-            dbc.PopoverBody(dcc.Markdown(collection_symbols_dict['demystifying']+" **Demystifying** modules focus on giving an overview of a topic and are often have a special focus on reducing anxiety about a potentially daunting topic or tool, and cutting through the hype to helping novices to determine whether or not this is something they should learn to do. \n \n "+collection_symbols_dict['infrastructure_and_technology']+" **Infrastructure and Technology** modules focus on software or tools, especially setup and systems. Things like how to install software, or understanding what software and/or languages to use for what tasks. \n \n "+collection_symbols_dict['intro_to_data_science']+" **Introduction to Data Science** modules teach skills for learners new to data science, including how to troubleshoot and best practices for reproducible methods. \n \n "+collection_symbols_dict['learn_to_code']+" **Learn to Code** modules are primarily focused on teaching coding skills \n \n "+collection_symbols_dict['machine_learning']+" **Machine Learning** includes all modules about machine learning and AI. \n \n"+collection_symbols_dict['statistics']+" **Statistics** includes both applied data analysis (e.g. here's how to do this test in R) and a more theoretical understanding of statistics and the underlying math ")),
-            target="collection_info_button",
-            trigger="hover",
-        ),
+    collections_popover(),
     dbc.Collapse([
     dbc.Col( 
     dcc.RadioItems(
