@@ -27,11 +27,11 @@ def module_card(module_id):
         ),
         dbc.CardFooter(
           dbc.Row([dbc.Col([
-                      dbc.Button("More details", id="module_details_modal_"+module_id, n_clicks=0, style={"background-color":CHOP.light_blue, "border-width":"0px"}),
+                      dbc.Button("More details", id="module_details_modal_"+module_id, n_clicks=0, style={"background-color":CHOP.light_blue_tint[3], "border-width":"0px", "color":CHOP.black}),
                       
                       modal_module_details(module_id)
                     ]),
-                dbc.Col(dbc.Button("Add to my list", id="123456789", n_clicks=0, style={"background-color":CHOP.green, "border-width":"0px"}))
+                dbc.Col(dbc.Button("Add to my list", id="123456789", n_clicks=0, style={"background-color":CHOP.green_tint[3], "border-width":"0px", "color":CHOP.black}))
                 ])
           )
     ],

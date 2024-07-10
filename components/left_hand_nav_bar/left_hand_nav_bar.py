@@ -202,5 +202,5 @@ left_hand_nav_bar = dbc.Col([
     ),
     html.Br(),
     html.Br(),
-], style={'background-color': CHOP.light_blue})
+], style={'background-color': CHOP.light_blue_tint[2]})
 

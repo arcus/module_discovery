@@ -84,7 +84,7 @@ app.layout = dbc.Container([
     dbc.Row(children=[
         
         # Left hand search bar
-        dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': CHOP.light_blue}),
+        dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': CHOP.light_blue_tint[2]}),
         
         # Center accordion 
         dbc.Col([
