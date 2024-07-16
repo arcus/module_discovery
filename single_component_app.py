@@ -73,7 +73,7 @@ server = app.server
 app.layout = dbc.Container([
 
     # Visualizations being tested out:
-    html.Hr(),
+    #html.Hr(),
 
     # Banner heading
     dbc.Row(children=[app_title]),
@@ -87,18 +87,19 @@ app.layout = dbc.Container([
         dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': CHOP.light_blue_tint[2]}),
         
         # Center accordion 
-        dbc.Col([
-            dbc.Accordion([
+        dbc.Col([clickable_module_list_panel
+            #dbc.Accordion([
                 # Search Results
-                dbc.AccordionItem(clickable_module_list_panel, title="Search Results", item_id="search_results"), 
+                #dbc.AccordionItem(
+                #    clickable_module_list_panel, title="Search Results", item_id="search_results" #), 
                 # User Pathway
                 #dbc.AccordionItem(html.Div(my_modules_panel), title="Build Your Own Pathway", item_id="selected_modules"), 
                 # Module Details
                 #dbc.AccordionItem(module_information, title="Module Details", item_id="module_details")
-            ],
+            #],
             #active_item=["search_results", "selected_modules", "module_details"],
             #always_open=True,
-            ),
+            #),
             # Active module visualization goes here.
             #html.Div([active_module_visualization], style={"maxHeight": "400px"}),
             ],
