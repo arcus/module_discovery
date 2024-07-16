@@ -81,47 +81,22 @@ app.layout = dbc.Container([
     html.Br(),
     
     # Main body
-    dbc.Row(children=[
-        
-        # Left hand search bar
-        dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': CHOP.light_blue_tint[2]}),
-        
-        # Center accordion 
-        dbc.Col([clickable_module_list_panel
-            #dbc.Accordion([
-                # Search Results
-                #dbc.AccordionItem(
-                #    clickable_module_list_panel, title="Search Results", item_id="search_results" #), 
-                # User Pathway
-                #dbc.AccordionItem(html.Div(my_modules_panel), title="Build Your Own Pathway", item_id="selected_modules"), 
-                # Module Details
-                #dbc.AccordionItem(module_information, title="Module Details", item_id="module_details")
-            #],
-            #active_item=["search_results", "selected_modules", "module_details"],
-            #always_open=True,
-            #),
-            # Active module visualization goes here.
-            #html.Div([active_module_visualization], style={"maxHeight": "400px"}),
-            ],
-            #xs=12, sm=6, md=8, xxl=5
-            ),
-        
-        # Right hand visualization panel
-        #dbc.Col(children=[combined_visualization_panel,
-        #html.Br(),
-        #html.Hr(),
-        #html.Br(),
-        #active_module_visualization
-
-            # dcc.Tabs([ ## Dash Core Components of tabs must be used, cytoscape graphs don't play nice with dbc tabs.
-            #     dcc.Tab(combined_visualization_panel, label="Combined Visualization"),
-            #     dcc.Tab(pathway_visualization, label="Your Pathway"),
-            #     #dcc.Tab(active_module_visualization, label="Focus on one Module"),
-            #     dcc.Tab(search_results_visualization, label="Search Results")
-            # ])
-        #],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6', 'padding' : '25px'}),
-        
-        ]),
+    dbc.Row(
+        dbc.Tabs([
+            dbc.Tab(dbc.Row(children=[
+                
+                # Left hand search bar
+                dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': CHOP.light_blue_tint[2]}),
+                
+                # Center search results 
+                dbc.Col([clickable_module_list_panel])
+                ]),
+                label="Explore Modules", label_style={"color":CHOP.dark_blue}),
+            dbc.Tab(my_modules_panel, label="Explore Pathways", label_style={"color":CHOP.dark_blue}),
+            dbc.Tab(my_modules_panel, label="Your Learning Pathway", label_style={"color":CHOP.dark_blue}),
+        ]
+        )
+        ),
     
     #html.Hr(), html.Hr(),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
