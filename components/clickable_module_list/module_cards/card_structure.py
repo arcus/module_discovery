@@ -31,9 +31,10 @@ def module_card(module_id):
                       
                       modal_module_details(module_id)
                     ]),
-                dbc.Col(dbc.Button("Add to my list", id="123456789", n_clicks=0, style={"background-color":CHOP.green_tint[3], "border-width":"0px", "color":CHOP.black}))
+                dbc.Col(dbc.Button("Add to my list",n_clicks=0, style={"background-color":CHOP.green_tint[3], "border-width":"0px", "color":CHOP.black}))
                 ])
           )
     ],
     style={"width":"375px"},
+    className="m-2"
 )

@@ -21,7 +21,7 @@ clickable_module_list = html.Div(
                           ],
                           justify="center"),
                         html.Br()
-                          ], style={'background-color':CHOP.light_blue_tint[0]}),
+                          ], style={'background-color':CHOP.light_blue_tint[1]}),
                     #html.Br(),
                      html.Div([], id='clickable_module_links', 
                               style={"maxHeight": "650px", "overflow": "scroll"}, 
@@ -29,5 +29,5 @@ clickable_module_list = html.Div(
                      ]       
                 ),
                 ],
-                style={"background-color":CHOP.brown_tint[0]}
+                style={"background-color":CHOP.light_blue_tint[1]}
                 )
