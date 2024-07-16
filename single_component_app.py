@@ -97,7 +97,10 @@ app.layout = dbc.Container([
                 # Center search results 
                 dbc.Col([clickable_module_list_panel])
                 ]),
-                label="Explore Modules", label_style={"color":CHOP.dark_blue}, style={"background-color":CHOP.light_blue_tint[1]}),
+                label="Explore Modules", 
+                label_style={"color":CHOP.dark_blue}, 
+                style={"background-color":CHOP.light_blue_tint[1]},
+                tab_style={"background_color":CHOP.light_blue_tint[1]}),
             dbc.Tab(pre_made_pathways, label="Explore Pathways", label_style={"color":CHOP.dark_blue}),
             dbc.Tab("User created pathway goes here", label="Your Learning Pathway", label_style={"color":CHOP.dark_blue}),
             dbc.Tab("Links to office hours, etc.", label="Talk to an Educator", label_style={"color":CHOP.dark_blue}),
