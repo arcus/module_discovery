@@ -30,6 +30,9 @@ from components.clickable_module_list.module_cards import modal_card_details
 modal_card_pop_up = modal_card_details.create_clickable_module_list
 
 import assets.CHOP_colors as CHOP
+
+from components.my_modules_panel import pathway_card_details
+modal_pathway_pop_up = pathway_card_details.pathway_details_modals
 #####
 ###
 ##
@@ -93,7 +96,8 @@ app.layout = dbc.Container([
                 ]),
                 label="Explore Modules", label_style={"color":CHOP.dark_blue}),
             dbc.Tab(my_modules_panel, label="Explore Pathways", label_style={"color":CHOP.dark_blue}),
-            dbc.Tab(my_modules_panel, label="Your Learning Pathway", label_style={"color":CHOP.dark_blue}),
+            dbc.Tab("User created pathway goes here", label="Your Learning Pathway", label_style={"color":CHOP.dark_blue}),
+            dbc.Tab("Links to office hours, etc.", label="Talk to an Educator", label_style={"color":CHOP.dark_blue}),
         ]
         )
         ),
@@ -117,6 +121,7 @@ left_hand_nav_bar_callbacks.get_left_hand_nav_bar_callbacks(app)
 clickable_module_list_callbacks.create_clickable_module_list(app)
 
 modal_card_pop_up(app)
+modal_pathway_pop_up(app)
 
 callbacks.update_search_results.update_hidden_filtered_modules(app)
 
