@@ -79,7 +79,6 @@ server = app.server
 app.layout = dbc.Container([
 
     # Visualizations being tested out:
-    html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
 
     # Banner heading
     dbc.Row(children=[app_title]),
@@ -111,7 +110,7 @@ app.layout = dbc.Container([
     #html.Hr(), html.Hr(),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
     html.Div(hidden_active_module), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
-    #html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
+    html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
     #html.Div(children=["blue"], id="debugger"),     html.Div(children=["blue"], id="debugger2")
     ],
     style={'padding' : '25px'},

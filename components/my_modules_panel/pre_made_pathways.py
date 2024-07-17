@@ -22,7 +22,7 @@ def pathway_card(pathway):
                     ]),
                 #dbc.Col(dbc.Button("Email this to me", n_clicks=0, style={"background-color":CHOP.pink_tint[3], "border-width":"0px", "color":CHOP.black})),
                 
-                dbc.Col(dbc.Button("Add to my list", n_clicks=0, style={"background-color":CHOP.green_tint[3], "border-width":"0px", "color":CHOP.black}))
+                dbc.Col(dbc.Button("Choose pathway", id="use_"+pathway["id"], n_clicks=0, style={"background-color":CHOP.green_tint[3], "border-width":"0px", "color":CHOP.black}))
                 ])),
     ],
     style={"width":"420px"},
