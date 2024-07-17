@@ -36,10 +36,11 @@ def create_clickable_module_list(app):
         @app.callback(
             Output("modal_"+module_id, "is_open"),
             [Input("module_details_modal_"+module_id, "n_clicks")],
+            [Input(module_id+"_nutbot", "n_clicks")],
             [State("modal_"+module_id, "is_open")],
             prevent_initial_call=True
         )
-        def toggle_modal(n1, is_open):
-            if n1:
+        def toggle_modal(n1, n2, is_open):
+            if n1 or n2:
                 return not is_open
             return is_open

@@ -7,5 +7,5 @@ my_pathway = []
 hidden_pathway = [
     html.Div(children=my_pathway, 
     id = 'hidden_pathway', 
-    style= {'display': 'none'} # make this 'none' to hide it for final version, 'block' shows this data on the app
+    style= {'display': 'block'} # make this 'none' to hide it for final version, 'block' shows this data on the app
     )]

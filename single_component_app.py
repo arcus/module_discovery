@@ -79,7 +79,7 @@ server = app.server
 app.layout = dbc.Container([
 
     # Visualizations being tested out:
-    #html.Hr(),
+    html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
 
     # Banner heading
     dbc.Row(children=[app_title]),
@@ -102,7 +102,7 @@ app.layout = dbc.Container([
                 style={"background-color":CHOP.light_blue_tint[1]},
                 tab_style={"background_color":CHOP.light_blue_tint[1]}),
             dbc.Tab(pre_made_pathways, label="Explore Pathways", label_style={"color":CHOP.dark_blue}),
-            dbc.Tab("User created pathway goes here", label="Your Learning Pathway", label_style={"color":CHOP.dark_blue}),
+            dbc.Tab(my_modules_panel, label="Your Learning Pathway", label_style={"color":CHOP.dark_blue}),
             dbc.Tab("Links to office hours, etc.", label="Talk to an Educator", label_style={"color":CHOP.dark_blue}),
         ]
         )
@@ -111,7 +111,7 @@ app.layout = dbc.Container([
     #html.Hr(), html.Hr(),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
     html.Div(hidden_active_module), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
-    html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
+    #html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
     #html.Div(children=["blue"], id="debugger"),     html.Div(children=["blue"], id="debugger2")
     ],
     style={'padding' : '25px'},
@@ -120,7 +120,7 @@ app.layout = dbc.Container([
 # Initialize all INTRAcomponent callbacks
 left_hand_nav_bar_callbacks.get_left_hand_nav_bar_callbacks(app)
 #module_details_panel_callbacks.update_module_info_panel(app)
-#my_modules_callbacks.show_my_modules_list(app)
+my_modules_callbacks.show_my_modules_list(app)
 
 # Initialize all INTERcomponent callbacks next...
 #callbacks.render_combined_visualization.turn_nodes_on_off(app)
@@ -134,7 +134,7 @@ callbacks.update_search_results.update_hidden_filtered_modules(app)
 #callbacks.render_search_results.show_search_results_visually(app)
 #callbacks.update_active_node.update_active_node(app)
 #callbacks.render_active_node.render_active_node(app)
-#callbacks.update_pathway.update_pathway(app)
+callbacks.update_pathway.update_pathway(app)
 #callbacks.render_pathway.show_pathway_visually(app)
 
 # turn on the debugger if using it

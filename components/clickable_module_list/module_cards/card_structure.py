@@ -29,10 +29,12 @@ def module_card(module_id):
           dbc.Row([dbc.Col([
                       dbc.Button("More details", id="module_details_modal_"+module_id, n_clicks=0, style={"background-color":CHOP.light_blue_tint[3], "border-width":"0px", "color":CHOP.black}),
                       
-                      modal_module_details(module_id)
-                    ]),
-                dbc.Col(dbc.Button("Add to my list",n_clicks=0, style={"background-color":CHOP.green_tint[3], "border-width":"0px", "color":CHOP.black}))
-                ])
+                      modal_module_details(module_id),
+                      
+                    ], width=5),
+                dbc.Col(dbc.Button("Add to my pathway",id="add_to_my_modules_"+module_id, n_clicks=0, style={"background-color":CHOP.green_tint[3], "border-width":"0px", "color":CHOP.black}
+                    ), width=7)
+                ], className="center")
           )
     ],
     style={"width":"375px"},

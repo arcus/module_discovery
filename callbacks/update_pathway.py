@@ -21,11 +21,11 @@ def update_pathway(app):
                 Input("remove_filtered_from_my_modules", 'n_clicks'),
                 State("hidden_filtered_modules_list", 'children'),
                 [Input("add_to_my_modules_"+module_id, 'n_clicks') for module_id in module_data.df.index], #these buttons are add_to_my_modules buttons shown on the module details panel
-                [Input("remove_my_modules_"+module_id, 'n_clicks') for module_id in module_data.df.index], #these buttons are remove_my_modules buttons shown on the module details panel
+                #[Input("remove_my_modules_"+module_id, 'n_clicks') for module_id in module_data.df.index], #these buttons are remove_my_modules buttons shown on the module details panel
                 [Input(module_id+"_move_up", 'n_clicks') for module_id in module_data.df.index], #these buttons are for moving a module up in the pathway
                 [Input(module_id+"_go_down", 'n_clicks') for module_id in module_data.df.index], #these buttons are for moving a module down in the pathway
                 [Input(module_id+"_trash",'n_clicks') for module_id in module_data.df.index], #these buttons are for users to remove individual modules from their pathway
-                [Input("pathway_"+n,'n_clicks') for n in ["1","2","3","4","5"]], #these buttons are for users to remove individual modules from their pathway
+                #[Input("pathway_"+n,'n_clicks') for n in ["1","2","3","4","5"]], #these buttons are for users to remove individual modules from their pathway
                 prevent_initial_call=True)
     def activate(current_pathway,sort,add_filtered_to_my_modules,remove_filtered_from_my_modules,hidden_filtered_modules_list,*args):
         new_pathway = current_pathway.copy()
