@@ -17,10 +17,10 @@ def correctly_ordered(a,b):
 def update_pathway(app):
     @app.callback(Output('hidden_pathway', 'children'),
                 State("hidden_pathway", 'children'),
+                State("hidden_filtered_modules_list", 'children'),
                 Input("sort_my_modules","n_clicks"),
                 Input("add_filtered_to_my_modules", 'n_clicks'),
-                Input("remove_filtered_from_my_modules", 'n_clicks'),
-                State("hidden_filtered_modules_list", 'children'),
+                Input("remove_filtered_from_my_modules", 'n_clicks'),   
                 [Input("add_to_my_modules_"+module_id, 'n_clicks') for module_id in module_data.df.index], #these buttons are add_to_my_modules buttons shown on the module details panel
                 #[Input("remove_my_modules_"+module_id, 'n_clicks') for module_id in module_data.df.index], #these buttons are remove_my_modules buttons shown on the module details panel
                 [Input(module_id+"_move_up", 'n_clicks') for module_id in module_data.df.index], #these buttons are for moving a module up in the pathway
@@ -28,7 +28,7 @@ def update_pathway(app):
                 [Input(module_id+"_trash",'n_clicks') for module_id in module_data.df.index], #these buttons are for users to remove individual modules from their pathway
                 [Input("use_"+pathway["id"],'n_clicks') for pathway in pathway_list], #these buttons are for users to remove individual modules from their pathway
                 prevent_initial_call=True)
-    def activate(current_pathway,sort,add_filtered_to_my_modules,remove_filtered_from_my_modules,hidden_filtered_modules_list,*args):
+    def activate(current_pathway,hidden_filtered_modules_list,*args):
         new_pathway = current_pathway.copy()
         
         ## Sort the current pathway list
