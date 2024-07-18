@@ -7,7 +7,7 @@ my_modules_panel = html.Div(children=[
                 #html.Br(),
                 #html.Hr(),
                 html.Br(),
-                html.Div([dcc.Markdown(children=["You haven't selected any modules yet! Explore what is available and click \"Add to my list\" to create your own pathway of modules you want to focus on."])
+                html.Div([dcc.Markdown(children=["### Find a pathway or build your own \n Start with one of the popular pathways under the \"Explore Pathways\" tab, \n \n Use the \"Expore Modules\" tab to find more modules that interest you. \n \n  Add everything that interests you to your pathway."])
                 ], id='display_my_modules')
                 ])
                 

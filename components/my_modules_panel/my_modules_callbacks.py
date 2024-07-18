@@ -19,7 +19,7 @@ def show_my_modules_list(app):
         
         ## If nothing is in the pathway, display a message 
         if hidden_pathway == []:
-            empty_pathway_message = dcc.Markdown("You haven't selected any modules yet! Explore what is available and click \"Add to my list\" to create your own pathway of modules you want to focus on.")
+            empty_pathway_message = dcc.Markdown("### Find a pathway or build your own \n \n Start from scratch or build off one of the popular pathways under the \"Explore Pathways\" tab. \n \n Use the \"Expore Modules\" tab to find more modules that interest you. \n \n  Come back to the \"Your Learning Pathway\" tab to remove and reorder the modules in your pathway.")
             sort_button = dbc.Button("Sort these modules", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"none"})
             return html.Div(children=initialize_nutbots+[empty_pathway_message]+[sort_button])
         

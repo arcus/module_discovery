@@ -109,6 +109,9 @@ app.layout = dbc.Container([
             dbc.Tab("Links to office hours, etc.", 
                     label="Talk to an Educator", 
                     label_style={"color":CHOP.dark_blue}),
+            dbc.Tab("About Us, links to GitHub, network graph", 
+                    label="More", 
+                    label_style={"color":CHOP.dark_blue}),
         ]
         )
         ),
