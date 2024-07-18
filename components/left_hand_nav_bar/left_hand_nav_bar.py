@@ -19,7 +19,7 @@ def collections_popover():
             trigger="hover",
         )
 
-left_hand_nav_bar = dbc.Col([
+left_hand_nav_bar = dbc.Container([
     html.Br(),
     dcc.Markdown("Search by keyword or filter modules by what you want to learn about:"),
     
@@ -202,4 +202,4 @@ left_hand_nav_bar = dbc.Col([
     ),
     html.Br(),
     html.Br(),
-], style={'background-color': CHOP.light_blue_tint[2], "maxHeight": "725px", "overflow": "scroll"})
+], style={'background-color': CHOP.light_blue_tint[1], "maxHeight": "725px", "overflow": "scroll"}, fluid=True, className="w-20")

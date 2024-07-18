@@ -2,8 +2,8 @@ from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data 
 from network_analysis import pathway_order_relations as p_order
-import ast #This allows the easy conversion from string back to dictionary
 from .pathway_buttons import prereqs_precede_row, prereqs_follow_row, prior_knowledge_required_row, general_pathway_buttons
+import assets.CHOP_colors as CHOP
 
 def show_my_modules_list(app):
     @app.callback(Output('display_my_modules', 'children'),
@@ -17,19 +17,14 @@ def show_my_modules_list(app):
             button_group = html.Div(general_pathway_buttons(module), style= {'display': 'none'})
             initialize_nutbots.append(button_group)
         
-        ## If nothing is in the pathway, display a message 
-        if hidden_pathway == []:
-            empty_pathway_message = dcc.Markdown("### Find a pathway or build your own \n \n Start from scratch or build off one of the popular pathways under the \"Explore Pathways\" tab. \n \n Use the \"Expore Modules\" tab to find more modules that interest you. \n \n  Come back to the \"Your Learning Pathway\" tab to remove and reorder the modules in your pathway.")
-            sort_button = dbc.Button("Sort these modules", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"none"})
-            return html.Div(children=initialize_nutbots+[empty_pathway_message]+[sort_button])
         
         ## If the pathway contains modules, display them
-        else:
+        if hidden_pathway != []:
             pathway_list = initialize_nutbots
 
             ## Sort modules button
             sort_button = dbc.Stack(children=[
-                dbc.Button("Order pathway by module dependencies", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"block"}),
+                dbc.Button("Order pathway by module dependencies", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"block", "background-color":CHOP.light_blue_tint[2]}),
                 dbc.Badge("?", id="sort_my_modules_button", pill=True,  color="light", text_color="dark"),
                 dbc.Popover(
                     dbc.PopoverBody(dcc.Markdown("This ensures that if you have two modules in your pathway and one depends on knowledge available in the other based on our metadata, they will be listed in the correct order below. \n \n It does NOT ensure that sequential or related modules are next to each other, so make sure to use the up and down buttons to fine tune the order of pathway.")),
@@ -81,7 +76,7 @@ def show_my_modules_list(app):
             pathway_list.append(html.Br())
 
             ## Button to allow user to copy their pathway and save it somewhere else
-            save_button = [dbc.Button("Save this pathway", id="copy_my_modules"),
+            save_button = [dbc.Button("Save this pathway", id="copy_my_modules", style={"background-color":CHOP.light_blue_tint[3], "color":CHOP.black}),
                             dbc.Popover(
                                 dbc.PopoverBody(children=[
                                     dcc.Markdown("**Copy these links and paste them into a document or email for future reference:**"),
@@ -94,3 +89,12 @@ def show_my_modules_list(app):
             ## Opening text
             pathway_title = dbc.Row([dbc.Col(dcc.Markdown("## **Your Pathway**"), width = 9), dbc.Col(save_button, width = 3)], align="justify")
             return dbc.Container([pathway_title] + pathway_list, style={"width":"800px"})
+
+        ## If nothing is in the pathway, display a message 
+        else:
+            pathway_title = dbc.Row([dbc.Col(dcc.Markdown("## **Your Pathway**"), width = 9), dbc.Col("", width = 3)], align="justify")
+            empty_pathway_message = dcc.Markdown("#### You haven't selected any modules for your pathway yet.")
+            sort_button = dbc.Button("Sort these modules", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"none"})
+            return dbc.Container(children=[pathway_title]+initialize_nutbots+[empty_pathway_message]+[sort_button], style={"width":"800px"})
+        
+        #html.Div(children=initialize_nutbots+[empty_pathway_message]+[sort_button])

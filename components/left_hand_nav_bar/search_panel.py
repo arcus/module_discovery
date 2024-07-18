@@ -6,7 +6,7 @@ import assets.CHOP_colors as CHOP
 search_panel = dbc.Col([
     dcc.Input(id="search_input", placeholder="Search")
 
-], width=12, style={'background-color': CHOP.light_blue_tint[2]})
+], width=12, style={'background-color': CHOP.light_blue_tint[1]})
 
 def search_results(value):
     matches = []

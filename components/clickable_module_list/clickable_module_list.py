@@ -13,6 +13,8 @@ clickable_module_list = html.Div(
                   [dbc.Col(
                     children=[
                      html.Div([
+                         html.Br(),
+                         dcc.Markdown("## Explore Educational Modules"),
                         html.Br(),
                         dbc.Col(dcc.Markdown("Modules that match your filters and search terms are listed here."), width=12, id="search_results_message"),
                         dbc.Row([
@@ -20,12 +22,14 @@ clickable_module_list = html.Div(
                           dbc.Col(remove_all_from_my_modules, xs=6, md=4)
                           ],
                           justify="center"),
-                        html.Br()
+                        html.Br(),
+                        html.Hr(),
                           ], style={'background-color':CHOP.light_blue_tint[1]}),
                     #html.Br(),
                      html.Div([], id='clickable_module_links', 
-                              style={"maxHeight": "650px", "overflow": "scroll"}, 
-                              className="col-12")
+                              style={"maxHeight": "550px", "overflow": "scroll"}, 
+                              #className="col-12"
+                              )
                      ]       
                 ),
                 ],

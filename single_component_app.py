@@ -91,27 +91,36 @@ app.layout = dbc.Container([
             dbc.Tab(dbc.Row(children=[
                         
                         # Left hand search bar
-                        dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': CHOP.light_blue_tint[2]}),
+                        dbc.Col([left_hand_nav_bar], xs=12, sm=4, md=3, xxl=2,style={'background-color': CHOP.light_blue_tint[1]}),
                         
                         # Center search results 
-                        dbc.Col([clickable_module_list_panel])
+                        dbc.Col([clickable_module_list_panel], style={'background-color': CHOP.light_blue_tint[1]})
                          ]),
                     label="Explore Modules", 
                     label_style={"color":CHOP.dark_blue}, 
-                    style={"background-color":CHOP.light_blue_tint[1]},
-                    tab_style={"background_color":CHOP.light_blue_tint[1]}),
+                    activeTabClassName="fw-bold"
+                    ),
             dbc.Tab(pre_made_pathways, 
                     label="Explore Pathways", 
-                    label_style={"color":CHOP.dark_blue}),
+                    label_style={"color":CHOP.dark_blue},                    
+                    activeTabClassName="fw-bold",
+                    id="explore_pathways_tab"
+                    ),
             dbc.Tab(my_modules_panel, 
                     label="Your Learning Pathway", 
-                    label_style={"color":CHOP.dark_blue}),
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold"
+                    ),
             dbc.Tab("Links to office hours, etc.", 
                     label="Talk to an Educator", 
-                    label_style={"color":CHOP.dark_blue}),
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold"
+                    ),
             dbc.Tab("About Us, links to GitHub, network graph", 
                     label="More", 
-                    label_style={"color":CHOP.dark_blue}),
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold"
+                    ),
         ]
         )
         ),

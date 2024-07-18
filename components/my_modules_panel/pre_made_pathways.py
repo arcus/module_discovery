@@ -45,7 +45,7 @@ pre_made_pathway_text = "\n \n ## Popular pathways \n \n Our modules are designe
 
 pre_made_pathways = [
     html.Br(),
-    dcc.Markdown(pre_made_pathway_text),
+    dbc.Container(dcc.Markdown(pre_made_pathway_text)),
     dbc.Container([pathway_card(pathway) for pathway in pathway_list], 
                                   className="d-flex flex-wrap justify-content-center",
                                   fluid=True)]
