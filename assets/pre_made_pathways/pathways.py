@@ -10,7 +10,7 @@ import assets.CHOP_colors as CHOP
 #              "description" : "Text Description of the pathway."
 #              }
 
-pathway_1 = {"name":"Getting started with biomedical data science",
+pathway_1 = {"name":"Get started with biomedical data science",
              "id" : "pathway_1",
              "module_list": ["reproducibility"
                             ,"how_to_troubleshoot"

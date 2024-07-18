@@ -4,13 +4,25 @@ import assets.CHOP_colors as CHOP
 import assets.pre_made_pathways.pathways as pathways
 pathway_list = pathways.pathway_list
 from .pathway_card_details import pathway_details
+import module_data 
+
+def pathway_length(pathway):
+    total_time = 0
+    for module in pathway["module_list"]:
+        total_time += int(module_data.df.loc[module, "estimated_time_in_minutes"])
+    return total_time
 
 def pathway_card(pathway):
     card = dbc.Card(
     [
-        dbc.CardHeader(dbc.Row(pathway["name"])),
+        dbc.CardHeader(dbc.Row([
+          dbc.Col("", width = 6), 
+          dbc.Col("", width = 3), 
+          dbc.Col("~ "+str(int(pathway_length(pathway)/60))+" hours", width = 3)]),
+          ),
         dbc.CardBody(
             [
+                html.A(pathway["name"], style={'font-size':'125%', "font-weight": "bold"}),
                 dcc.Markdown(pathway["comment"],
                     #className="card-text",
                 )]),

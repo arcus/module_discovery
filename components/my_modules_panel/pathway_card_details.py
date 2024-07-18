@@ -8,14 +8,13 @@ import module_data
 def pathway_details(pathway):
     return dbc.Modal(
                 [
-                    dbc.ModalHeader(dbc.ModalTitle(pathway["name"])),
+                    dbc.ModalHeader(dbc.ModalTitle(dcc.Markdown("## "+pathway["name"]))),
                     dbc.ModalBody(
                         [dcc.Markdown(pathway["description"]),
                          html.Hr(),
                          html.Br(),
-                         "Style this better:",
-                         html.Br(),
-                         str(pathway["module_list"]),
+                         dcc.Markdown("**"+pathway["name"]+"** contains "+str(len(pathway["module_list"]))+" modules:"),
+                         dcc.Markdown([module_data.df.loc[module_id, "title"]+"\n \n" for module_id in pathway["module_list"]]),
                         ]
                     ),
                     dbc.ModalFooter(
