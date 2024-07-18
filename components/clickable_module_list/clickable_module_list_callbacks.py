@@ -15,7 +15,7 @@ def create_clickable_module_list(app):
          title = module_data.df.loc[module_id, 'title']
          button_id = str(module_id)+"_button"
          if module_id in matching_modules:
-            button = dbc.Col(card_structure.module_card(module_id), width=4)#dbc.Button(title, id=button_id, n_clicks=0, color="dark", outline=True, size="sm",)
+            button = dbc.Col(card_structure.module_card(module_id))#dbc.Button(title, id=button_id, n_clicks=0, color="dark", outline=True, size="sm",)
             matches.append(button)
          else:
             button = html.Button(module_id, id=button_id, n_clicks=0, style = dict(display='none'))
@@ -27,4 +27,4 @@ def create_clickable_module_list(app):
          message = dcc.Markdown("No modules match your current filters and search terms. Try modifying your search or use the **Clear all selections** button to start over.", style={'background-color': ''})
       else:
          message = dcc.Markdown("There are "+str(number_of_matches)+" modules that match your filters and search terms:", style={'background-color': ''})
-      return html.Div(matches, className="d-flex flex-wrap justify-content-center"), message
+      return html.Div(matches, className="d-flex flex-wrap justify-content-around"), message

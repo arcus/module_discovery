@@ -93,4 +93,4 @@ def show_my_modules_list(app):
                             )]
             ## Opening text
             pathway_title = dbc.Row([dbc.Col(dcc.Markdown("## **Your Pathway**"), width = 9), dbc.Col(save_button, width = 3)], align="justify")
-            return [pathway_title] + pathway_list
+            return dbc.Container([pathway_title] + pathway_list, style={"width":"800px"})

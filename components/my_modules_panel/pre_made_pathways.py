@@ -20,15 +20,20 @@ def pathway_card(pathway):
                       
                       pathway_details(pathway)
                     ]),
-                #dbc.Col(dbc.Button("Email this to me", n_clicks=0, style={"background-color":CHOP.pink_tint[3], "border-width":"0px", "color":CHOP.black})),
                 
                 dbc.Col(dbc.Button("Choose pathway", id="use_"+pathway["id"], n_clicks=0, style={"background-color":CHOP.green_tint[3], "border-width":"0px", "color":CHOP.black}))
                 ])),
     ],
     style={"width":"420px"},
-    className="m-2"
+    className="m-1"
     )
     return card
 
-pre_made_pathways = dbc.Container([pathway_card(pathway) for pathway in pathway_list], 
-                                  className="d-flex flex-wrap justify-content-center")
+pre_made_pathway_text = "\n \n ## Popular pathways \n \n Our modules are designed to be flexible and bite-sized, so you can use your time efficiently and pick just the topics you want to study. Each module has learning objectives and prerequisites clearly listed on the first page, to help you decide which ones you want to work on. \n \n That said, many learners prefer to start with a curated list of suggestions, rather than browsing through the modules on their own. If you’re trying to figure out how to get started learning, see if one of the suggested pathways below sounds like a good fit! \n \n"
+
+pre_made_pathways = [
+    html.Br(),
+    dcc.Markdown(pre_made_pathway_text),
+    dbc.Container([pathway_card(pathway) for pathway in pathway_list], 
+                                  className="d-flex flex-wrap justify-content-center",
+                                  fluid=True)]

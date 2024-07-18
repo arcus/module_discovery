@@ -14,7 +14,7 @@ def general_pathway_buttons(module):
             dbc.Button(module_data.df.loc[module,"title"], color="light", n_clicks=0, id=module+"_nutbot"),
             modal_module_details(module),
         ]
-    )], width=8),
+    )],width=8),
     dbc.Col([dbc.Button("x", color="light", n_clicks=0, id=module+"_trash")],width=1), 
     dbc.Col(module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes", width=2)]
     return module_name_and_buttons
@@ -23,7 +23,7 @@ def general_pathway_buttons(module):
 ### If all of the immediate prerequisites to a module precede it in the pathway, its appears like this:
 def prereqs_precede_row(hidden_pathway, module):
     build_buttons = [dbc.Col([],width=1)]+general_pathway_buttons(module)
-    button_group = dbc.Row(build_buttons, justify="between")
+    button_group = dbc.Row(build_buttons, justify="center")
     return button_group
 
 
@@ -45,7 +45,7 @@ def prereqs_follow_row(hidden_pathway, module):
                     trigger="hover",
                     )],width=1)]
     build_buttons = badge+general_pathway_buttons(module)
-    button_group = dbc.Row(build_buttons, justify="betweeen")
+    button_group = dbc.Row(build_buttons, justify="center")
     return button_group
 
 ### Modules that are missing immediate prerequisites (i.e. the learner will be bringing prior knowledge to the module not in the pathway) look like this:
@@ -66,5 +66,5 @@ def prior_knowledge_required_row(hidden_pathway,module):
                 )],width=1)]
 
     build_buttons = badge+general_pathway_buttons(module)
-    button_group = dbc.Row(build_buttons, justify="betweeen")
+    button_group = dbc.Row(build_buttons, justify="center")
     return button_group
