@@ -6,7 +6,6 @@ modules_text = '''
 ### The Modules
 The educational modules linked to on this webpage were built using [LiaScript](https://liascript.github.io) as part of the [Data and Analytics for Research Training (DART)](https://arcus.github.io/education_modules/).
 
-#### DART 
 The DART program provides free, open source educational materials to help working biomedical researchers gain the data science knowledge to expand and improve upon the work they are already doing.The program consists of instructional modules which teach data science and related skills to researchers, in alignment with the NIH emphasis on improving research reproducibility, transparency, and rigor.
 
 The [educational materials created for the DART program are publicly available on GitHub](https://github.com/arcus/education_modules) for you to use, re-use, and re-mix under CC-BY-SA-4.0 license.

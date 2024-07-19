@@ -1,5 +1,6 @@
-from dash import Dash, html, dcc
+from dash import html
 import dash_bootstrap_components as dbc
+import assets.CHOP_colors as CHOP
 
 image_path = 'assets/RI_logo.png'
 
@@ -44,6 +45,6 @@ learn_more_button = dbc.Button(
 app_title = dbc.Row(
     [dbc.Col(branding_logo, xs=12, md =3,xl=2), 
 
-    dbc.Col(html.B(["Data Education Navigator Tool Prototype"]), style={'textAlign': 'center','font-size':'40px'}, align='center',xs=12,  md=7, xl=8), 
-    dbc.Col([dbc.Row(learn_more_button, justify='center'),html.Br(), dbc.Row(feedback_button, justify='center')], xs=12,xl=2),
-    ], justify='center')
+    dbc.Col(html.B(["Data Education Navigator Tool Prototype"]), style={'textAlign': 'center','font-size':'40px', "color":CHOP.dark_blue}, align='center',xs=12,  md=9, xl=10), 
+    #dbc.Col([dbc.Row(learn_more_button, justify='center'),html.Br(), dbc.Row(feedback_button, justify='center')], xs=12,xl=2),
+], justify='center')
