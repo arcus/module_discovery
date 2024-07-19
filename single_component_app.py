@@ -34,8 +34,9 @@ import assets.CHOP_colors as CHOP
 from components.my_modules_panel import pathway_card_details
 modal_pathway_pop_up = pathway_card_details.pathway_details_modals
 
-from components.my_modules_panel import pre_made_pathways
+from components.my_modules_panel import pre_made_pathways, modal_save_pathway
 pre_made_pathways = pre_made_pathways.pre_made_pathways
+modal_copy_my_module_list = modal_save_pathway.modal_copy_my_module_list
 #####
 ###
 ##
@@ -145,6 +146,7 @@ clickable_module_list_callbacks.create_clickable_module_list(app)
 
 modal_card_pop_up(app)
 modal_pathway_pop_up(app)
+modal_copy_my_module_list(app)
 
 callbacks.update_search_results.update_hidden_filtered_modules(app)
 

@@ -4,6 +4,7 @@ import module_data
 from network_analysis import pathway_order_relations as p_order
 from .pathway_buttons import prereqs_precede_row, prereqs_follow_row, prior_knowledge_required_row, general_pathway_buttons
 import assets.CHOP_colors as CHOP
+from .modal_save_pathway import modal_my_module_list
 
 def show_my_modules_list(app):
     @app.callback(Output('display_my_modules', 'children'),
@@ -59,7 +60,8 @@ def show_my_modules_list(app):
                     pathway_list.append(prior_knowledge_required_row(hidden_pathway,module))
 
                 # Add the module to the copyable text version of the pathway
-                copyable_markdown += "["+module_data.df.loc[module,"title"]+"](https://liascript.github.io/course/?https://raw.githubusercontent.com/arcus/education_modules/main/"+module+"/"+module+".md#1) "+ module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes \n \n"
+                #copyable_markdown += "["+module_data.df.loc[module,"title"]+"](https://liascript.github.io/course/?https://raw.githubusercontent.com/arcus/education_modules/main/"+module+"/"+module+".md#1) "+ module_data.df.loc[module,"estimated_time_in_minutes"]+" minutes \n \n"
+
                 
                 ## if the estimated_time_in_minutes exists and makes sense, add it to total pathway time
                 if len(module_data.df.loc[module,"estimated_time_in_minutes"]) == 2:
@@ -76,18 +78,10 @@ def show_my_modules_list(app):
             pathway_list.append(html.Br())
 
             ## Button to allow user to copy their pathway and save it somewhere else
-            save_button = [dbc.Button("Save this pathway", id="copy_my_modules", style={"background-color":CHOP.light_blue_tint[3], "color":CHOP.black}),
-                            dbc.Popover(
-                                dbc.PopoverBody(children=[
-                                    dcc.Markdown("**Copy these links and paste them into a document or email for future reference:**"),
-                                    dcc.Markdown(children=[copyable_markdown])], style={'width':'475px'}),
-                                target="copy_my_modules",
-                                trigger="click",
-                                style={"max-width":"500px"},
-                                
-                            )]
+            save_button = dbc.Button("Get a copyable version of your pathway", id="copy_my_modules", style={"background-color":CHOP.light_blue_tint[3], "color":CHOP.black})            
+
             ## Opening text
-            pathway_title = dbc.Row([dbc.Col(dcc.Markdown("## **Your Pathway**"), width = 9), dbc.Col(save_button, width = 3)], align="justify")
+            pathway_title = dbc.Row([dbc.Col(dcc.Markdown("## **Your Pathway**"), width = 8), dbc.Col(children=[save_button, modal_my_module_list(hidden_pathway)], width = 4)], align="justify")
             return dbc.Container([pathway_title] + pathway_list, style={"width":"800px"})
 
         ## If nothing is in the pathway, display a message 
