@@ -37,6 +37,9 @@ modal_pathway_pop_up = pathway_card_details.pathway_details_modals
 from components.my_modules_panel import pre_made_pathways, modal_save_pathway
 pre_made_pathways = pre_made_pathways.pre_made_pathways
 modal_copy_my_module_list = modal_save_pathway.modal_copy_my_module_list
+
+from components.talk_to_educator import talk_to_educator_text
+from components.more_page import more_text
 #####
 ###
 ##
@@ -112,12 +115,12 @@ app.layout = dbc.Container([
                     label_style={"color":CHOP.dark_blue}, 
                     activeTabClassName="fw-bold"
                     ),
-            dbc.Tab("Links to office hours, etc.", 
+            dbc.Tab(talk_to_educator_text, 
                     label="Talk to an Educator", 
                     label_style={"color":CHOP.dark_blue}, 
                     activeTabClassName="fw-bold"
                     ),
-            dbc.Tab("About Us, links to GitHub, network graph", 
+            dbc.Tab(more_text, 
                     label="More", 
                     label_style={"color":CHOP.dark_blue}, 
                     activeTabClassName="fw-bold"
