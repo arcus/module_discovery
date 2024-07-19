@@ -37,7 +37,7 @@ left_hand_nav_bar = dbc.Container([
     id="general_options_collapse_button", color="dark", outline=True, size="sm", className="me-1"),
     dbc.Badge("?", id="general_options_info_button", pill=True,  color="light", text_color="dark"),
     dbc.Popover(
-            dbc.PopoverBody(dcc.Markdown("A **good first modules** will give you a good idea of the flavor of these educational resources. These modules are frequently introductions to broader topics and have no prerequisites or coding requirements. \n\n You can also filter for modules that do not require any hands on coding, or modules that are primarily hands on exercises.")),
+            dbc.PopoverBody(dcc.Markdown("A **good first module** will give you a good idea of the flavor of these educational resources. These modules are frequently introductions to broader topics and have no prerequisites or coding requirements. \n\n You can also filter for modules that **do not require any hands on coding**, or modules that are **primarily hands on exercises**.")),
             target="general_options_info_button",
             trigger="hover",
         ),

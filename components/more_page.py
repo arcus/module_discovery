@@ -1,5 +1,6 @@
-from dash import Dash, html, dcc
+from dash import html, dcc
 import dash_bootstrap_components as dbc
+import assets.CHOP_colors as CHOP
 
 
 modules_text = '''
@@ -21,11 +22,25 @@ The inner workings of this website depend on the rich metadata we keep on the ed
 '''
 more_text = html.Div(children=[
                 html.Br(),
-                dbc.Container([dcc.Markdown("## Learn more about..."),
+                dbc.Container([html.H2("Learn more about..."),
                 html.Br(),
-                dcc.Markdown(modules_text),
+                html.H3("The Modules"),
+                html.A("The educational modules linked to on this webpage were built using "),
+                html.A("LiaScript", href="https://liascript.github.io", target="_blank", style={"color":CHOP.dark_blue}),
+                html.A(" as part of the "),
+                html.A("Data and Analytics for Research Training (DART)", href="https://arcus.github.io/education_modules/", target="_blank", style={"color":CHOP.dark_blue}),
+                html.A("."),
+                html.Br(),
+                html.Br(),
+                html.A("The DART program provides free, open source educational materials to help working biomedical researchers gain the data science knowledge to expand and improve upon the work they are already doing.The program consists of instructional modules which teach data science and related skills to researchers, in alignment with the NIH emphasis on improving research reproducibility, transparency, and rigor."),
+                html.Br(),
+                html.Br(),
+                html.A("The educational materials created for the DART program are publicly available on GitHub", href="https://github.com/arcus/education_modules", target="_blank", style={"color":CHOP.dark_blue}),
+                html.A(" for you to use, re-use, and re-mix under CC-BY-SA-4.0 license."),
+                html.Br(),
                 html.Br(),
                 dcc.Markdown(GitHub_link),
                 html.Br()
                 ])])
-# \n \n #### The DART Program \n \n \n \n  #### How this webpage was built \n \n #### The knowledge graph of the modules. "
+
+# html.A("title", href="url", target="_blank", style={"color":CHOP.dark_blue}),
