@@ -1,4 +1,4 @@
-from dash import html, Input, Output, State
+from dash import html, Input, Output, State, dcc
 import dash_bootstrap_components as dbc
 import assets.CHOP_colors as CHOP
 from components.visualization_panels.knowledge_graph import combined_visualization_panel
@@ -46,8 +46,11 @@ more_text = html.Div(children=[
                 html.Br(),
                 html.Br(),
                 html.A("The inner workings of this website depend on the rich metadata we keep on the educational modules, including the "),
-                dbc.Button("knowledge graph of how all modules are interrelated.", id="knowledge_graph", n_clicks=0, style={"background-color":CHOP.light_blue_tint[2], "color":CHOP.dark_blue}),
-                dbc.Modal([combined_visualization_panel],
+                dbc.Button("knowledge graph", id="knowledge_graph", n_clicks=0, style={"background-color":CHOP.light_blue_tint[2], "color":CHOP.dark_blue}),
+                html.A(" of how all modules are interrelated."),
+                dbc.Modal([
+                    dbc.ModalHeader(dcc.Markdown("### Knowledge graph")),
+                    dbc.ModalBody([dcc.Markdown("Zoom in and move modules around to see how they are connected to each other. "), combined_visualization_panel])],
                             id="network_graph_modal",
                             size="lg",
                             scrollable=False,

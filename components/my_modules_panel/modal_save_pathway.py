@@ -12,16 +12,8 @@ def modal_my_module_list(hidden_pathway):
     return dbc.Modal(
                     dbc.ModalBody(children=[
                         dcc.Markdown("**Copy these links and paste them into a document or email for future reference:**"),
-                        dcc.Markdown([' '.join(copyable_markdown)], id="list_for_clipboard"),
-                        dcc.Clipboard(
-                            target_id="list_for_clipboard",
-                            style={
-                                "position": "absolute",
-                                "top": 0,
-                                "right": 20,
-                                "fontSize": 15,
-                            },
-                        )], 
+                        dcc.Markdown([' '.join(copyable_markdown)], id="list_for_clipboard")
+                        ], 
                         style={'width':'475px'}),
                     id="copy_my_modules_modal",
                     is_open=False
