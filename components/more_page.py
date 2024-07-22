@@ -22,7 +22,8 @@ The inner workings of this website depend on the rich metadata we keep on the ed
 '''
 more_text = html.Div(children=[
                 html.Br(),
-                dbc.Container([html.H2("Learn more about..."),
+                dbc.Container([
+                html.H2("Learn more about..."),
                 html.Br(),
                 html.H3("The Modules"),
                 html.A("The educational modules linked to on this webpage were built using "),
@@ -39,8 +40,13 @@ more_text = html.Div(children=[
                 html.A(" for you to use, re-use, and re-mix under CC-BY-SA-4.0 license."),
                 html.Br(),
                 html.Br(),
-                dcc.Markdown(GitHub_link),
-                html.Br()
+                html.H3("This Webpage"),
+                html.A("This webpage is an open source project, and you can see the "),
+                html.A("source code on GitHub.", href="https://github.com/arcus/module_discovery?tab=readme-ov-file#module-discovery-app", target="_blank", style={"color":CHOP.dark_blue}),
+                html.Br(),
+                html.Br(),
+                html.A("The inner workings of this website depend on the rich metadata we keep on the educational modules, including the "),
+                html.A("knowledge graph of how all modules are interrelated", href="url", target="_blank", style={"color":CHOP.dark_blue}),
                 ])])
 
 # html.A("title", href="url", target="_blank", style={"color":CHOP.dark_blue}),

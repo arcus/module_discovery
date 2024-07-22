@@ -16,16 +16,27 @@ def pathway_card(pathway):
     card = dbc.Card(
     [
         dbc.CardHeader(dbc.Row([
-          dbc.Col("", width = 6), 
-          dbc.Col("", width = 3), 
+          dbc.Col(html.A(pathway["name"], style={'font-size':'125%', "font-weight": "bold"}), width = 9), 
+          #dbc.Col("", width = 3), 
           dbc.Col("~ "+str(int(pathway_length(pathway)/60))+" hours", width = 3)]),
           ),
         dbc.CardBody(
             [
-                html.A(pathway["name"], style={'font-size':'125%', "font-weight": "bold"}),
+                #html.A(pathway["name"], style={'font-size':'125%', "font-weight": "bold"}),
                 dcc.Markdown(pathway["comment"],
                     #className="card-text",
-                )]),
+                ),
+            dbc.Container(dbc.CardImg(
+            src=pathway["image"],
+            className="d-flex justify-content-center",
+            bottom=True,
+            style={"opacity": 0.7,
+                    "height": "auto", 
+                    "width": "auto",
+                    "max-width": "50px",
+                    "max-height": "50px",
+            }
+        ), class_name="d-flex justify-content-center"),]),
         dbc.CardFooter(          
             dbc.Row([dbc.Col([
                       dbc.Button("More details", id="pathway_details_modal_"+pathway["id"], n_clicks=0, style={"background-color":CHOP.light_blue_tint[3], "border-width":"0px", "color":CHOP.black}),
