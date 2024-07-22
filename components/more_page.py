@@ -1,7 +1,7 @@
-from dash import html, dcc
+from dash import html, Input, Output, State
 import dash_bootstrap_components as dbc
 import assets.CHOP_colors as CHOP
-
+from components.visualization_panels.knowledge_graph import combined_visualization_panel
 
 modules_text = '''
 ### The Modules
@@ -46,7 +46,22 @@ more_text = html.Div(children=[
                 html.Br(),
                 html.Br(),
                 html.A("The inner workings of this website depend on the rich metadata we keep on the educational modules, including the "),
-                html.A("knowledge graph of how all modules are interrelated", href="url", target="_blank", style={"color":CHOP.dark_blue}),
+                dbc.Button("knowledge graph of how all modules are interrelated.", id="knowledge_graph", n_clicks=0, style={"background-color":CHOP.light_blue_tint[2], "color":CHOP.dark_blue}),
+                dbc.Modal([combined_visualization_panel],
+                            id="network_graph_modal",
+                            size="lg",
+                            scrollable=False,
+                            is_open=False,),
                 ])])
 
-# html.A("title", href="url", target="_blank", style={"color":CHOP.dark_blue}),
+def show_network_graph(app):
+    @app.callback(
+        Output("network_graph_modal", "is_open"),
+        Input("knowledge_graph", "n_clicks"),
+        State("network_graph_modal", "is_open"),
+        prevent_initial_call=True
+    )
+    def toggle_modal(n1, is_open):
+        if n1:
+            return not is_open
+        return is_open

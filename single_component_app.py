@@ -39,7 +39,7 @@ pre_made_pathways = pre_made_pathways.pre_made_pathways
 modal_copy_my_module_list = modal_save_pathway.modal_copy_my_module_list
 
 from components.talk_to_educator import talk_to_educator_text
-from components.more_page import more_text
+from components.more_page import more_text, show_network_graph
 #####
 ###
 ##
@@ -150,6 +150,7 @@ clickable_module_list_callbacks.create_clickable_module_list(app)
 modal_card_pop_up(app)
 modal_pathway_pop_up(app)
 modal_copy_my_module_list(app)
+show_network_graph(app)
 
 callbacks.update_search_results.update_hidden_filtered_modules(app)
 
