@@ -8,7 +8,8 @@ total_modules = len(module_data.df.index)
 def create_clickable_module_list(app):
    @app.callback(Output('clickable_module_links', 'children'),
                Output("search_results_message", 'children'),
-               Input('hidden_filtered_modules_list', 'children'))
+               Input('hidden_filtered_modules_list', 'children'),
+               prevent_initial_callback=True)
    def create_module_links(matching_modules):
       matches = []
       for module_id in module_data.df.index:
