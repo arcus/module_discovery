@@ -4,9 +4,9 @@ import assets.CHOP_colors as CHOP
 import module_data 
 
 
-add_all_to_my_modules = dbc.Button("Add all to my pathway", id="add_filtered_to_my_modules", style={"background-color":CHOP.green_tint[2], "border-width":"0px", "color":CHOP.black})
+add_all_to_my_modules = dbc.Button("Add all to my pathway", id="add_filtered_to_my_modules", n_clicks=0, style={"background-color":CHOP.green_tint[2], "border-width":"0px", "color":CHOP.black})
 
-remove_all_from_my_modules = dbc.Button("Remove all from my pathway", id="remove_filtered_from_my_modules", style={"background-color":CHOP.green_tint[2], "border-width":"0px", "color":CHOP.black})
+remove_all_from_my_modules = dbc.Button("Remove all from my pathway", id="remove_filtered_from_my_modules", n_clicks=0, style={"background-color":CHOP.green_tint[2], "border-width":"0px", "color":CHOP.black})
 
 
 clickable_module_list = html.Div(
