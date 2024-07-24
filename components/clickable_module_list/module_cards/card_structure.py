@@ -38,5 +38,6 @@ def module_card(module_id):
           )
     ],
     style={"width":"375px"},
-    className="m-2"
+    className="m-2",
+    id="mini_card_"+module_id
 )

@@ -1,7 +1,8 @@
-from dash import Dash, html, Input, Output, dcc, ctx, State
+from dash import html, dcc
 import dash_bootstrap_components as dbc
 import assets.CHOP_colors as CHOP
 import module_data 
+from .module_cards.card_structure import module_card
 
 
 add_all_to_my_modules = dbc.Button("Add all to my pathway", id="add_filtered_to_my_modules", n_clicks=0, style={"background-color":CHOP.green_tint[2], "border-width":"0px", "color":CHOP.black})
@@ -26,9 +27,9 @@ clickable_module_list = html.Div(
                         html.Hr(),
                           ], style={'background-color':CHOP.light_blue_tint[1]}),
                     #html.Br(),
-                     html.Div([], id='clickable_module_links', 
+                     html.Div([module_card(module_id) for module_id in module_data.df.index], id='clickable_module_links', 
                               style={"maxHeight": "550px", "overflow": "scroll"}, 
-                              #className="col-12"
+                              className="d-flex flex-wrap justify-content-around"
                               )
                      ]       
                 ),
