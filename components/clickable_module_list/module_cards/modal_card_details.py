@@ -1,6 +1,15 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data 
+import re
+
+def no_links(markdown_text):
+    link_free_text = markdown_text
+    #all_links = re.findall('\]\(http',markdown_text)
+    all_links = re.findall('\[[^\]]+\]\(http[^ ]+\)',markdown_text)
+    for markdown_link in markdown_text:
+        link_free_text = re.sub('\[([^\]]+)\]\(http[^ ]+\)', '\\1',  link_free_text)
+    return link_free_text
 
 
 def modal_module_details(module_id):
@@ -10,13 +19,13 @@ def modal_module_details(module_id):
                     dbc.ModalBody(
                         [dcc.Markdown("By " + module_data.df.loc[module_id,'author']),
                         dcc.Markdown("Estimated length: " + module_data.df.loc[module_id,'estimated_time_in_minutes']+" minutes"),
-                        #dcc.Markdown(module_data.df.loc[module_id,'comment']),
                         dcc.Markdown("**Description:**"),
                         dcc.Markdown(module_data.df.loc[module_id,'long_description']),
                         dcc.Markdown("**Learning objectives:**"),
                         dcc.Markdown(module_data.df.loc[module_id,'learning_objectives']),
                         dcc.Markdown("**What should I already know?**"),
-                        dcc.Markdown(module_data.df.loc[module_id,'pre_reqs'])
+                        #html.A(module_data.df.loc[module_id,'pre_reqs']),
+                        html.A(no_links(module_data.df.loc[module_id,'pre_reqs']))
                         ]
                     ),
                     dbc.ModalFooter(

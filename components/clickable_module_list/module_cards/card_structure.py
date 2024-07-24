@@ -23,7 +23,8 @@ def module_card(module_id):
                 
                 ]),
                 dcc.Markdown(module_data.df.loc[module_id,'comment'], className="card-text"),
-            ]
+            ],
+            style={"height":'200px', "overflow":"scroll"}
         ),
         dbc.CardFooter(
           dbc.Row([dbc.Col([
