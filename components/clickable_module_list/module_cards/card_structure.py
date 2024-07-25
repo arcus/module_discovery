@@ -19,7 +19,7 @@ def module_card(module_id):
           ),
         dbc.CardBody(
             [
-                dbc.Row([html.A(module_data.df.loc[module_id,'title'],href="https://liascript.github.io/course/?https://raw.githubusercontent.com/arcus/education_modules/main/"+ module_id +"/" + module_id + ".md" , target="_blank", className="card-title", style={'font-size':'125%', "font-weight": "bold"}),
+                dbc.Row([html.A(module_data.df.loc[module_id,'title'],href="https://liascript.github.io/course/?https://raw.githubusercontent.com/arcus/education_modules/main/"+ module_id +"/" + module_id + ".md" , target="_blank", className="card-title", style={'font-size':'125%', "font-weight": "bold", "color":CHOP.black}),
                 
                 ]),
                 dcc.Markdown(module_data.df.loc[module_id,'comment'], className="card-text"),

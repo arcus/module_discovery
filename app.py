@@ -22,6 +22,29 @@ app_title = app_title.app_title
 from components.clickable_module_list import clickable_module_list, clickable_module_list_callbacks
 clickable_module_list_panel = clickable_module_list.clickable_module_list
 
+#
+##
+###
+#### NEW STUFF!!!
+from components.clickable_module_list.module_cards import modal_card_details
+modal_card_pop_up = modal_card_details.create_clickable_module_list
+
+import assets.CHOP_colors as CHOP
+
+from components.my_modules_panel import pathway_card_details
+modal_pathway_pop_up = pathway_card_details.pathway_details_modals
+
+from components.my_modules_panel import pre_made_pathways, modal_save_pathway
+pre_made_pathways = pre_made_pathways.pre_made_pathways
+modal_copy_my_module_list = modal_save_pathway.modal_copy_my_module_list
+
+from components.talk_to_educator import talk_to_educator_text
+from components.more_page import more_text, show_network_graph
+#####
+###
+##
+#
+
 from components.module_details_panel import module_details_panel, module_details_panel_callbacks
 module_information = module_details_panel.module_details_panel
 
@@ -60,8 +83,6 @@ server = app.server
 app.layout = dbc.Container([
 
     # Visualizations being tested out:
-    exploratory_graph,
-    html.Hr(),
 
     # Banner heading
     dbc.Row(children=[app_title]),
@@ -69,45 +90,44 @@ app.layout = dbc.Container([
     html.Br(),
     
     # Main body
-    dbc.Row(children=[
-        
-        # Left hand search bar
-        dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': '#ADD8E6'}),
-        
-        # Center accordion 
-        dbc.Col([
-            dbc.Accordion([
-                # Search Results
-                dbc.AccordionItem(clickable_module_list_panel, title="Search Results", item_id="search_results"), 
-                # User Pathway
-                dbc.AccordionItem(html.Div(my_modules_panel), title="Build Your Own Pathway", item_id="selected_modules"), 
-                # Module Details
-                dbc.AccordionItem(module_information, title="Module Details", item_id="module_details")
-            ],
-            active_item=["search_results", "selected_modules", "module_details"],
-            always_open=True,
-            ),
-            # Active module visualization goes here.
-            #html.Div([active_module_visualization], style={"maxHeight": "400px"}),
-            ],
-            xs=12, sm=6, md=8, xxl=5),
-        
-        # Right hand visualization panel
-        dbc.Col(children=[combined_visualization_panel,
-        html.Br(),
-        html.Hr(),
-        html.Br(),
-        active_module_visualization
-
-            # dcc.Tabs([ ## Dash Core Components of tabs must be used, cytoscape graphs don't play nice with dbc tabs.
-            #     dcc.Tab(combined_visualization_panel, label="Combined Visualization"),
-            #     dcc.Tab(pathway_visualization, label="Your Pathway"),
-            #     #dcc.Tab(active_module_visualization, label="Focus on one Module"),
-            #     dcc.Tab(search_results_visualization, label="Search Results")
-            # ])
-        ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6', 'padding' : '25px'}),
-        
-        ]),
+    dbc.Row(
+        dbc.Tabs([
+            dbc.Tab(dbc.Row(children=[
+                        
+                        # Left hand search bar
+                        dbc.Col([left_hand_nav_bar], xs=12, sm=4, md=3, xxl=2,style={'background-color': CHOP.light_blue_tint[1]}),
+                        
+                        # Center search results 
+                        dbc.Col([clickable_module_list_panel], style={'background-color': CHOP.light_blue_tint[1]})
+                         ]),
+                    label="Explore Modules", 
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold"
+                    ),
+            dbc.Tab(pre_made_pathways, 
+                    label="Explore Pathways", 
+                    label_style={"color":CHOP.dark_blue},                    
+                    activeTabClassName="fw-bold",
+                    id="explore_pathways_tab"
+                    ),
+            dbc.Tab(my_modules_panel, 
+                    label="Your Learning Pathway", 
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold"
+                    ),
+            dbc.Tab(talk_to_educator_text, 
+                    label="Talk to an Educator", 
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold"
+                    ),
+            dbc.Tab(more_text, 
+                    label="More", 
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold"
+                    ),
+        ]
+        )
+        ),
     
     #html.Hr(), html.Hr(),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
@@ -120,18 +140,25 @@ app.layout = dbc.Container([
 
 # Initialize all INTRAcomponent callbacks
 left_hand_nav_bar_callbacks.get_left_hand_nav_bar_callbacks(app)
-module_details_panel_callbacks.update_module_info_panel(app)
+#module_details_panel_callbacks.update_module_info_panel(app)
 my_modules_callbacks.show_my_modules_list(app)
 
 # Initialize all INTERcomponent callbacks next...
-callbacks.render_combined_visualization.turn_nodes_on_off(app)
+#callbacks.render_combined_visualization.turn_nodes_on_off(app)
 clickable_module_list_callbacks.create_clickable_module_list(app)
+
+modal_card_pop_up(app)
+modal_pathway_pop_up(app)
+modal_copy_my_module_list(app)
+show_network_graph(app)
+
 callbacks.update_search_results.update_hidden_filtered_modules(app)
-callbacks.render_search_results.show_search_results_visually(app)
-callbacks.update_active_node.update_active_node(app)
-callbacks.render_active_node.render_active_node(app)
+
+#callbacks.render_search_results.show_search_results_visually(app)
+#callbacks.update_active_node.update_active_node(app)
+#callbacks.render_active_node.render_active_node(app)
 callbacks.update_pathway.update_pathway(app)
-callbacks.render_pathway.show_pathway_visually(app)
+#callbacks.render_pathway.show_pathway_visually(app)
 
 # turn on the debugger if using it
 #callbacks.debugger.debugger(app)
