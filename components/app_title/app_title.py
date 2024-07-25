@@ -2,10 +2,10 @@ from dash import html
 import dash_bootstrap_components as dbc
 import assets.CHOP_colors as CHOP
 
-image_path = 'assets/RI_logo.png'
+image_path = 'assets/chop-ri--arcuslogo.png'
 
 branding_logo = html.A(
-    href="https://www.research.chop.edu/department-of-biomedical-and-health-informatics",
+    href="https://www.research.chop.edu/applications/arcus",
     children=[
         html.Img(
             alt="Link to Children's Hospital of Philadelphia Department of Biomedical and Health Informatics",
