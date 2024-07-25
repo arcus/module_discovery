@@ -50,7 +50,7 @@ import callbacks.update_pathway
 ## Talk to an Educator and More tabs:
 
 from components.talk_to_educator import talk_to_educator_text
-from components.more_page import more_text, show_network_graph
+from components.more_page.more_page import more_text, show_network_graph
 
 ## Hidden components on which the app relies:
 from components import hidden_filtered_modules, hidden_pathway 

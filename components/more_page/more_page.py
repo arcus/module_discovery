@@ -1,7 +1,7 @@
 from dash import html, Input, Output, State, dcc
 import dash_bootstrap_components as dbc
 import assets.CHOP_colors as CHOP
-from components.visualization_panels.knowledge_graph import combined_visualization_panel
+from components.more_page.knowledge_graph import combined_visualization_panel
 
 modules_text = '''
 ### The Modules
