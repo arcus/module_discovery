@@ -2,7 +2,7 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data 
-from components.left_hand_nav_bar import search_panel 
+from components.explore_modules.left_hand_nav_bar import search_panel 
 search_results = search_panel.search_results
 
 def update_search_results(general_options_value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_term, collection_value):

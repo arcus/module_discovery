@@ -17,31 +17,31 @@ app_title = app_title.app_title
 
 ### Left-hand navigation bar
 
-from components.left_hand_nav_bar import left_hand_nav_bar, left_hand_nav_bar_callbacks, search_panel
+from components.explore_modules.left_hand_nav_bar import left_hand_nav_bar, left_hand_nav_bar_callbacks, search_panel
 left_hand_nav_bar = left_hand_nav_bar.left_hand_nav_bar
 search_panel = search_panel.search_panel
 
 ### Search results
 
-from components.clickable_module_list import clickable_module_list, clickable_module_list_callbacks
+from components.explore_modules.clickable_module_list import clickable_module_list, clickable_module_list_callbacks
 clickable_module_list_panel = clickable_module_list.clickable_module_list
 
 import callbacks.update_search_results
 
-from components.clickable_module_list.module_cards import modal_card_details
+from components.explore_modules.clickable_module_list.module_cards import modal_card_details
 modal_card_pop_up = modal_card_details.modal_card_pop_up
 
 ## Explore Pathways tab:
 
-from components.my_modules_panel import pathway_card_details
+from components.explore_pathways import pathway_card_details, pre_made_pathways
 modal_pathway_pop_up = pathway_card_details.pathway_details_modals
 
 ## Your Learning Pathways tab:
 
-from components.my_modules_panel import my_modules, my_modules_callbacks
-my_modules_panel = my_modules.my_modules_panel
+from components.your_learning_pathway import my_modules, my_modules_callbacks
+your_learning_pathway = my_modules.your_learning_pathway
 
-from components.my_modules_panel import pre_made_pathways, modal_save_pathway
+from components.your_learning_pathway import modal_save_pathway
 pre_made_pathways = pre_made_pathways.pre_made_pathways
 modal_copy_my_module_list = modal_save_pathway.modal_copy_my_module_list
 
@@ -97,7 +97,7 @@ app.layout = dbc.Container([
                     activeTabClassName="fw-bold",
                     id="explore_pathways_tab"
                     ),
-            dbc.Tab(my_modules_panel, 
+            dbc.Tab(your_learning_pathway, 
                     label="Your Learning Pathway", 
                     label_style={"color":CHOP.dark_blue}, 
                     activeTabClassName="fw-bold"

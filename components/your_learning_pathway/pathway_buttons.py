@@ -1,7 +1,7 @@
 from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data 
-from components.clickable_module_list.module_cards.modal_card_details import modal_module_details
+from components.explore_modules.clickable_module_list.module_cards.modal_card_details import modal_module_details
 import ast #This allows the easy conversion from string back to dictionary
 from network_analysis.poset_processing import poset, hasse 
 
