@@ -38,7 +38,7 @@ def modal_module_details(module_id):
                 is_open=False,
             )
 
-def create_clickable_module_list(app):
+def modal_card_pop_up(app):
     for module_id in module_data.df.index:
         @app.callback(
             Output("modal_"+module_id, "is_open"),
