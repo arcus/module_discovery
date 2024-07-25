@@ -1,11 +1,10 @@
-from dash import Dash, html, Input, Output, dcc, ctx, State
+from dash import html, dcc
 import dash_bootstrap_components as dbc
 from .modal_card_details import modal_module_details
 from .module_level import module_level_icon
 from assets.collections import collections_icons
 import assets.CHOP_colors as CHOP
 import module_data 
-from network_analysis.required_expertise_times import required_expertise_times
 
 
 def module_card(module_id):

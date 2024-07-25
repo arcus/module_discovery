@@ -1,4 +1,4 @@
-from dash import Dash, html, Input, Output, dcc, ctx, State
+from dash import html, dcc
 import dash_bootstrap_components as dbc
 from .search_panel import search_panel as search_panel
 from assets.collections import collection_symbols_dict, collection_descriptions_dict, collection_names_dict
