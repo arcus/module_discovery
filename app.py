@@ -89,6 +89,12 @@ app.layout = dbc.Container([
                          ]),
                     label="Explore Modules", 
                     label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold",
+                    style={"background-color": CHOP.light_blue_tint[1]}
+                    ),
+            dbc.Tab(talk_to_educator_text, 
+                    label="Talk to an Educator", 
+                    label_style={"color":CHOP.dark_blue}, 
                     activeTabClassName="fw-bold"
                     ),
             dbc.Tab(pre_made_pathways, 
@@ -99,11 +105,6 @@ app.layout = dbc.Container([
                     ),
             dbc.Tab(your_learning_pathway, 
                     label="Your Learning Pathway", 
-                    label_style={"color":CHOP.dark_blue}, 
-                    activeTabClassName="fw-bold"
-                    ),
-            dbc.Tab(talk_to_educator_text, 
-                    label="Talk to an Educator", 
                     label_style={"color":CHOP.dark_blue}, 
                     activeTabClassName="fw-bold"
                     ),
