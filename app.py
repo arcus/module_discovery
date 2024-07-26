@@ -1,52 +1,64 @@
-from dash import Dash, html, Input, Output, dcc, ctx, State
+from dash import Dash, html
 import dash_bootstrap_components as dbc
-import dash_cytoscape as cyto
+import assets.CHOP_colors as CHOP
 
 # Import the module data as a dataframe
 import module_data
 df = module_data.df
 
-# Import styling from assets directory
-from assets import default_stylesheet 
+# Import app components and callbacks
 
-# Import app components and their internal callbacks
-from components.left_hand_nav_bar import left_hand_nav_bar, left_hand_nav_bar_callbacks 
-left_hand_nav_bar = left_hand_nav_bar.left_hand_nav_bar
-
-from components.visualization_panel import visualization_panel
-visualization_panel = visualization_panel.visualization_panel
+## App Title
 
 from components.app_title import app_title
 app_title = app_title.app_title
 
-from components.clickable_module_list import clickable_module_list, clickable_module_list_callbacks
-clickable_module_list_panel = clickable_module_list.clickable_module_list
+## Explore Modules tab:
 
-from components.module_details_panel import module_details_panel, module_details_panel_callbacks
-module_information = module_details_panel.module_details_panel
+### Left-hand navigation bar
 
-from components.left_hand_nav_bar import search_panel
+from components.explore_modules.left_hand_nav_bar import left_hand_nav_bar, left_hand_nav_bar_callbacks, search_panel
+left_hand_nav_bar = left_hand_nav_bar.left_hand_nav_bar
 search_panel = search_panel.search_panel
 
-from components.my_modules_panel import my_modules, my_modules_callbacks
-my_modules_panel = my_modules.my_modules_panel
+### Search results
 
-# Import the hidden components that keep track of the filtered modules and the active module
-from components import hidden_filtered_modules, hidden_active_module, hidden_my_modules, hidden_pathway
+from components.explore_modules.clickable_module_list import clickable_module_list, clickable_module_list_callbacks
+clickable_module_list_panel = clickable_module_list.clickable_module_list
+
+import callbacks.update_search_results
+
+from components.explore_modules.clickable_module_list.module_cards import modal_card_details
+modal_card_pop_up = modal_card_details.modal_card_pop_up
+
+## Explore Pathways tab:
+
+from components.explore_pathways import pathway_card_details, pre_made_pathways
+modal_pathway_pop_up = pathway_card_details.pathway_details_modals
+
+## Your Learning Pathways tab:
+
+from components.your_learning_pathway import my_modules, my_modules_callbacks
+your_learning_pathway = my_modules.your_learning_pathway
+
+from components.your_learning_pathway import modal_save_pathway
+pre_made_pathways = pre_made_pathways.pre_made_pathways
+modal_copy_my_module_list = modal_save_pathway.modal_copy_my_module_list
+
+import callbacks.update_pathway
+
+## Talk to an Educator and More tabs:
+
+from components.talk_to_educator import talk_to_educator_text
+from components.more_page.more_page import more_text, show_network_graph
+
+## Hidden components on which the app relies:
+from components import hidden_filtered_modules, hidden_pathway 
 hidden_filtered_modules = hidden_filtered_modules.hidden_filtered_modules
-hidden_active_module = hidden_active_module.hidden_active_module
-hidden_my_modules = hidden_my_modules.hidden_my_modules
 hidden_pathway = hidden_pathway.hidden_pathway
 
-# Import inter-component callbacks
-import callbacks.stylesheet_callbacks
-import callbacks.active_node_in
-import callbacks.active_node_out
-import callbacks.filter_modules_in
-import callbacks.debugger
-#import callbacks.my_modules_in
-import callbacks.pathway_in
-
+# For debugging, un-comment this:
+#import callbacks.debugger
 
 
 
@@ -58,53 +70,82 @@ server = app.server
 
 # Set up the layout of the app
 app.layout = dbc.Container([
-    dbc.Row(children=[
-        app_title,
-        ]
-        ),
+    
+    # Banner heading
+    dbc.Row(children=[app_title]),
+    
     html.Br(),
-    dbc.Row(children=[
-        dbc.Col([left_hand_nav_bar], xs=12, sm=6, md=4, xxl=2,style={'background-color': '#ADD8E6'}),
-        dbc.Col([
-            dbc.Accordion([
-                dbc.AccordionItem(clickable_module_list_panel, title="Search Results", item_id="search_results"), 
-            #html.Hr(), html.Br(), 
-                dbc.AccordionItem(html.Div(my_modules_panel), title="Selected Modules", item_id="selected_modules"), 
-            #html.Hr(), html.Br(),
-                dbc.AccordionItem(module_information, title="Module Details", item_id="module_details")
-            ],
-            active_item=["search_results", "selected_modules", "module_details"],
-            always_open=True,
-            )],
-            xs=12, sm=6, md=8, xxl=5),
-        dbc.Col(children=[visualization_panel
-        ],xs=12, sm=12, md=12, xxl=5, style={'border-style': 'solid', 'border-color': '#ADD8E6'}),
-        
-        
-        ]),
-   #html.Hr(), html.Hr(),
+    
+    # Main body has 5 tabs:
+    dbc.Row(
+        dbc.Tabs([
+            dbc.Tab(dbc.Row(children=[
+                        
+                        # Left hand search bar
+                        dbc.Col([left_hand_nav_bar], xs=12, sm=4, md=3, xxl=2,style={'background-color': CHOP.light_blue_tint[1]}),
+                        
+                        # Center search results 
+                        dbc.Col([clickable_module_list_panel], style={'background-color': CHOP.light_blue_tint[1]})
+                         ]),
+                    label="Explore Modules", 
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold",
+                    style={"background-color": CHOP.light_blue_tint[1]}
+                    ),
+            dbc.Tab(talk_to_educator_text, 
+                    label="Talk to an Educator", 
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold"
+                    ),
+            dbc.Tab(pre_made_pathways, 
+                    label="Explore Pathways", 
+                    label_style={"color":CHOP.dark_blue},                    
+                    activeTabClassName="fw-bold",
+                    id="explore_pathways_tab"
+                    ),
+            dbc.Tab(your_learning_pathway, 
+                    label="Your Learning Pathway", 
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold"
+                    ),
+            dbc.Tab(more_text, 
+                    label="More", 
+                    label_style={"color":CHOP.dark_blue}, 
+                    activeTabClassName="fw-bold"
+                    ),
+        ]
+        )
+        ),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
-    html.Div(hidden_active_module), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
     html.Div(hidden_pathway), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes.
     #html.Div(children=["blue"], id="debugger"),     html.Div(children=["blue"], id="debugger2")
     ],
     style={'padding' : '25px'},
     fluid=True)
 
-# Initialize all INTRAcomponent callbacks
-left_hand_nav_bar_callbacks.get_left_hand_nav_bar_callbacks(app)
-module_details_panel_callbacks.update_module_info_panel(app)
-my_modules_callbacks.show_my_modules_list(app)
+# Initialize all callbacks
 
-# Initialize all INTERcomponent callbacks next...
-callbacks.stylesheet_callbacks.turn_nodes_on_off(app)
-clickable_module_list_callbacks.create_clickable_module_list(app)
-callbacks.filter_modules_in.update_hidden_filtered_modules(app)
-callbacks.active_node_in.active_node_in(app)
-#callbacks.active_node_out.active_node_out(app)
-callbacks.debugger.debugger(app)
-#callbacks.my_modules_in.my_modules_in(app)
-callbacks.pathway_in.pathway_in(app)
+## Explore Modules page:
+left_hand_nav_bar_callbacks.get_left_hand_nav_bar_callbacks(app) # Lets users expand and collapse fields in the left-hand search bar
+callbacks.update_search_results.update_hidden_filtered_modules(app) # Generates a list of modules that match user input to left-hand search bar
+clickable_module_list_callbacks.create_clickable_module_list(app) # Makes only the module cards of modules that match user's search terms visible
+
+## Your Learning Pathway page
+my_modules_callbacks.show_my_modules_list(app) # Displays the user's pathway 
+modal_copy_my_module_list(app) # Opens the copyable links based on the users current pathway
+
+## Explore Pathways page
+modal_pathway_pop_up(app) # Displays the modal description of the pre-made pathways
+
+## More page
+show_network_graph(app) # Displays a modal of the network graph :)
+
+## Multi-page callbacks
+modal_card_pop_up(app) # Opens the module details modal whether the module name is clicked on the Explore Modules page or the Your Learning Pathway page
+callbacks.update_pathway.update_pathway(app) # Updates the user's pathway based on interactions on the Explore Modules, Explore Pathways, and Your Learning Pathway pages.
+
+# turn on the debugger if using it
+#callbacks.debugger.debugger(app)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
