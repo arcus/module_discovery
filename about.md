@@ -22,4 +22,6 @@ The DART program was created by the Arcus Education team, a 5 person group withi
 
 While the Module Discovery Tool is an offshoot of that work, it is primarily the work of one team member, [Elizabeth Drellich](https://github.com/drelliche). 
 
+
 Significant additional help with this project has come from other members of the Arcus project at CHOP.
+
