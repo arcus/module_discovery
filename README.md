@@ -4,9 +4,7 @@
 
 The purpose of this app is to allow for easier discovery of the educational modules created as part of the DART program. Ultimately this will replace the current public-facing [list of all modules on the DART website](https://arcus.github.io/education_modules/list_of_modules).
 
-This app will allow users to learn more about each module, investigate how the modules are connected, and search for particular topics or key words.
-
-![The module discovery app.](media/example_screenshot.png)
+This app will allow users to learn more about each module, investigate how the modules are connected, and search for particular topics or key words and build thier own pathways.
 
 **NOTE:** This is a prototype that is in a phase of rapid development. All effort will be made to keep this README up to date, but some changes might slip by. If something isn't working as expected, please let us know by creating an issue.
 
@@ -21,10 +19,8 @@ A public prototype of this app is hosted at [learn.arcus.chop.edu](learn.arcus.c
 There are several top-level folders:
 - `assets` contains the metadata for the educational modules that this app presents.
 - `components` contains each of the panels/components of the app, both the visible and the hidden components. Any callbacks that are internal to a component, e.g. expanding and hiding the component or something within the component, is in the component's directory. 
-- `callbacks` contains any callbacks that transmit information between different components, namely callbacks that update one of the app's hidden components, and callbacks that update visualizations based on the information in the hidden components.
-- `media` contains all graphics and images
+- `callbacks` contains any callbacks that transmit information between different components, namely callbacks that update one of the app's hidden components.
 - `network_analysis` is where the interconnections between modules are processed using the `networkx` package.
-- `stylesheets` is for stylesheets and other visual settings.
 
 Two important python files are also at the top level:
 - `app.py` is the python file which runs the app. It contains the visual layout of the components and calls all of the callbacks.
