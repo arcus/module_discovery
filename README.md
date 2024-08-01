@@ -10,7 +10,7 @@ This app will allow users to learn more about each module, investigate how the m
 
 ## Public prototype
 
-A public prototype of this app is hosted at [learn.arcus.chop.edu](learn.arcus.chop.edu).
+A public prototype of this app is hosted at [https://learn.arcus.chop.edu](https://learn.arcus.chop.edu).
 
 ## Development
 
