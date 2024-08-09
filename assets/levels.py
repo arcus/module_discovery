@@ -15,9 +15,9 @@ level_dictionary = {"intro": {"level_name": "Intro",
                     4: {"level_name": "Level 4",
                         "level_description": "6 to 8 hours of prerequisites"
                         },
-                    5: {"level_name": "Level 5",
-                        "level_description": "More than 8 hours of prerequisites"
-                        },
+                    # 5: {"level_name": "Level 5",
+                    #     "level_description": "More than 8 hours of prerequisites"
+                    #     },
                     }
 
 def module_level(module_id):

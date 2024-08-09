@@ -40,7 +40,7 @@ left_hand_nav_bar = dbc.Container([
 
     search_panel,
     html.Br(),
-    dbc.Button("Clear all selections", id="clear_all_selections",color="dark", outline=True, size="sm", className="me-1"),
+    dbc.Button("Clear all selections", id="clear_all_selections",color="dark", outline=True, size="sm", className="me-1", style={"background-color":CHOP.dark_blue_tint[2]}),
     html.Br(),
     html.Br(),
     # GENERAL OPTIONS
@@ -97,6 +97,26 @@ left_hand_nav_bar = dbc.Container([
     html.Br(),
     html.Br(),
 
+    # LEVEL
+
+    dbc.Button(
+    "Level",
+    id="level_collapse_button", color="dark", outline=True, size="sm", className="me-1"),
+        dbc.Badge("?", id="level_info_button", pill=True,  color="light", text_color="dark"),
+    level_popover(),
+    dbc.Collapse([
+    dbc.Col([
+        dcc.RadioItems(
+        options=[{'label': " "+level_dictionary[key]["level_description"], 'value': key} for key in level_dictionary.keys()]+[
+        {'label': html.A(' Clear selection', style={'color': 'grey'}), 'value': '', },
+        ],
+        id='level_checklist')
+    ],)],
+    id='level_collapse_checklist',
+    is_open=False,
+    ),
+    html.Br(),
+    html.Br(),
 
     # CODING LANGUAGE
 
@@ -153,27 +173,6 @@ left_hand_nav_bar = dbc.Container([
         id='coding_level_checklist')
     ],)],
     id='coding_level_collapse_checklist',
-    is_open=False,
-    ),
-    html.Br(),
-    html.Br(),
-
-    # LEVEL
-
-    dbc.Button(
-    "Level",
-    id="level_collapse_button", color="dark", outline=True, size="sm", className="me-1"),
-        dbc.Badge("?", id="level_info_button", pill=True,  color="light", text_color="dark"),
-    level_popover(),
-    dbc.Collapse([
-    dbc.Col([
-        dcc.RadioItems(
-        options=[{'label': " "+level_dictionary[key]["level_description"], 'value': key} for key in level_dictionary.keys()]+[
-        {'label': html.A(' Clear selection', style={'color': 'grey'}), 'value': '', },
-        ],
-        id='level_checklist')
-    ],)],
-    id='level_collapse_checklist',
     is_open=False,
     ),
     html.Br(),
