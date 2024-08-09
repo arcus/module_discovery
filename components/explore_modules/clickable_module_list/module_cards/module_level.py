@@ -2,8 +2,6 @@ from dash import dcc
 import dash_bootstrap_components as dbc
 import assets.CHOP_colors as CHOP
 from assets.levels import level_dictionary, module_level
-from network_analysis.required_expertise_times import required_expertise_times
-
 
 def module_level_icon(module_id):
   icons = []          
