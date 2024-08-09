@@ -2,6 +2,7 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 from .search_panel import search_panel as search_panel
 from assets.collections import collection_symbols_dict, collection_descriptions_dict, collection_names_dict
+from assets.levels import level_dictionary
 import assets.CHOP_colors as CHOP
 
 def collections_popover():
@@ -16,6 +17,18 @@ def collections_popover():
     return dbc.Popover(
                 dbc.PopoverBody(dcc.Markdown(popover_body)),
             target="collection_info_button",
+            trigger="hover",
+        )
+
+def level_popover():
+    popover_body = ""
+    for level in level_dictionary.keys():
+        popover_body += "**"+level_dictionary[level]["level_name"]+"**: "
+        popover_body += level_dictionary[level]["level_description"]
+        popover_body += "\n \n"
+    return dbc.Popover(
+                dbc.PopoverBody(dcc.Markdown(popover_body)),
+            target="level_info_button",
             trigger="hover",
         )
 
@@ -140,6 +153,27 @@ left_hand_nav_bar = dbc.Container([
         id='coding_level_checklist')
     ],)],
     id='coding_level_collapse_checklist',
+    is_open=False,
+    ),
+    html.Br(),
+    html.Br(),
+
+    # LEVEL
+
+    dbc.Button(
+    "Level",
+    id="level_collapse_button", color="dark", outline=True, size="sm", className="me-1"),
+        dbc.Badge("?", id="level_info_button", pill=True,  color="light", text_color="dark"),
+    level_popover(),
+    dbc.Collapse([
+    dbc.Col([
+        dcc.RadioItems(
+        options=[{'label': " "+level_dictionary[key]["level_description"], 'value': key} for key in level_dictionary.keys()]+[
+        {'label': html.A(' Clear selection', style={'color': 'grey'}), 'value': '', },
+        ],
+        id='level_checklist')
+    ],)],
+    id='level_collapse_checklist',
     is_open=False,
     ),
     html.Br(),

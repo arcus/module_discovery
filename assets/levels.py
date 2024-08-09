@@ -1,10 +1,10 @@
 from network_analysis.required_expertise_times import required_expertise_times
 
-level_dictionary = {0: {"level_name": "Intro",
+level_dictionary = {"intro": {"level_name": "Intro",
                         "level_description": "No prerequisites",
                         },
                     1: {"level_name": "Level 1",
-                        "level_description": "Less than 2 hours of prerequisites"
+                        "level_description": "Up to 2 hours of prerequisites"
                         },
                     2: {"level_name": "Level 2",
                         "level_description": "2 to 4 hours of prerequisites"
@@ -21,6 +21,9 @@ level_dictionary = {0: {"level_name": "Intro",
                     }
 
 def module_level(module_id):
-    return (required_expertise_times(module_id)-1)//120 + 1
+    if required_expertise_times(module_id) == 0:
+        return "intro"
+    else:
+        return ((required_expertise_times(module_id)-1)//120 + 1)
 
 

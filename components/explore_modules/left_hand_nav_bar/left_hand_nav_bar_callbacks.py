@@ -47,6 +47,17 @@ def get_left_hand_nav_bar_callbacks(app):
             return not is_open
         return is_open
     
+    # Level open/close
+    @app.callback(
+        Output("level_collapse_checklist", "is_open"),
+        [Input("level_collapse_button", "n_clicks")],
+        [State("level_collapse_checklist", "is_open")],
+        )
+    def toggle_collapse(n, is_open):
+        if n:
+            return not is_open
+        return is_open
+    
     # Data task open/close
     @app.callback(
         Output("data_task_collapse_checklist", "is_open"),
@@ -73,6 +84,7 @@ def get_left_hand_nav_bar_callbacks(app):
     @app.callback(Output("general_options_checklist", "value"),
         Output("coding_language_checklist", "value"),
         Output("coding_level_checklist", "value"),
+        Output("level_checklist", "value"),
         Output("data_task_checklist", "value"),
         Output("data_domain_checklist", "value"),
         Output("search_input", "value"),
@@ -82,4 +94,4 @@ def get_left_hand_nav_bar_callbacks(app):
     )
     def clear_all_selections(n_clicks):
         if n_clicks:
-            return [], '', '', '', '', '', ''
+            return [], '', '', '', '', '', '' , ''

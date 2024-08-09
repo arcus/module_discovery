@@ -1,11 +1,11 @@
 ### The update_search_results function takes the checklist and radio buttons from the left_hand_nav_bar and returns a list of all modules that match the given filters.
-from dash import Dash, html, Input, Output, dcc, ctx, State
-import dash_bootstrap_components as dbc
+from dash import Input, Output
 import module_data 
 from components.explore_modules.left_hand_nav_bar import search_panel 
+from assets.levels import module_level
 search_results = search_panel.search_results
 
-def update_search_results(general_options_value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_term, collection_value):
+def update_search_results(general_options_value, coding_language_value, coding_level_value,level_value, data_task_value, data_domain_value, search_term, collection_value):
     matching_modules = list(module_data.df.index).copy()
     non_matching_modules = []
     for module in module_data.df.index:
@@ -24,6 +24,9 @@ def update_search_results(general_options_value, coding_language_value, coding_l
                 tracker = tracker*0
         if coding_level_value: # coding level is a radio button, so the output is a string, not a list of strings
             if coding_level_value not in str(module_data.df.loc[module,'coding_level']).lower():
+                tracker = tracker*0
+        if level_value: # level is a radio button, so the output is a string, not a list of strings
+            if not level_value == module_level(module):
                 tracker = tracker*0
         if data_task_value: # coding level is a radio button, so the output is a string, not a list of strings
             if data_task_value not in str(module_data.df.loc[module,'data_task']).lower():
@@ -47,10 +50,11 @@ def update_hidden_filtered_modules(app):
                 Input('general_options_checklist', 'value'),
                 Input('coding_language_checklist', 'value'),
                 Input('coding_level_checklist', 'value'),
+                Input('level_checklist', 'value'),
                 Input('data_task_checklist', 'value'),
                 Input('data_domain_checklist', 'value'),
                 Input('search_input', 'value'),
                 Input('collection_checklist', 'value')
                 )
-    def filtering(value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_value, collection_value):
-        return update_search_results(value, coding_language_value, coding_level_value, data_task_value, data_domain_value, search_value, collection_value)[0]
+    def filtering(value, coding_language_value, coding_level_value, level_value, data_task_value, data_domain_value, search_value, collection_value):
+        return update_search_results(value, coding_language_value, coding_level_value, level_value, data_task_value, data_domain_value, search_value, collection_value)[0]
