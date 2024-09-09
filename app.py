@@ -118,7 +118,7 @@ app.layout = dbc.Container([
                     tab_id="more_tab",
                     ),
         ],
-        active_tab="explore_pathways_tab",
+        active_tab="explore_modules_tab",
         id="navigation_tabs"
         )
         ),
