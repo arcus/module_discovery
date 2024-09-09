@@ -13,6 +13,9 @@ There are 5 pre-made pathways that users can select and then modify to meet thei
 ## Collections
 The attributres of the collections of modules, including their symbols, colors, and descriptions, are stored here.
 
+## Levels
+The way we calculate and describe module levels is stored here.
+
 ## CHOP assets
 - `CHOP_colors.py` contains the color definitions that match Children's Hospital of Philadelphia branding standards.
 - `RI_logo.png` is the Research Insitute's logo.

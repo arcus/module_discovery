@@ -113,3 +113,10 @@ def update_pathway(app):
         
         return new_pathway
 
+def add_pathway_chage_tab(app):
+    @app.callback(Output('navigation_tabs', 'active_tab'),
+                  [Input("use_"+pathway["id"],'n_clicks') for pathway in pathway_list], #these buttons are for users to remove individual modules from their pathway
+                prevent_initial_call=True)
+    def switch_to_pathway_tab(*args):
+        if ctx.triggered_id:
+            return "your_learning_pathway_tab"

@@ -89,31 +89,37 @@ app.layout = dbc.Container([
                          ]),
                     label="Explore Modules", 
                     label_style={"color":CHOP.dark_blue}, 
+                    tab_id="explore_modules_tab",
                     activeTabClassName="fw-bold",
                     style={"background-color": CHOP.light_blue_tint[1]}
                     ),
             dbc.Tab(talk_to_educator_text, 
                     label="Talk to an Educator", 
                     label_style={"color":CHOP.dark_blue}, 
-                    activeTabClassName="fw-bold"
+                    activeTabClassName="fw-bold",
+                    tab_id="talk_to_educator_tab",
                     ),
             dbc.Tab(pre_made_pathways, 
                     label="Explore Pathways", 
                     label_style={"color":CHOP.dark_blue},                    
                     activeTabClassName="fw-bold",
-                    id="explore_pathways_tab"
+                    tab_id="explore_pathways_tab"
                     ),
             dbc.Tab(your_learning_pathway, 
                     label="Your Learning Pathway", 
                     label_style={"color":CHOP.dark_blue}, 
-                    activeTabClassName="fw-bold"
+                    activeTabClassName="fw-bold",
+                    tab_id="your_learning_pathway_tab",
                     ),
             dbc.Tab(more_text, 
                     label="More", 
                     label_style={"color":CHOP.dark_blue}, 
-                    activeTabClassName="fw-bold"
+                    activeTabClassName="fw-bold",
+                    tab_id="more_tab",
                     ),
-        ]
+        ],
+        active_tab="explore_modules_tab",
+        id="navigation_tabs"
         )
         ),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
@@ -143,6 +149,7 @@ show_network_graph(app) # Displays a modal of the network graph :)
 ## Multi-page callbacks
 modal_card_pop_up(app) # Opens the module details modal whether the module name is clicked on the Explore Modules page or the Your Learning Pathway page
 callbacks.update_pathway.update_pathway(app) # Updates the user's pathway based on interactions on the Explore Modules, Explore Pathways, and Your Learning Pathway pages.
+callbacks.update_pathway.add_pathway_chage_tab(app)
 
 # turn on the debugger if using it
 #callbacks.debugger.debugger(app)

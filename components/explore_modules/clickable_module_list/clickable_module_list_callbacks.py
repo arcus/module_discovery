@@ -28,6 +28,8 @@ def create_clickable_module_list(app):
          message = dcc.Markdown("Explore all "+str(total_modules)+" modules or use the filters and search bar to find modules that interest you.", style={'background-color': ''})
       elif number_of_matches == 0:
          message = dcc.Markdown("No modules match your current filters and search terms. Try modifying your search or use the **Clear all selections** button to start over.", style={'background-color': ''})
+      elif number_of_matches == 1:
+         message = dcc.Markdown("There is one module that matches your filters and search terms:", style={'background-color': ''})
       else:
          message = dcc.Markdown("There are "+str(number_of_matches)+" modules that match your filters and search terms:", style={'background-color': ''})
       return message

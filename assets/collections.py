@@ -1,4 +1,3 @@
-from dash import Dash, html, Input, Output, dcc, ctx, State
 import dash_bootstrap_components as dbc
 import module_data 
 import assets.CHOP_colors as CHOP
