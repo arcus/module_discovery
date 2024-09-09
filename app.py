@@ -89,31 +89,36 @@ app.layout = dbc.Container([
                          ]),
                     label="Explore Modules", 
                     label_style={"color":CHOP.dark_blue}, 
+                    tab_id="explore_modules_tab",
                     activeTabClassName="fw-bold",
                     style={"background-color": CHOP.light_blue_tint[1]}
                     ),
             dbc.Tab(talk_to_educator_text, 
                     label="Talk to an Educator", 
                     label_style={"color":CHOP.dark_blue}, 
-                    activeTabClassName="fw-bold"
+                    activeTabClassName="fw-bold",
+                    tab_id="talk_to_educator_tab",
                     ),
             dbc.Tab(pre_made_pathways, 
                     label="Explore Pathways", 
                     label_style={"color":CHOP.dark_blue},                    
                     activeTabClassName="fw-bold",
-                    id="explore_pathways_tab"
+                    tab_id="explore_pathways_tab"
                     ),
             dbc.Tab(your_learning_pathway, 
                     label="Your Learning Pathway", 
                     label_style={"color":CHOP.dark_blue}, 
-                    activeTabClassName="fw-bold"
+                    activeTabClassName="fw-bold",
+                    tab_id="your_learning_pathway_tab",
                     ),
             dbc.Tab(more_text, 
                     label="More", 
                     label_style={"color":CHOP.dark_blue}, 
-                    activeTabClassName="fw-bold"
+                    activeTabClassName="fw-bold",
+                    tab_id="more_tab",
                     ),
-        ]
+        ],
+        active_tab="explore_pathways_tab"
         )
         ),
     html.Div(hidden_filtered_modules), # DONT COMMENT OUT this is visible for debugging purposes, change to 'display': 'none' for production purposes. 
