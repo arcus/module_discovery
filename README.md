@@ -12,6 +12,8 @@ This app will allow users to learn more about each module, investigate how the m
 
 A public prototype of this app is hosted at [https://learn.arcus.chop.edu](https://learn.arcus.chop.edu).
 
+![Data Education Navigator Tool homepage.](media/Landing_Page.png)
+
 ## Development
 
 ### File structure
@@ -19,15 +21,12 @@ A public prototype of this app is hosted at [https://learn.arcus.chop.edu](https
 There are several top-level folders:
 - `assets` contains the metadata for the educational modules that this app presents.
 - `components` contains each of the panels/components of the app, both the visible and the hidden components. Any callbacks that are internal to a component, e.g. expanding and hiding the component or something within the component, is in the component's directory. 
-- `callbacks` contains any callbacks that transmit information between different components, namely callbacks that update one of the app's hidden components.
+- `callbacks` contains any callbacks that transmit information between different components. All callbacks that update one of the app's hidden components are here.
 - `network_analysis` is where the interconnections between modules are processed using the `networkx` package.
 
 Two important python files are also at the top level:
 - `app.py` is the python file which runs the app. It contains the visual layout of the components and calls all of the callbacks.
 - `module_data.py` is where metadata from the assets folder is processed into a single pandas dataframe for the app to use.
-
-#### Mini dataset for debugging
-When developing new features it can be extremely helpful to work out bugs and callbacks on this smaller set of data. Uncomment the last line in `module_data.py` to get a mini dataset for this purpose.
 
 ## Testing
 
@@ -61,7 +60,7 @@ python app.py
 
 This will open a port where you can see the app locally. To see error messages, callbacks, and for the app to live update as you develop, set `debug=True` in the last line of `app.py`.
 
-**NOTE:** There will be one error on loading. You can ignore it completely.
+
 
 ## Accessibility 
 
