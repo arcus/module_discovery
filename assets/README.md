@@ -1,6 +1,6 @@
 # Assets
 
-## education_modules 
+## Education Modules 
 This is where all of the metadata about educational resources is stored. 
 
 - `education_modules.json` contains the metadata from the [education_modules repository](https://github.com/arcus/education_modules). 
@@ -18,7 +18,8 @@ The way we calculate and describe module levels is stored here.
 
 ## CHOP assets
 - `CHOP_colors.py` contains the color definitions that match Children's Hospital of Philadelphia branding standards.
-- `RI_logo.png` is the Research Insitute's logo.
+- `chop-ri--arcuslogo.png` is the Research Insitute's logo with Arcus.
+- `Rubrik-SemiBold.otf` is the CHOP font for the app title.
 
 ## Other assets
 
