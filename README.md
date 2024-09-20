@@ -60,15 +60,36 @@ python app.py
 
 This will open a port where you can see the app locally. To see error messages, callbacks, and for the app to live update as you develop, set `debug=True` in the last line of `app.py`.
 
+## Data, Automations, and Updates
 
+Data for this application comes from the [Education Modules repository](https://github.com/arcus/education_modules). If changes are made, say a new educational module is created, there are 3 steps to getting that module listed on the application's website, some automated and some manual.
+
+### 1. Processing in education_modules repository (automated GitHub action)
+
+The [Process Module Metadata action](https://github.com/arcus/education_modules/actions/workflows/pull_metadata.yml) is run every time there is a push to the main branch of the education_modules repository.
+
+If any metadata has changed, the action updates the [module_data.json file on the metadata_workflow branch](https://github.com/arcus/education_modules/blob/metadata_workflow/assets/metadata/module_data.json). 
+
+### 2. Bringing data over to module_discovery repository (automated or manual GitHub action)
+
+Once a week the [Update metadata from Education Modules repository action](https://github.com/arcus/module_discovery/actions/workflows/update_module_data.yml) runs and if there has been any change to the `module_data.json` file on in the education_modules repository, the file [`/assets/module_data.json`](https://github.com/arcus/module_discovery/blob/main/assets/education_modules.json) is updated here in the `module_discovery` repository.
+
+Before updating the website at https://learn.arcus.chop.edu it is a good idea to [manually run this action as well using the "Run Workflow" button](https://github.com/arcus/module_discovery/actions/workflows/update_module_data.yml) to ensure that the most recent changes are captured.
+
+### Serving the website (manual process)
+
+Updating the GitHub repository does NOT update https://learn.arcus.chop.edu. Follow the instructions in the [DENT - Module Discovery Operational Manual](https://chop365.sharepoint.com/:w:/r/teams/RSCH-Arcus/Shared%20Documents/Arcus%20Drive/Education/Project_Management/Operational%20Manuals/DENT%20-%20Module%20Discovery%20Operational%20Manual.docx?d=wa1f157c57cb4468f90d12cfe47a762d4&csf=1&web=1&e=MimpjF) to deploy the application.
 
 ## Accessibility 
 
-### Features
-All information and relationships represented in the network graphs are also communicated via buttons in the Module Details panel.
+### Goals
+This application should be accessible to all users, whether they are accessing the website at https://learn.arcus.chop.edu or examining the documentation and code.
+
+### Documentation
+All screenshots should have descriptive alt text.
 
 ### Unknowns
-This is a Dash/Plotly app which has not been tested with any accessibilty technologies. 
+This is a Dash/Plotly app which has not yet been tested with any accessibilty technologies. 
 
 ### Suggest improvements
 If you have needs that are not being met, or ideas for how to test or improve the accessibility of this app, please [create an accessibility issue](https://github.com/arcus/module_discovery/issues/new) so we can work to address it!
