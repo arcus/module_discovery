@@ -14,9 +14,7 @@ A public prototype of this app is hosted at [https://learn.arcus.chop.edu](https
 
 ![Data Education Navigator Tool homepage.](media/Landing_Page.png)
 
-## Development
-
-### File structure
+## File structure
 
 There are several top-level folders:
 - `assets` contains the metadata for the educational modules that this app presents.
@@ -28,7 +26,7 @@ Two important python files are also at the top level:
 - `app.py` is the python file which runs the app. It contains the visual layout of the components and calls all of the callbacks.
 - `module_data.py` is where metadata from the assets folder is processed into a single pandas dataframe for the app to use.
 
-## Testing
+## Running the application
 
 Clone or download this repository to run the app yourself!
 
@@ -52,7 +50,7 @@ Open a web browser to http://0.0.0.0:8050 to see and interact with the app.
 
 ### Running the app locally
 
-If all of the requirements (see `requirements.txt`) are correct on your machine, you can run the app locally without using docker at all with the command:
+If all of the requirements (see `requirements.txt`) are correct on your machine, you can run the app locally without using docker at all. From the top level directory of this repository, run:
 
 ```
 python app.py
