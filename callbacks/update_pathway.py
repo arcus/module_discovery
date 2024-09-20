@@ -113,6 +113,8 @@ def update_pathway(app):
         
         return new_pathway
 
+## When a user chooses a pathway from the predetermined list, they should change tabs to see that their selection was actually selected:
+
 def add_pathway_chage_tab(app):
     @app.callback(Output('navigation_tabs', 'active_tab'),
                   [Input("use_"+pathway["id"],'n_clicks') for pathway in pathway_list], #these buttons are for users to remove individual modules from their pathway
