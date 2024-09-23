@@ -1,6 +1,6 @@
 The Left Hand Navigation Bar is how users can search or sort through the modules. User interactions in the Left Hand Navigation Bar update the list of `hidden_filtered_modules` via the callbacks in `callbacks/update_search_results.py`.
 
-![Left Hand Navigation Bar in default state.](/media/Left_Nav_Bar_Closed.png)
+![Left Hand Navigation Bar in default state.](/media/Left_Nav_Bar_Closed.png){: width="50%"}
 
 The file `left_hand_nav_bar` defines the section and options. The categories Level and Collection pull in definitions from `/assets/levels` and `/assests/collections` respectively, but most of the sections are hard coded into this file, including popver text explaining each section's options.
 
