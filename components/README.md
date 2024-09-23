@@ -4,6 +4,8 @@
 
 There is a component in this directory corresponding to each of the five tabs, and a sixth for the app's title.
 
+![DENT's banner heading, showing the title and the five tabs.](/media/Headings.png)
+
 ## Hidden Components
 
 There are hidden Components which must be loaded into the page in order for callbacks to work, but which are not displayed to users. Each is set to `style= {'display': 'none'}` for use, but can be changed to `style= {'display': 'block'}` to display for development and debugging.
