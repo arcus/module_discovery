@@ -8,7 +8,9 @@ The internal callbacks allowing a user to re-order the modules in that list are 
 
 The line for each module in the pathway is built by `pathway_buttons`.
 
-![The three ways a module's row could appear in the pathway.](/media/Pathway_Buttons.png)
+<img src="https://github.com/arcus/module_discovery/blob/main/media/Pathway_Buttons.png?raw=true" alt="The three ways a module's row could appear in the pathway." width="400px"/> 
+
+
 
 Every module's row contains 4 buttons: 
 - **Up** moves the module up one in the pathway
@@ -18,9 +20,11 @@ Every module's row contains 4 buttons:
 
 Depending on the current order of the pathway there may also be a red or yellow icon to the left of the row, indicating that the module is out of order, or has prerequisites not included in this pathway.
 
-![A red icon opens a helpful message letting the user know which modules that are currently after this module in the pathway should precede it.](/media/Pathway_Out_Of_Order.png)
+<img src="https://github.com/arcus/module_discovery/blob/main/media/Pathway_Out_Of_Order.png?raw=true" alt="A red icon opens a helpful message letting the user know which modules that are currently after this module in the pathway should precede it." width="300px"/> 
 
-![A yellow icon opens a helpful message letting the user know which prerequisite modules are not yet in their pathway.](/media/Pathway_Missing_Prereq.png)
+
+<img src="https://github.com/arcus/module_discovery/blob/main/media/Pathway_Missing_Prereq.png?raw=true" alt="A yellow icon opens a helpful message letting the user know which prerequisite modules are not yet in their pathway." width="300px"/> 
+
 
 To resolve all red icon warnings at once, users can click the "Order pathway by module dependencies" button at the top of their pathway. 
 
@@ -30,4 +34,4 @@ All of these buttons used to change the order or contents of the pathway update 
 
 The copyable version of the pathway is built by `modal_save_pathway` and accessed with the "Get a copyable version of your pathway" button:
 
-![Copyable pathway links.](/media/Pathway_Copyable.png)
+<img src="https://github.com/arcus/module_discovery/blob/main/media/Pathway_Copyable.png?raw=true" alt="Copyable pathway links." width="400px"/> 

@@ -4,4 +4,5 @@ The body of this page and the main card of each pathway is built by `pre_made_pa
 ![Explore Pathways tab.](/media/Explore_Pathways.png)
 
 The "More details" popover is defined in `pathway_card_details`:
-![More Details popover for a pre-made pathway.](/media/Pathway_More_Details.png)
+
+<img src="https://github.com/arcus/module_discovery/blob/main/media/Pathway_More_Details.png?raw=true" alt="More Details popover for a pre-made pathway." width="400px"/> 

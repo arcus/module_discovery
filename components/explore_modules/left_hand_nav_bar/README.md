@@ -1,19 +1,19 @@
 The Left Hand Navigation Bar is how users can search or sort through the modules. User interactions in the Left Hand Navigation Bar update the list of `hidden_filtered_modules` via the callbacks in `callbacks/update_search_results.py`.
 
-![Left Hand Navigation Bar in default state.](/media/Left_Nav_Bar_Closed.png)
+<img src="https://github.com/arcus/module_discovery/blob/main/media/Left_Nav_Bar_Closed.png?raw=true" alt="Left Hand Navigation Bar in default state." height="400px"/> 
 
 The file `left_hand_nav_bar` defines the section and options. The categories Level and Collection pull in definitions from `/assets/levels` and `/assests/collections` respectively, but most of the sections are hard coded into this file, including popver text explaining each section's options.
 
-![Information about the Data Task category is available via a popover from the question mark to the right of the Data Task button.](/media/Left_Nav_Bar_Info_Popover.png)
+<img src="https://github.com/arcus/module_discovery/blob/main/media/Left_Nav_Bar_Info_Popover.png?raw=true" alt="Information about the Data Task category is available via a popover from the question mark to the right of the Data Task button." height="300px"/>
 
 
 Internal callbacks in `left_hand_nav_bar_callbacks.py` allow users to expand and collapse sections of the navigation bar by clicking on the section name, i.e. `Collection`.
 
-![Left Hand Navigation Bar with Collection and Level sections expanded.](/media/Left_Nav_Bar_Exapnd.png)
+<img src="https://github.com/arcus/module_discovery/blob/main/media/Left_Nav_Bar_Exapnd.png?raw=true" alt="Left Hand Navigation Bar with Collection and Level sections expanded." height="300px"/>
 
 The text entry box at the top is stored in `search_panel`:
 
-![Search bar at the top of the Left Hand Navigation Bar.](/media/Left_Nav_Bar_Search.png)
+<img src="https://github.com/arcus/module_discovery/blob/main/media/Left_Nav_Bar_Search.png?raw=true" alt="Search bar at the top of the Left Hand Navigation Bar." width="200px"/>
 
 ## Making changes to the Left Hand Navigation Bar
 
