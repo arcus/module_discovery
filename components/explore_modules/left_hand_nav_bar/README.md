@@ -17,7 +17,7 @@ The text entry box at the top is stored in `search_panel`:
 
 ## Making changes to the Left Hand Navigation Bar
 
-The selections in the navigation bar are used to update the search results. If a change is made to the navigation bar options, that change needs to be update is several places in order to fully work:
+The selections in the navigation bar are used to update the search results. If a change is made to the navigation bar options, that change needs to be updated in several places in order to fully work:
 
 1. Add new metadata category or metadata options to the layout in `left_hand_nav_bar`
 2.  If new metadata category is added, there are several callbacks that need updating:
