@@ -1,4 +1,5 @@
 The `clickable_module_list` renders all modules that meet the criteria filtered for from the Left Hand Navigation Bar (stored in `hidden_filtered_modules`) and lets users interact with those modules.
+
 <img src="https://github.com/arcus/module_discovery/blob/main/media/Explore_Modules_Results.png?raw=true" alt="Search results showing matching modules." width="400px"/> 
 
 Each module is displayed as a card:
