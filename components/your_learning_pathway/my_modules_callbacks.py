@@ -82,7 +82,7 @@ def show_my_modules_list(app):
 
             ## Opening text
             pathway_title = dbc.Row([dbc.Col(dcc.Markdown("## **Your Pathway**"), width = 8), dbc.Col(children=[save_button, modal_my_module_list(hidden_pathway)], width = 4)], align="justify")
-            return dbc.Container([pathway_title] + pathway_list, style={"width":"800px"})
+            return dbc.Container([pathway_title] + pathway_list, style={"max-width":"800px"})
 
         ## If nothing is in the pathway, display a message 
         else:
