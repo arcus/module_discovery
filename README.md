@@ -26,6 +26,14 @@ Two important python files are also at the top level:
 - `app.py` is the python file which runs the app. It contains the visual layout of the components and calls all of the callbacks.
 - `module_data.py` is where metadata from the assets folder is processed into a single pandas dataframe for the app to use.
 
+## Tech Stack
+
+This application is built with [Dash](https://dash.plotly.com) using [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai).
+
+See `requirements.txt` for required packages.
+
+The website https://learn.arcus.chop.edu is hosted using Google Cloud Run.
+
 ## Running the application
 
 Clone or download this repository to run the app yourself!
