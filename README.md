@@ -32,7 +32,7 @@ This application is built with [Dash](https://dash.plotly.com) using [Dash Boots
 
 See `requirements.txt` for required packages.
 
-The website https://learn.arcus.chop.edu is hosted by Google Cloud Run.
+The website https://learn.arcus.chop.edu is hosted using Google Cloud Run.
 
 ## Running the application
 
