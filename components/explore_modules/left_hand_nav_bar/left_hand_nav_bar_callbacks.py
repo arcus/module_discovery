@@ -80,6 +80,17 @@ def get_left_hand_nav_bar_callbacks(app):
             return not is_open
         return is_open
     
+    # Entire left hand nav bar open/close
+    @app.callback(
+        Output("filtering_collapse", "is_open"),
+        [Input("filtering_collapse_button", "n_clicks")],
+        [State("filtering_collapse", "is_open")],
+        )
+    def toggle_collapse3(n, is_open):
+        if n:
+            return not is_open
+        return is_open
+    
     # Clear selections button
     @app.callback(Output("general_options_checklist", "value"),
         Output("coding_language_checklist", "value"),

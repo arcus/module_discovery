@@ -43,6 +43,13 @@ left_hand_nav_bar = dbc.Container([
     dbc.Button("Clear all selections", id="clear_all_selections",color="dark", outline=True, size="sm", className="me-1", style={"background-color":CHOP.dark_blue_tint[2]}),
     html.Br(),
     html.Br(),
+    dbc.Button("Filtering options",id="filtering_collapse_button",color="dark", outline=True, size="sm", className="me-1, d-md-none", style={"background-color":CHOP.dark_blue_tint[2]}),
+    html.Br(className="d-md-none"),
+    html.Br(className="d-md-none"),
+
+    
+    dbc.Collapse(dbc.Container([
+                                       
     # GENERAL OPTIONS
 
     dbc.Button(
@@ -235,4 +242,8 @@ left_hand_nav_bar = dbc.Container([
     ),
     html.Br(),
     html.Br(),
-], style={'background-color': CHOP.light_blue_tint[1], "maxHeight": "725px", "overflow": "scroll"}, fluid=True, className="w-20")
+], style={'background-color': CHOP.light_blue_tint[1], "maxHeight": "725px", "overflow": "scroll"}, fluid=True, className="w-20"),
+id='filtering_collapse',
+is_open=True,
+)
+])
