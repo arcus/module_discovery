@@ -32,7 +32,7 @@ def level_popover():
             trigger="hover",
         )
 
-filtering_options= dbc.Container([
+filtering_options= [
                                        
     # GENERAL OPTIONS
 
@@ -209,7 +209,7 @@ filtering_options= dbc.Container([
             target="data_domain_info_button",
             trigger="hover",
         ),
-        dbc.Collapse([
+    dbc.Collapse([
     dbc.Col([
         dcc.RadioItems(
         options=[
@@ -226,20 +226,20 @@ filtering_options= dbc.Container([
     ),
     html.Br(),
     html.Br(),
-], style={'background-color': CHOP.light_blue_tint[1], "maxHeight": "725px", "overflow": "scroll"}, fluid=True, className="w-20")
+]#, style={'background-color': CHOP.light_blue_tint[1], "maxHeight": "725px", "overflow": "scroll"}, fluid=True, className="w-100")
 
 
 left_hand_nav_bar = dbc.Container([
     html.Br(),
-        dbc.Container([
-        dbc.Button("Show/hide search bar",id="filtering_collapse_button",color="dark", outline=True, size="sm", style={"background-color":CHOP.dark_blue_tint[2]}),
-    html.Br(),
-    html.Br(),
-    ],
-        class_name="d-block d-md-none",
-        fluid=True,
-        #style={"width":"150%"}
-    ),
+    
+    ### This is the button that appears when the screen is extra small to allow users to collapse the navigation bar.
+    
+    dbc.Button("Show/hide search options",id="filtering_collapse_button",color="dark", outline=True, size="sm", style={"background-color":CHOP.dark_blue_tint[2]}, class_name="d-block d-sm-none"),
+    html.Br(className="d-block d-sm-none"),
+    #html.Br(className="d-block d-sm-none"),
+
+    ## The whole nav bar is collapsible, but the button to do so is only visible on smaller screens
+    
     dbc.Collapse([
     dcc.Markdown("Search by keyword or filter modules by what you want to learn about:"),
     
@@ -249,11 +249,12 @@ left_hand_nav_bar = dbc.Container([
     html.Br(),
     dbc.Button("Clear all selections", id="clear_all_selections",color="dark", outline=True, size="sm", className="me-1", style={"background-color":CHOP.dark_blue_tint[2]}),
     html.Br(),
-    html.Br(),
-    #dbc.Container(filtering_options, class_name="d-none d-md-block"),
-
-    filtering_options],
+    html.Br(),]
+    + filtering_options,
         id='filtering_collapse',
         is_open=True,
-        )
+        ),
+    
+    ## This button is hidden unless the menu is collapsed and the window is big
+    dbc.Button("Show search options",id="filtering_expand_button",color="dark", outline=True, size="sm", style={"background-color":CHOP.dark_blue_tint[2]}, class_name="d-none", )
 ])
