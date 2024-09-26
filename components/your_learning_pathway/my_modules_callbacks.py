@@ -89,6 +89,6 @@ def show_my_modules_list(app):
             pathway_title = dbc.Row([dbc.Col(dcc.Markdown("## **Your Pathway**"), width = 9), dbc.Col("", width = 3)], align="justify")
             empty_pathway_message = dcc.Markdown("#### You haven't selected any modules for your pathway yet.")
             sort_button = dbc.Button("Sort these modules", color="light gray", n_clicks=0, id="sort_my_modules", style={"display":"none"})
-            return dbc.Container(children=[pathway_title]+initialize_nutbots+[empty_pathway_message]+[sort_button], style={"width":"800px"})
+            return dbc.Container(children=[pathway_title]+initialize_nutbots+[empty_pathway_message]+[sort_button], style={"max-width":"800px"})
         
         #html.Div(children=initialize_nutbots+[empty_pathway_message]+[sort_button])
