@@ -32,23 +32,7 @@ def level_popover():
             trigger="hover",
         )
 
-left_hand_nav_bar = dbc.Container([
-    html.Br(),
-    dcc.Markdown("Search by keyword or filter modules by what you want to learn about:"),
-    
-    # SEARCH DOESN'T YET HAVE A SUBMIT BUTTON
-
-    search_panel,
-    html.Br(),
-    dbc.Button("Clear all selections", id="clear_all_selections",color="dark", outline=True, size="sm", className="me-1", style={"background-color":CHOP.dark_blue_tint[2]}),
-    html.Br(),
-    html.Br(),
-    dbc.Button("Filtering options",id="filtering_collapse_button",color="dark", outline=True, size="sm", className="me-1, d-md-none", style={"background-color":CHOP.dark_blue_tint[2]}),
-    html.Br(className="d-md-none"),
-    html.Br(className="d-md-none"),
-
-    
-    dbc.Collapse(dbc.Container([
+filtering_options= dbc.Container([
                                        
     # GENERAL OPTIONS
 
@@ -242,8 +226,34 @@ left_hand_nav_bar = dbc.Container([
     ),
     html.Br(),
     html.Br(),
-], style={'background-color': CHOP.light_blue_tint[1], "maxHeight": "725px", "overflow": "scroll"}, fluid=True, className="w-20"),
-id='filtering_collapse',
-is_open=True,
-)
+], style={'background-color': CHOP.light_blue_tint[1], "maxHeight": "725px", "overflow": "scroll"}, fluid=True, className="w-20")
+
+
+left_hand_nav_bar = dbc.Container([
+    html.Br(),
+        dbc.Container([
+        dbc.Button("Show/hide search bar",id="filtering_collapse_button",color="dark", outline=True, size="sm", style={"background-color":CHOP.dark_blue_tint[2]}),
+    html.Br(),
+    html.Br(),
+    ],
+        class_name="d-block d-md-none",
+        fluid=True,
+        #style={"width":"150%"}
+    ),
+    dbc.Collapse([
+    dcc.Markdown("Search by keyword or filter modules by what you want to learn about:"),
+    
+    # SEARCH DOESN'T YET HAVE A SUBMIT BUTTON
+
+    search_panel,
+    html.Br(),
+    dbc.Button("Clear all selections", id="clear_all_selections",color="dark", outline=True, size="sm", className="me-1", style={"background-color":CHOP.dark_blue_tint[2]}),
+    html.Br(),
+    html.Br(),
+    #dbc.Container(filtering_options, class_name="d-none d-md-block"),
+
+    filtering_options],
+        id='filtering_collapse',
+        is_open=True,
+        )
 ])
