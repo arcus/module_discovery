@@ -30,6 +30,8 @@ The selections in the navigation bar are used to update the search results. If a
 
 ## Responsiveness
 
+Two responsive elements appear in `left_hand_nav_bar`.
+
 On phones, the left hand navigation bar takes up a lot of space requiring users to scroll quite far down to see their results. To mitigate this, the `filtering_collapse_button` appears on extra small screens to allow users to collapse the search options, bringing the list of modules up higher on the screen.
 
 If a user collapses the navigation bar when their window is small and then expands the window, a second button, the `filtering_expand_button` will appear. Most users will never encounter this functionality.
