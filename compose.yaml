@@ -1,5 +1,9 @@
 services:
   app:
     image: module_discovery_app
+    volumes:
+      - type: bind
+        source: .
+        target: /app
     ports:
       - "8050:8050"

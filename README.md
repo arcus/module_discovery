@@ -54,7 +54,7 @@ This may take a few minutes the first time you run it.  Once it is completed, ru
 docker compose up -d
 ```
 
-Open a web browser to http://0.0.0.0:8050 to see and interact with the app.
+Open a web browser to http://0.0.0.0:8050 to see and interact with the app. The container and app have been configured such that you can refresh the browser to see any changes you've made to the code reflected without having to rebuild the container. Still, it can be a good idea to periodically rebuild the container to ensure everything working is as expected.
 
 ### Running the app locally
 
