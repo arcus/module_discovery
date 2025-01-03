@@ -1,0 +1,5 @@
+services:
+  app:
+    image: module_discovery_app
+    ports:
+      - "8050:8050"

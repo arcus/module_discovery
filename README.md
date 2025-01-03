@@ -4,7 +4,7 @@
 
 The purpose of this app is to allow for easier discovery of the educational modules created as part of the DART program. Ultimately this will replace the current public-facing [list of all modules on the DART website](https://arcus.github.io/education_modules/list_of_modules).
 
-This app will allow users to learn more about each module, investigate how the modules are connected, and search for particular topics or key words and build thier own pathways.
+This app will allow users to learn more about each module, investigate how the modules are connected, and search for particular topics or key words and build their own pathways.
 
 **NOTE:** This is a prototype that is in a phase of rapid development. All effort will be made to keep this README up to date, but some changes might slip by. If something isn't working as expected, please let us know by creating an issue.
 
@@ -40,7 +40,7 @@ Clone or download this repository to run the app yourself!
 
 ### Dockerization
 
-The `Dockerfile`, `requirements.txt` are set up to allow this to run in a Docker container on a local computer. To run it, open Docker and a command line interface.
+The `Dockerfile`, `requirements.txt`, and `compose.yaml` are set up to allow this to run in a Docker container on a local computer. To run it, open Docker and a command line interface.
 
 From the top level directory of this repository run:
 
@@ -48,10 +48,10 @@ From the top level directory of this repository run:
 docker build -t module_discovery_app .
 ```
 
-This may take some a minute the first time you run it. Once it is completed, run:
+This may take a few minutes the first time you run it.  Once it is completed, run:
 
 ```
-docker run -d -p 8050:8050 module_discovery_app
+docker compose up -d
 ```
 
 Open a web browser to http://0.0.0.0:8050 to see and interact with the app.
